@@ -11,6 +11,6 @@ class AppealTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Appeal::class, 100)->create();
+        factory(App\Appeal::class, 1000)->create();
     }
 }

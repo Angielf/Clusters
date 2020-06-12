@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <a class="btn btn-primary" href="#" role="button">Подать аппеляцию</a>
+                    <a class="btn btn-success" href="/appeals">Мои аппеляции</a>
+                    <a class="btn btn-primary" href="/appeals/create" role="button">Подать аппеляцию</a>
                 </div>
             </div>
         </div>

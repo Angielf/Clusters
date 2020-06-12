@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Appeal;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class AppealController extends Controller
 {
@@ -15,9 +15,9 @@ class AppealController extends Controller
      */
     public function index()
     {
-        $appeals = Appeal::all();
+        $appeals = Appeal::all()->where('user_id', Auth::user()->id);
 
-        return view('appeals.index', ['appeals' => $appeals]);
+        return view('appeals.index', compact('appeals'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AppealController extends Controller
      */
     public function create()
     {
-        //
+        return view('appeals.create');
     }
 
     /**
@@ -38,27 +38,47 @@ class AppealController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'fio'=>'required',
+            'class'=>'required',
+            'subject'=>'required'
+        ]);
+
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+        }
+
+        $appeal = new Appeal([
+            'fio' => $request->post('fio'),
+            'class' => $request->post('class'),
+            'subject' => $request->post('subject'),
+            'status' => 'Рассмотрение',
+//            'date_of_appeal' => date('Y-m-d H:i:s'),
+            'comment' => $request->post('comment'),
+            'user_id' => $user_id,
+        ]);
+        $appeal->save();
+        return redirect('/appeals')->with('success', 'Аппеляция добавлена!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Appeal  $appeal
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Appeal $appeal)
     {
-        //
+        return view('appeals.show',compact('appeal'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Appeal  $appeal
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Appeal $appeal)
     {
         //
     }
@@ -67,10 +87,10 @@ class AppealController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Appeal  $appeal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Appeal $appeal)
     {
         //
     }
@@ -78,10 +98,10 @@ class AppealController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Appeal  $appeal
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Appeal $appeal)
     {
         //
     }
