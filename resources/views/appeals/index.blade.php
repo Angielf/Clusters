@@ -10,6 +10,7 @@
                     <td>Класс</td>
                     <td>Предмет</td>
                     <td>Дата проведения аппеляции</td>
+                    <td>Статус</td>
                 </tr>
                 </thead>
             @foreach($appeals as $appeal)
@@ -17,6 +18,7 @@
                         <td><a href="/appeals/{{$appeal->id}}">{{$appeal->fio}}</a></td>
                         <td>{{$appeal->class}}</td>
                         <td>{{$appeal->subject}}</td>
+                        <td>{{$appeal->date_of_appeal}}</td>
                         <td>{{$appeal->status}}</td>
                     </tr>
             @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Appeal;
 use App\District;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,10 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
+        if ($user->id === 1) {
+            $appeals = Appeal::all();
+            return view('departament', compact('user', 'appeals'));
+        }
         $district = District::where('id', $user->district)->first();
         return view('home', ['user' => $user, 'district' => $district]);
     }

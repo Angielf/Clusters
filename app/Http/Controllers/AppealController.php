@@ -53,7 +53,6 @@ class AppealController extends Controller
             'class' => $request->post('class'),
             'subject' => $request->post('subject'),
             'status' => 'Рассмотрение',
-//            'date_of_appeal' => date('Y-m-d H:i:s'),
             'comment' => $request->post('comment'),
             'user_id' => $user_id,
         ]);
@@ -80,7 +79,9 @@ class AppealController extends Controller
      */
     public function edit(Appeal $appeal)
     {
-        //
+        if (Auth::user()->id === 1) {
+            return view('appeals.edit', compact('appeal'));
+        }
     }
 
     /**
@@ -92,17 +93,30 @@ class AppealController extends Controller
      */
     public function update(Request $request, Appeal $appeal)
     {
-        //
+        $request->validate([
+            'date_of_appeal' => 'required',
+            'status' => 'required',
+        ]);
+
+        $appeal->update($request->all());
+
+
+        return redirect()->route('home')
+            ->with('success','Аппеляция изменена');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Appeal  $appeal
+     * @param  \App\Appeal $appeal
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Appeal $appeal)
     {
-        //
+        $appeal->delete();
+
+        return redirect()->route('appeals.index')
+            ->with('success','Аппеляция удалена');
     }
 }
