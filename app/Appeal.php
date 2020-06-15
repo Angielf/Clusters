@@ -10,7 +10,7 @@ class Appeal extends Model
 
     protected $fillable = [
 
-        'fio', 'class', 'subject', 'status', 'user_id', 'date_of_appeal', 'comment',
+        'fio', 'class', 'subject', 'status', 'user_id', 'date_of_appeal', 'comment', 'filename',
 
     ];
 }

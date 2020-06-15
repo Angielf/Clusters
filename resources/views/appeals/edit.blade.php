@@ -23,6 +23,7 @@
                     <td>{{$appeal->created_at}}</td>
                 </tr>
             </table>
+            <img src="/img/{{$appeal->filename}}" class="img-fluid" alt="Responsive image">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -32,7 +33,6 @@
                         @endforeach
                     </ul>
                 </div>
-
             @endif
             <form action="{{ route('appeals.update',$appeal->id) }}" method="POST">
                 @csrf

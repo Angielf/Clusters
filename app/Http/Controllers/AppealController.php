@@ -48,6 +48,12 @@ class AppealController extends Controller
             $user_id = Auth::user()->id;
         }
 
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file_name = time().'.'.$request->image->extension();
+            $file->move(public_path() . '/img', $file_name);
+        }
+
         $appeal = new Appeal([
             'fio' => $request->post('fio'),
             'class' => $request->post('class'),
@@ -55,7 +61,9 @@ class AppealController extends Controller
             'status' => 'Рассмотрение',
             'comment' => $request->post('comment'),
             'user_id' => $user_id,
+            'filename' => $file_name,
         ]);
+
         $appeal->save();
         return redirect('/appeals')->with('success', 'Аппеляция добавлена!');
     }

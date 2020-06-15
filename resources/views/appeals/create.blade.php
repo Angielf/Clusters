@@ -14,7 +14,7 @@
                         </ul>
                     </div><br />
                 @endif
-                <form method="post" action="{{ route('appeals.store') }}">
+                <form method="post" action="{{ route('appeals.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="fio">ФИО:</label>
@@ -36,6 +36,10 @@
                         <textarea class="form-control" name="comment"></textarea>
                     </div>
 
+                    <form-group>
+                        <input type="file" name="image">
+                    </form-group>
+                    <br>
                     <button type="submit" class="btn btn-primary">Добавить аппеляцию</button>
                 </form>
             </div>
