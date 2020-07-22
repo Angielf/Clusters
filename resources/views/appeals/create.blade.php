@@ -36,9 +36,13 @@
                         <textarea class="form-control" name="comment"></textarea>
                     </div>
 
-                    <form-group>
-                        <input type="file" name="image">
-                    </form-group>
+                    <div class="form-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="image">
+                            <label class="custom-file-label">Загрузить</label>
+                        </div>
+                    </div>
+
                     <br>
                     <button type="submit" class="btn btn-primary">Добавить аппеляцию</button>
                 </form>
