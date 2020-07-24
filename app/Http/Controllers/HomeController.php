@@ -28,11 +28,15 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if ($user->id === 1) {
-            $appeals = Appeal::all();
-            return view('departament', compact('user', 'appeals'));
+
+        if ($user->status === 1) {
+            $districts = District::all();
+            return view('home', ['user' => $user, 'districts' => $districts]);
+        } elseif ($user->status === 2) {
+            $districts = District::where('id', $user->district_id)->get();
+            return view('home', ['user' => $user, 'districts' => $districts]);
+        } else {
+            return view('school', ['user' => $user]);
         }
-        $district = District::where('id', $user->district)->first();
-        return view('home', ['user' => $user, 'district' => $district]);
     }
 }
