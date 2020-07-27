@@ -21,7 +21,7 @@
                         <td>{{ $bid->content }}</td>
                         <td>{!! $bid->getStatus() !!}</td>
                         <td>{{ $bid->created_at }}</td>
-                        <td><a href="" class="btn-success">Добавить программу</a></td>
+                        <td><a href="" class="btn btn-success">Добавить программу</a></td>
                     </tr>
             </table>
         </div>

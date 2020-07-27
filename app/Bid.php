@@ -18,7 +18,7 @@ class Bid extends Model
     public function getStatus()
     {
         switch ($this->status) {
-            case 0: return '<div class="alert alert-warning" role="alert">В рассмотрении</div>';
+            case 0: return '<div class="alert alert-warning" role="alert">Рассмотрение</div>';
             case 1: return '<div class="alert alert-success" role="alert">Одобрена</div>';
             case 2: return '<div class="alert alert-danger" role="alert">Отклонена</div>';
         }

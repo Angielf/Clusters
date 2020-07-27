@@ -15,12 +15,28 @@
                             </div>
                         @endif
                     </div>
-                    <div class="card-body">
+                    <ul class="card-body">
                         <h5 class="card-title">Мои заявки</h5>
-                        <p class="card-text"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam assumenda culpa cum cupiditate, delectus ea facere minima molestiae molestias nisi nostrum nulla omnis, porro quia quod sed, vitae voluptates.</span><br>
-                            <span>Animi aperiam architecto dignissimos doloremque doloribus, earum eius enim ipsa neque nulla obcaecati placeat quam quasi, quidem quod repudiandae ullam ut veniam. Deserunt ipsum magni molestias nam obcaecati repudiandae, voluptatem.</span>   </p>
+                        <p class="card-text">
+                        <ul>
+                            @if ($user->bids)
+                                @foreach( $user->bids as $bid)
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                {{ $bid->class }} класс {{ $bid->subject }}
+                                            </div>
+                                            <div class="col-md-4">
+                                                {!! $bid->getStatus() !!}
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @endif
+                        </ul>
+                        <br>
                         <a href="/bids/create" class="btn btn-primary">Подать заявление</a>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>

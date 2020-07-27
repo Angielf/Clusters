@@ -34,7 +34,7 @@ class HomeController extends Controller
             return view('home', ['user' => $user, 'districts' => $districts]);
         } elseif ($user->status === 2) {
             $districts = District::where('id', $user->district)->get();
-            return view('home', ['user' => $user, 'districts' => $districts]);
+            return view('base', ['user' => $user, 'districts' => $districts]);
         } else {
             return view('school', ['user' => $user]);
         }
