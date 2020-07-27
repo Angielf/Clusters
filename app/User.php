@@ -37,8 +37,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function district()
+    public function getDistrict()
     {
-        return $this->belongsTo(District::class, 'id' );
+        return $this->belongsTo(District::class, 'district' );
+    }
+
+    public function Bids()
+    {
+        return $this->hasMany(Bid::class, 'user_id');
     }
 }

@@ -18,7 +18,17 @@
                         </div>
                         <div class="collapse" id="collapse{{$district->id}}">
                             @foreach($district->users as $school)
-                                <p>{{$school->fullname}}</p>
+                                <div class="row">
+                                    <div class="col-md-6"><p>{{$school->fullname}}</p></div>
+                                    <div class="col-md-6">
+                                        @if($bids = $school->bids)
+                                            @foreach ($bids as $bid)
+                                                <p><a href="/bids/{{ $bid->id }}">{{ $bid->class }}
+                                                        класс {{ $bid->subject }}</a></p>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
                             @endforeach
                         </div>
                     </div>

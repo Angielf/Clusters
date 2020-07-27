@@ -23,5 +23,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('appeals', 'AppealController');
 
+Route::resource('bids', 'BidController');
+
 //Route::get('/appeals', 'AppealController@index')->name('appeals');
 
