@@ -25,12 +25,17 @@
                                 <div class="row">
                                     <div class="col-md-7"><p>&nbsp;&nbsp;&nbsp; {{$school->fullname}}</p></div>
                                     <div class="col-md-5">
-                                        @if($bids = $school->bids)
-                                            @foreach ($bids as $bid)
-                                                <a href="/bids/{{ $bid->id }}">{{ $bid->class }}
-                                                        класс {{ $bid->subject }}</a><br>
-                                            @endforeach
-                                        @endif
+                                        <div class="row">
+                                            @if($bids = $school->bids)
+                                                @foreach ($bids as $bid)
+                                                    <div class="col-md-6">
+                                                        <p><a href="/bids/{{ $bid->id }}">{{ $bid->class }}
+                                                                класс {{ $bid->subject }} </a></p>
+                                                    </div>
+                                                    <div class="col-md-6">{!! $bid->getStatus() !!}</div>
+                                                @endforeach
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <hr>
