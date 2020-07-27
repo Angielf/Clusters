@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h2>{{$user->fullname}} <br>
-                            <small>{{$user->district->fullname}}</small>
+                            <small>{{$user->district}}</small>
                         </h2>
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -24,4 +24,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
