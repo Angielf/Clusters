@@ -1914,7 +1914,7 @@ class DatabaseSeeder extends Seeder
             array(
                 "loginOrg" => "sch12_005",
                 "nameOrg" => "МБОУ Калачеевская средняя общеобразовательная школа № 6",
-                "passOrg" => "y9fadn988",
+                "passOrg" => "не ",
                 "district" => 12,
             ),
             array(

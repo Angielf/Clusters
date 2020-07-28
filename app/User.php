@@ -42,8 +42,13 @@ class User extends Authenticatable
         return $this->belongsTo(District::class, 'district' );
     }
 
-    public function Bids()
+    public function bids()
     {
         return $this->hasMany(Bid::class, 'user_id');
+    }
+
+    public function cluster()
+    {
+        return $this->hasOne(Cluster::class);
     }
 }

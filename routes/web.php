@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/clusters/add', 'ClusterController@add');
+
 Route::resource('appeals', 'AppealController');
 
 Route::resource('bids', 'BidController');

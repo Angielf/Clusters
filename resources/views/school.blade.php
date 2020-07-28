@@ -9,6 +9,12 @@
                         <h2>{{$user->fullname}} <br>
                             <small>{{$user->getDistrict->fullname}}</small>
                         </h2>
+                        @if ($user->cluster)
+                            <p><b>Заявка на создание кластера отправлена</b></p>
+                        @else
+                            <a href="/clusters/add" class="btn btn-outline-primary btn-lg">Подать заявку на создание
+                                кластера</a>
+                        @endif
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -35,7 +41,7 @@
                             @endif
                         </ul>
                         <br>
-                        <a href="/bids/create" class="btn btn-primary">Подать заявление</a>
+                        <a href="/bids/create" class="btn btn-outline-primary">Подать заявление</a>
                     </ul>
                 </div>
             </div>
