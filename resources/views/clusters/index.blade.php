@@ -1,26 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <h2>{{ $bids[0]->user->fullname }}</h2>
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <td>Класс</td>
-                    <td>Предмет</td>
-                    <td>Комментарий</td>
-                    <td>Статус</td>
+                    <th>№</th>
+                    <th>Базовая школа</th>
+                    <th>Район</th>
+                    <th>Школы реципиенты</th>
+                    <th>Решение</th>
                 </tr>
                 </thead>
-            @foreach($bids as $bid)
+                @foreach($clusters as $cluster)
                     <tr>
-                        <td>{{ $bid->class }}</td>
-                        <td>{{ $bid->subject }}</td>
-                        <td>{{ $bid->content }}</td>
-                        <td>{!! $bid->getStatus() !!}</td>
+                        <td>{{$cluster->id}}</td>
+                        <td>{{$cluster->user->fullname}}</td>
+                        <td>{{$cluster->district->fullname}}</td>
+                        <td>
+                            @foreach(json_decode($cluster->schools, true) as $school)
+                                {{ $school['school_name'] }} <a href="/files//{{ $school['file_name'] }}">Соглашение</a>
+                                <br>
+                            @endforeach
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-success btn-sm">Одобрить</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm">Отклонить</button>
+                        </td>
                     </tr>
-            @endforeach
+                @endforeach
             </table>
         </div>
     </div>

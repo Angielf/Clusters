@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cluster;
+use App\District;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +32,7 @@ class ClusterController extends Controller
      */
     public function index()
     {
-        $clusters = Cluster::all()->where('user_id', Auth::user()->id);
+        $clusters = Cluster::all();
 
         return view('clusters.index', compact('clusters'));
     }
@@ -43,7 +44,10 @@ class ClusterController extends Controller
      */
     public function create()
     {
-        return view('clusters.create');
+        $user = Auth::user();
+        $district = $user->getDistrict;
+
+        return view('clusters.create', compact(['user', 'district']));
     }
 
     /**
@@ -54,22 +58,32 @@ class ClusterController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'class'=>'required',
-            'subject'=>'required'
-        ]);
+        $user = Auth::user();
+        $district = $user->getDistrict;
+        $files = [];
+        foreach ($district->users as $school) {
+            $id = $school->id;
+            if($request->hasFile($id)) {
+                $file = $request->$id;
+                $file_name = $id . time().'.'.$request->$id->extension();
+                $file->move(public_path() . '/files', $file_name);
+                $new_file['file_name']= $file_name;
+                $new_file['school_id'] = $school->id;
+                $new_file['school_name'] = $school->fullname;
 
-        $user_id = Auth::user()->id;
+                array_push($files, $new_file);
+            }
+        }
+        $files = json_encode($files);
 
         $cluster = new Cluster([
-            'class' => $request->post('class'),
-            'subject' => $request->post('subject'),
-            'content' => $request->post('content'),
-            'user_id' => $user_id,
+            'user_id' => $user->id,
+            'district_id' => $district->id,
+            'schools' => $files,
         ]);
 
         $cluster->save();
-        return redirect('/clusters')->with('success', 'Заявка на кластер добавлена!');
+        return redirect('/')->with('success', 'Заявка на кластер добавлена!');
     }
 
     /**

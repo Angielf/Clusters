@@ -3,7 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col-sm-8 offset-sm-2">
-            <h1 class="display-3">Подать заявку на кластер </h1>
+            <h3 class="display-5">{{ $user->fullname }}</h3>
+            <h4 align="center">Прикрепите соглашение с образовательными организациями</h4>
             <div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -12,28 +13,27 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
-                    </div><br />
+                    </div><br/>
                 @endif
                 <form method="post" action="{{ route('clusters.store') }}" enctype="multipart/form-data">
                     @csrf
-
-                    <div class="form-group">
-                        <label for="class">Класс:</label>
-                        <input type="text" class="form-control" name="class"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Предмет:</label>
-                        <input type="text" class="form-control" name="subject"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="content">Комментарий:</label>
-                        <textarea class="form-control" name="content"></textarea>
-                    </div>
-
+                    @foreach($district->users as $school)
+                        @if (($school->id !== $user->id) && ($school->fullname != ''))
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ $school->fullname }}
+                                </div>
+                                <div class="col-md-6 custom-file">
+                                    <input type="file" class="custom-file-input" name="{{ $school->id }}">
+                                    <label class="custom-file-label">Загрузить соглашение</label>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                    @endforeach
                     <br>
-                    <button type="submit" class="btn btn-primary">Добавить</button>
+                    <button type="submit" class="btn btn-outline-primary btn-lg">Подать заявку на создание кластера</button>
                 </form>
             </div>
         </div>

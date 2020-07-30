@@ -12,7 +12,7 @@
                         @if ($user->cluster)
                             <p><b>Заявка на создание кластера отправлена</b></p>
                         @else
-                            <a href="/clusters/add" class="btn btn-outline-primary btn-lg">Подать заявку на создание
+                            <a href="/clusters/create" class="btn btn-outline-primary btn-lg">Подать заявку на создание
                                 кластера</a>
                         @endif
                         @if (session('status'))
