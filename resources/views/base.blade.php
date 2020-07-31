@@ -10,43 +10,45 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                @foreach($districts as $district)
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title">{{$district->fullname}}</h2>
-                        </div>
-                        <div>
-                            <ul class="list-group">
-                                <li class="list-group-item active">
-                                    <div class="row">
-                                        <div class="col-md-7">Образовательная организация</div>
-                                        <div class="col-md-5">Западения по предметам</div>
-                                    </div>
-                                </li>
-                                @foreach($district->users as $school)
-                                    <li class="list-group-item">
-                                        <div class="row">
-                                            <div class="col-md-7"><p>{{$school->fullname}}</p></div>
-                                            <div class="col-md-5">
-                                                <div class="row">
-                                                    @if($bids = $school->bids)
-                                                        @foreach ($bids as $bid)
-                                                            <div class="col-md-6">
-                                                                <p><a href="/bids/{{ $bid->id }}">{{ $bid->class }}
-                                                                        класс {{ $bid->subject }} </a></p>
-                                                            </div>
-                                                            <div class="col-md-6">{!! $bid->getStatus() !!}</div>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+
+                <h3>Кластер № {{$cluster->id}}</h3>
+                <h4>{{$cluster->district->fullname}}</h4>
+
+                @if ($cluster->status === 1)
+                    <div class="alert alert-success" role="alert">
+                        Заяка на создание кластер одобрена
                     </div>
-                @endforeach
+                @else
+                    <div class="alert alert-warning" role="alert">
+                        Заявка на создание кластера в рассмотрении
+                    </div>
+                @endif
+                <table class="table table-striped">
+                    <tr>
+                        <th>Образовательная организация</th>
+                        <th>Западения по предметам</th>
+                        <th>Соглашение</th>
+                    </tr>
+                    @foreach(json_decode($cluster->schools, true) as $school)
+                        <tr>
+                            <td>{{ $school['school_name'] }}</td>
+                            <td>
+                                @foreach($districts as $district)
+                                    @foreach($district->users as $user)
+                                        @if(($user->id === $school['school_id']) && ($bids = $user->bids))
+                                            @foreach ($bids as $bid)
+                                                <p><a href="/bids/{{ $bid->id }}">{{ $bid->class }}
+                                                        класс {{ $bid->subject }} </a>
+                                                <a href="#" class="btn btn-outline-success btn-sm">Добавить программу</a></p>
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                            </td>
+                            <td><a href="/files//{{ $school['file_name'] }}">Смотреть</a></td>
+                        </tr>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>

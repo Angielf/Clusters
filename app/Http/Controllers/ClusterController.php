@@ -12,8 +12,11 @@ class ClusterController extends Controller
     public function add(Cluster $cluster)
     {
         $cluster->status = 1;
-
         $cluster->save();
+
+        $user = $cluster->user;
+        $user->status = 2;
+        $user->save();
 
         return redirect('/clusters')->with('success', 'Заявка на кластер добавлена!');
 

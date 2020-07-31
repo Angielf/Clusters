@@ -37,7 +37,7 @@
                                 <form action="{{ route('clusters.destroy',$cluster->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger">Удалить</button>
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Удалить</button>
                                 </form>
                             @endif
                         </td>

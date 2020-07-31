@@ -53,7 +53,7 @@ class BidController extends Controller
         ]);
 
         $bid->save();
-        return redirect('/bids')->with('success', 'Заявка добавлена!');
+        return redirect('/')->with('success', 'Заявка добавлена!');
     }
 
     /**
