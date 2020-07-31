@@ -9,19 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ClusterController extends Controller
 {
-    public function add()
+    public function add(Cluster $cluster)
     {
-        $user = Auth::user();
-        $district_id = $user->district;
-        $cluster = new Cluster([
-            'user_id' => $user->id,
-            'district_id' => $user->district,
-            'status' => 1,
-        ]);
+        $cluster->status = 1;
 
         $cluster->save();
 
-        return redirect('/')->with('success', 'Заявка на кластер добавлена!');
+        return redirect('/clusters')->with('success', 'Заявка на кластер добавлена!');
 
     }
 
@@ -142,7 +136,7 @@ class ClusterController extends Controller
     {
         $cluster->delete();
 
-        return redirect()->route('cluster.index')
+        return redirect()->route('clusters.index')
             ->with('success','Кластер удален');
     }
 }

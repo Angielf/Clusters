@@ -30,8 +30,9 @@ class HomeController extends Controller
         $user = Auth::user();
 
         if ($user->status === 1) {
-            $districts = District::all();
-            return view('home', ['user' => $user, 'districts' => $districts]);
+//            $districts = District::all();
+//            return view('home', ['user' => $user, 'districts' => $districts]);
+            redirect('/clusters');
         } elseif ($user->status === 2) {
             $districts = District::where('id', $user->district)->get();
             return view('base', ['user' => $user, 'districts' => $districts]);
