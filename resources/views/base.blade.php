@@ -39,7 +39,8 @@
                                             @foreach ($bids as $bid)
                                                 <p><a href="/bids/{{ $bid->id }}">{{ $bid->class }}
                                                         класс {{ $bid->subject }} </a>
-                                                <a href="#" class="btn btn-outline-success btn-sm">Добавить программу</a></p>
+                                                    <a href="#" class="btn btn-outline-success btn-sm">Добавить
+                                                        программу</a></p>
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -52,5 +53,5 @@
             </div>
         </div>
     </div>
-    </div>
 @endsection
+

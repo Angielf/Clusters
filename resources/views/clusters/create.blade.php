@@ -25,7 +25,7 @@
                                     {{ $school->fullname }}
                                 </div>
                                 <div class="col-md-6 custom-file">
-                                    <input type="file" class="custom-file-input" name="{{ $school->id }}">
+                                    <input id="custom-file-input" type="file" class="custom-file-input" name="{{ $school->id }}">
                                     <label class="custom-file-label">Загрузить соглашение</label>
                                 </div>
                             </div>
@@ -38,4 +38,16 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="application/javascript">
+        jQuery(document).ready(function() {
+            $('.custom-file input').change(function (e) {
+                var files = [];
+                for (var i = 0; i < $(this)[0].files.length; i++) {
+                    files.push($(this)[0].files[i].name);
+                }
+                $(this).next('.custom-file-label').html(files.join(', '));
+            });
+        })
+    </script>
 @endsection
