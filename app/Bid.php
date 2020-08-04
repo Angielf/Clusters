@@ -8,11 +8,16 @@ class Bid extends Model
 {
     protected $table = 'bids';
 
-    protected $fillable = ['subject', 'class', 'content', 'user_id'];
+    protected $fillable = ['subject', 'class', 'content', 'user_id', 'modul', 'form_of_education', 'form_education_implementation'];
 
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function program()
+    {
+        return $this->hasOne(Program::class);
     }
 
     public function getStatus()

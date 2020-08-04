@@ -23,8 +23,33 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="subject">Предмет:</label>
+                        <label for="subject">Предмет/курс:</label>
                         <input type="text" class="form-control" name="subject"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modul">Раздел/модуль:</label>
+                        <input type="text" class="form-control" name="modul"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form_of_education">Форма получения образования</label>
+                        <select class="form-control" name="form_of_education">
+                            <option value=""></option>
+                            <option value="очная">очная</option>
+                            <option value="очно-заочная">очно-заочная</option>
+                            <option value="заочная">заочная</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form_education_implementation">Форма реализации образовательных программ</label>
+                        <select class="form-control" name="form_education_implementation">
+                            <option value=""></option>
+                            <option value="с использованием электронного обучения">с использованием электронного обучения</option>
+                            <option value="сетевая форма">сетевая форма</option>
+                            <option value="наличие подвоза детей до организации">наличие подвоза детей до организации</option>
+                        </select>
                     </div>
 
                     <div class="form-group">

@@ -49,6 +49,9 @@ class BidController extends Controller
             'class' => $request->post('class'),
             'subject' => $request->post('subject'),
             'content' => $request->post('content'),
+            'modul' => $request->post('modul'),
+            'form_of_education' => $request->post('form_of_education'),
+            'form_education_implementation' => $request->post('form_education_implementation'),
             'user_id' => $user_id,
         ]);
 
