@@ -29,18 +29,36 @@
                                 @foreach( $user->bids as $bid)
                                     <li class="list-group-item">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 {{ $bid->class }} класс {{ $bid->subject }}
                                             </div>
                                             <div class="col-md-3">
                                                 {!! $bid->getStatus() !!}
                                             </div>
-                                            <div class="col-md-3">
-                                                @if ($bid->status === 1)
+                                            @if ($bid->status === 1)
+                                                <div class="col-md-3">
                                                     <a href="/files/programs/{{ $bid->program->filename }}"
                                                        class="btn btn-outline-info">Скачать программу</a>
+                                                </div>
+                                                @if ($bid->program->schedule)
+                                                    <div class="col-md-3">
+                                                        <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
+                                                           class="btn btn-outline-info">Расписание</a><br>
+                                                        @if ($bid->program->schedule->status !== 1)
+                                                            <a href="/schedule/add/{{ $bid->program->schedule->id }}"
+                                                               class="btn btn-outline-success btn-sm">Одобрить</a>
+                                                        @endif
+                                                        <form action="{{ action('ScheduleController@delete',$bid->program->schedule->id) }}"
+                                                              method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                                Удалить
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 @endif
-                                            </div>
+                                            @endif
                                         </div>
                                     </li>
                                 @endforeach

@@ -33,3 +33,11 @@ Route::get('/program/{id}', 'ProgramController@index');
 
 Route::post('/program/{id}', 'ProgramController@add');
 
+Route::get('/schedule/{id}', 'ScheduleController@index');
+
+Route::get('/schedule/add/{schedule}', 'ScheduleController@approve');
+
+Route::post('/schedule/{id}', 'ScheduleController@add');
+
+Route::delete('/schedule/{schedule}', 'ScheduleController@delete');
+

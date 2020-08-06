@@ -14,4 +14,9 @@ class Program extends Model
     {
         return $this->belongsTo(Bid::class);
     }
+
+    public function schedule()
+    {
+        return $this->hasOne( Schedule::class);
+    }
 }
