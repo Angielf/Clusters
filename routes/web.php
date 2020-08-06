@@ -29,5 +29,7 @@ Route::resource('bids', 'BidController');
 
 Route::resource('clusters', 'ClusterController');
 
-//Route::get('/appeals', 'AppealController@index')->name('appeals');
+Route::get('/program/{id}', 'ProgramController@index');
+
+Route::post('/program/{id}', 'ProgramController@add');
 

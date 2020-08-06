@@ -39,8 +39,14 @@
                                             @foreach ($bids as $bid)
                                                 <p><a href="/bids/{{ $bid->id }}">{{ $bid->class }}
                                                         класс {{ $bid->subject }} </a>
-                                                    <a href="#" class="btn btn-outline-success btn-sm">Добавить
-                                                        программу</a></p>
+                                                    @if ($bid->status !== 1)
+                                                        <a href="/program/{{ $bid->id }}"
+                                                           class="btn btn-outline-success btn-sm">Добавить программу</a>
+                                                </p>
+                                                @else
+                                                    <a href="/files/programs/{{ $bid->program->filename }}"
+                                                       class="btn btn-outline-info btn-sm">Скачать программу</a>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach

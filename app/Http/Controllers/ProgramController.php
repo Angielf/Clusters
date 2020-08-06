@@ -2,83 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Bid;
+use App\Program;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index($id)
     {
-        //
+        $bid = Bid::where('id', $id)->first();
+
+        return view('program', compact('bid'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function add(Request $request, $id)
     {
-        //
-    }
+        if($request->hasFile('program')) {
+            $file = $request->file('program');
+            $file_name = $id . time() . '.' . $request->program->extension();
+            $file->move(public_path() . '/files/programs/', $file_name);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+            $program = new Program([
+                'filename' => $file_name,
+                'bid_id' => $id,
+            ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+            $program->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            $bid = Bid::where('id', $id)->first();
+            $bid->status = 1;
+            $bid->save();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        }
+        return redirect('/')->with('success', 'Программа добавленар добавлена!');
     }
 }
