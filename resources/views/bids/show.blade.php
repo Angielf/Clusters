@@ -17,18 +17,20 @@
                     <td>Дата подачи</td>
                 </tr>
                 </thead>
-                    <tr>
-                        <td>{{ $bid->user->fullname }}</td>
-                        <td>{{ $bid->class }}</td>
-                        <td>{{ $bid->subject }}</td>
-                        <td>{{ $bid->modul }}</td>
-                        <td>{{ $bid->form_of_education }}</td>
-                        <td>{{ $bid->form_education_implementation }}</td>
-                        <td>{{ $bid->content }}</td>
-                        <td>{!! $bid->getStatus() !!}</td>
-                        <td>{{ $bid->created_at }}</td>
-                        <td><a href="/programs/create/{{ $bid->id }}" class="btn btn-success">Добавить программу</a></td>
-                    </tr>
+                <tr>
+                    <td>{{ $bid->user->fullname }}</td>
+                    <td>{{ $bid->class }}</td>
+                    <td>{{ $bid->subject }}</td>
+                    <td>{{ $bid->modul }}</td>
+                    <td>{{ $bid->form_of_education }}</td>
+                    <td>{{ $bid->form_education_implementation }}</td>
+                    <td>{{ $bid->content }}</td>
+                    <td>{!! $bid->getStatus() !!}</td>
+                    <td>{{ $bid->created_at }}</td>
+                    @if ($bid->status !== 1)
+                        <td><a href="/program/{{ $bid->id }}" class="btn btn-success">Добавить программу</a></td>
+                    @endif
+                </tr>
             </table>
         </div>
     </div>

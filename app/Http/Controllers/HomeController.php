@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Appeal;
 use App\Cluster;
 use App\District;
+use App\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +40,8 @@ class HomeController extends Controller
 
             return view('base', ['user' => $user, 'cluster' => $cluster, 'districts' => $districts]);
         } else {
-            return view('school', ['user' => $user]);
+            $programs = Program::all();
+            return view('school', ['user' => $user, 'programs' => $programs]);
         }
     }
 }
