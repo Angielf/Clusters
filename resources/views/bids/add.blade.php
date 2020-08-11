@@ -14,7 +14,7 @@
                         </ul>
                     </div><br />
                 @endif
-                <form method="post" action="{{ route('bids.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('bids.adding') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -57,8 +57,15 @@
                         <textarea class="form-control" name="content"></textarea>
                     </div>
 
+                    <div class="form-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="program">
+                            <label class="custom-file-label">Загрузить</label>
+                        </div>
+                    </div>
+
                     <br>
-                    <button type="submit" class="btn btn-primary">Добавить</button>
+                    <button type="submit" class="btn btn-primary">Добавить программу</button>
                 </form>
             </div>
         </div>

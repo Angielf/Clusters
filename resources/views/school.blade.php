@@ -38,24 +38,25 @@
                                             @if ($bid->status === 1)
                                                 <div class="col-md-3">
                                                     <a href="/files/programs/{{ $bid->program->filename }}"
-                                                       class="btn btn-outline-info">Скачать программу</a>
+                                                       class="btn btn-outline-success">Программа</a>
                                                 </div>
                                                 @if ($bid->program->schedule)
                                                     <div class="col-md-3">
                                                         <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
-                                                           class="btn btn-outline-info">Расписание</a><br>
+                                                           class="btn btn-outline-success">Расписание</a><br>
                                                         @if ($bid->program->schedule->status !== 1)
                                                             <a href="/schedule/add/{{ $bid->program->schedule->id }}"
-                                                               class="btn btn-outline-success btn-sm">Одобрить</a>
+                                                               class="btn btn-outline-info btn-sm">Согласовать</a>
+                                                            <form action="{{ action('ScheduleController@delete',$bid->program->schedule->id) }}"
+                                                                  method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                        class="btn btn-outline-danger btn-sm">
+                                                                    Отклонить
+                                                                </button>
+                                                            </form>
                                                         @endif
-                                                        <form action="{{ action('ScheduleController@delete',$bid->program->schedule->id) }}"
-                                                              method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-outline-danger btn-sm">
-                                                                Удалить
-                                                            </button>
-                                                        </form>
                                                     </div>
                                                 @endif
                                             @endif
@@ -66,6 +67,7 @@
                         </ul>
                         <br>
                         <a href="/bids/create" class="btn btn-outline-primary">Подать заявление</a>
+                        <a href="/bids/add" class="btn btn-outline-primary">Добавить программу</a>
                     </ul>
                     <div class="card-footer">
                         <a data-toggle="collapse" href="#collapsePrograms" aria-expanded="false"

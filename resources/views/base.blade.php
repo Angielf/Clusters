@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <h2>{{$user->fullname}} </h2>
@@ -31,8 +31,8 @@
                     </tr>
                     @foreach(json_decode($cluster->schools, true) as $school)
                         <tr>
-                            <td>{{ $school['school_name'] }}</td>
-                            <td>
+                            <td >{{ $school['school_name'] }}</td>
+                            <td width="50%">
                                 @foreach($districts as $district)
                                     @foreach($district->users as $user)
                                         @if(($user->id === $school['school_id']) && ($bids = $user->bids))
@@ -41,11 +41,11 @@
                                                         класс {{ $bid->subject }} </a>
                                                     @if ($bid->status !== 1)
                                                         <a href="/program/{{ $bid->id }}"
-                                                           class="btn btn-outline-success btn-sm">Добавить программу</a>
+                                                           class="btn btn-outline-danger btn-sm">Добавить программу</a>
                                                 </p>
                                                 @else
                                                     <a href="/files/programs/{{ $bid->program->filename }}"
-                                                       class="btn btn-outline-info btn-sm">Скачать программу</a>
+                                                       class="btn btn-outline-success btn-sm">Программа</a>
                                                     @if ($bid->program->schedule)
                                                         <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
                                                            class="btn btn-outline-success btn-sm">Расписание</a>

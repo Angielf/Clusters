@@ -25,6 +25,10 @@ Route::get('/clusters/add/{cluster}', 'ClusterController@add');
 
 Route::resource('appeals', 'AppealController');
 
+Route::get('/bids/add', 'BidController@add')->name('bids.add');
+
+Route::post('/bids/adding', 'BidController@adding')->name('bids.adding');
+
 Route::resource('bids', 'BidController');
 
 Route::resource('clusters', 'ClusterController');
@@ -40,4 +44,3 @@ Route::get('/schedule/add/{schedule}', 'ScheduleController@approve');
 Route::post('/schedule/{id}', 'ScheduleController@add');
 
 Route::delete('/schedule/{schedule}', 'ScheduleController@delete');
-

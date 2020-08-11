@@ -42,7 +42,7 @@ class ScheduleController extends Controller
 
     public function approve(Schedule $schedule)
     {
-        $schedule->status =1;
+        $schedule->status = 1;
         $schedule->save();
 
         return redirect('/');
