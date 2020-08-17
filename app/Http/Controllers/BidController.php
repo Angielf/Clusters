@@ -83,8 +83,9 @@ class BidController extends Controller
             'form_of_education' => $request->post('form_of_education'),
             'form_education_implementation' => $request->post('form_education_implementation'),
             'user_id' => $user_id,
-            'status' => 1,
         ]);
+
+        $bid->status = 1;
 
         $bid->save();
 
