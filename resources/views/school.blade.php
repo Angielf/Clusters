@@ -76,10 +76,18 @@
                         </a>
                         <div class="collapse" id="collapsePrograms">
                             @foreach( $programs as $program)
+                                @php if ($program->bid->status !== 3) :
+                                        $class = 'alert-success';
+                                    else :
+                                        $class = 'alert-info';
+                                    endif;
+                                @endphp
+                                <div class="alert {{ $class }}" role="alert">
                                 {{ $program->bid->subject }}
                                 {{ $program->bid->class }} класс
                                 {{ $program->bid->modul }}
                                 <a href="/files/programs/{{ $program->filename }}">Скачать программу</a><br>
+                                </div>
                             @endforeach
                         </div>
                     </div>

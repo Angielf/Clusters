@@ -26,6 +26,7 @@ class Bid extends Model
             case 0: return '<div class="alert alert-warning" role="alert">Рассмотрение</div>';
             case 1: return '<div class="alert alert-success" role="alert">Одобрена</div>';
             case 2: return '<div class="alert alert-danger" role="alert">Отклонена</div>';
+            case 3: return '<div class="alert alert-info" role="alert">Своя программа</div>';
         }
     }
 }

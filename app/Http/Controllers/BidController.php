@@ -85,7 +85,7 @@ class BidController extends Controller
             'user_id' => $user_id,
         ]);
 
-        $bid->status = 1;
+        $bid->status = 2;
 
         $bid->save();
 
