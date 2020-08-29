@@ -13,7 +13,7 @@
                         <div class="collapse" id="collapse{{ $district->id }}">
                             <div class="row">
                                 <div class="col-md-12">&nbsp;&nbsp;&nbsp;Образовательная организация</div>
-                                {{--<div class="col-md-5">Западения по предметам</div>--}}
+                                {{--<div class="col-md-5">Предмет/курс</div>--}}
                             </div>
                             @foreach($district->users as $school)
                                 <div class="row">

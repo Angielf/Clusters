@@ -26,7 +26,7 @@
                 <table class="table table-striped">
                     <tr>
                         <th>Образовательная организация</th>
-                        <th>Западения по предметам</th>
+                        <th>Предмет/курс</th>
                         <th>Соглашение</th>
                     </tr>
                     @foreach(json_decode($cluster->schools, true) as $school)

@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-sm-8 offset-sm-2">
-            <h3>Добавить проблемный предмет </h3>
+            <h3>Добавить предмет </h3>
             <div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -17,14 +17,54 @@
                 <form method="post" action="{{ route('bids.store') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="form-group">
-                        <label for="class">Класс:</label>
-                        <input type="text" class="form-control" name="class"/>
+                    <label for="class">Класс/курс</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="1">
+                        <label class="form-check-label">1</label>
                     </div>
-
-                    <div class="form-group">
-                        <label for="subject">Предмет/курс:</label>
-                        <input type="text" class="form-control" name="subject"/>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="2">
+                        <label class="form-check-label">2</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="3">
+                        <label class="form-check-label">3</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="4">
+                        <label class="form-check-label">4</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="5">
+                        <label class="form-check-label">5</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="6">
+                        <label class="form-check-label">6</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="7">
+                        <label class="form-check-label">7</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="8">
+                        <label class="form-check-label">8</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="9">
+                        <label class="form-check-label">9</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="10">
+                        <label class="form-check-label">10</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="11">
+                        <label class="form-check-label">11</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="class" type="checkbox" value="смешанная группа">
+                        <label class="form-check-label">смешанная группа</label>
                     </div>
 
                     <div class="form-group">
@@ -33,7 +73,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="form_of_education">Форма получения образования</label>
+                        <label for="form_of_education">Форма обучения</label>
                         <select class="form-control" name="form_of_education">
                             <option value=""></option>
                             <option value="очная">очная</option>
@@ -43,12 +83,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="form_education_implementation">Форма реализации образовательных программ</label>
+                        <label for="form_education_implementation">Условия реализации образоватеьных программ</label>
                         <select class="form-control" name="form_education_implementation">
                             <option value=""></option>
                             <option value="с использованием электронного обучения">с использованием электронного обучения</option>
-                            <option value="сетевая форма">сетевая форма</option>
-                            <option value="наличие подвоза детей до организации">наличие подвоза детей до организации</option>
+
+                            <option value="трансфер детей до организации">трансфер детей до организации</option>
                         </select>
                     </div>
 
