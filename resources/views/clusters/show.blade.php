@@ -16,7 +16,7 @@
                 </thead>
                     <tr>
                         <td>{{ $bid->user->fullname }}</td>
-                        <td>{{ $bid->class }}</td>
+                        <td>{{ $bid->getClasses }}</td>
                         <td>{{ $bid->subject }}</td>
                         <td>{{ $bid->content }}</td>
                         <td>{!! $bid->getStatus() !!}</td>

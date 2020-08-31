@@ -14,7 +14,7 @@
                         </ul>
                     </div><br />
                 @endif
-                {{ $bid->class }} класс {{ $bid->subject }}
+                {{ $bid->getClasses }} класс {{ $bid->subject }}
                 <form method="post" action="/program/{{ $bid->id }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">

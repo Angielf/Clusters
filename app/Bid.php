@@ -29,4 +29,15 @@ class Bid extends Model
             case 3: return '<div class="alert alert-info" role="alert">Своя программа</div>';
         }
     }
+
+    public function getClasses()
+    {
+        $classes = unserialize($this->getClasses);
+        $str = "";
+        foreach ($classes as $class) {
+            $str .= $class . ", ";
+        }
+
+        return substr($str, 0, -2);
+    }
 }

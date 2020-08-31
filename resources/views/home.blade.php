@@ -31,7 +31,7 @@
                                             {{--@if($bids = $school->bids)--}}
                                                 {{--@foreach ($bids as $bid)--}}
                                                     {{--<div class="col-md-6">--}}
-                                                        {{--<p><a href="/bids/{{ $bid->id }}">{{ $bid->class }}--}}
+                                                        {{--<p><a href="/bids/{{ $bid->id }}">{{ $bid->getClasses }}--}}
                                                                 {{--класс {{ $bid->subject }} </a></p>--}}
                                                     {{--</div>--}}
                                                     {{--<div class="col-md-6">{!! $bid->getStatus() !!}</div>--}}

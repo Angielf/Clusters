@@ -18,7 +18,7 @@
                 </thead>
             @foreach($bids as $bid)
                     <tr>
-                        <td>{{ $bid->class }}</td>
+                        <td>{{ $bid->getClasses() }}</td>
                         <td>{{ $bid->subject }}</td>
                         <td>{{ $bid->modul }}</td>
                         <td>{{ $bid->form_of_education }}</td>

@@ -37,8 +37,8 @@
                                     @foreach($district->users as $user)
                                         @if(($user->id === $school['school_id']) && ($bids = $user->bids))
                                             @foreach ($bids as $bid)
-                                                <p><a href="/bids/{{ $bid->id }}">{{ $bid->class }}
-                                                        класс {{ $bid->subject }} </a>
+                                                <p><a href="/bids/{{ $bid->id }}">{{ $bid->getClasses() }}
+                                                        {{ $bid->subject }} {{ $bid->modul }}</a>
                                                     @if ($bid->status !== 1)
                                                         <a href="/program/{{ $bid->id }}"
                                                            class="btn btn-outline-danger btn-sm">Добавить программу</a>

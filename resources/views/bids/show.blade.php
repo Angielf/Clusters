@@ -19,7 +19,7 @@
                 </thead>
                 <tr>
                     <td>{{ $bid->user->fullname }}</td>
-                    <td>{{ $bid->class }}</td>
+                    <td>{{ $bid->getClasses() }}</td>
                     <td>{{ $bid->subject }}</td>
                     <td>{{ $bid->modul }}</td>
                     <td>{{ $bid->form_of_education }}</td>

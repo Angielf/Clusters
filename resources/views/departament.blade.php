@@ -27,7 +27,7 @@
                                 @foreach($appeals as $appeal)
                                     <tr>
                                         <td><a href="/appeals/{{$appeal->id}}/edit">{{$appeal->fio}}</a></td>
-                                        <td>{{$appeal->class}}</td>
+                                        <td>{{$appeal->getClasses}}</td>
                                         <td>{{$appeal->subject}}</td>
                                         <td>{{$appeal->date_of_appeal}}</td>
                                         <td>{{$appeal->status}}</td>
