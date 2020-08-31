@@ -17,7 +17,7 @@
                 <tr>
                     <td>{{$appeal->user_id}}</td>
                     <td>{{$appeal->fio}}</td>
-                    <td>{{$appeal->getClasses}}</td>
+                    <td>{{$appeal->getClasses()}}</td>
                     <td>{{$appeal->subject}}</td>
                     <td>{{$appeal->comment}}</td>
                     <td>{{$appeal->created_at}}</td>

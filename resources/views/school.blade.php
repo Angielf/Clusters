@@ -84,7 +84,7 @@
                                 @endphp
                                 <div class="alert {{ $class }}" role="alert">
                                 {{ $program->bid->subject }}
-                                {{ $program->bid }} класс
+                                {{ $program->bid->getClasses() }} класс
                                 {{ $program->bid->modul }}
                                 <a href="/files/programs/{{ $program->filename }}">Скачать программу</a><br>
                                 </div>

@@ -32,7 +32,7 @@ class Bid extends Model
 
     public function getClasses()
     {
-        $classes = unserialize($this->getClasses);
+        $classes = unserialize($this->class);
         $str = "";
         foreach ($classes as $class) {
             $str .= $class . ", ";
