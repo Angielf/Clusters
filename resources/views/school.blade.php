@@ -12,7 +12,7 @@
                         @if ($user->cluster)
                             <p><b>Заявка на создание кластера отправлена</b></p>
                         @else
-                            <a href="/clusters/create" class="btn btn-outline-primary btn-lg">Подать заявку на создание
+                            <a href="clusters/create" class="btn btn-outline-primary btn-lg">Подать заявку на создание
                                 кластера</a>
                         @endif
                         @if (session('status'))
@@ -30,7 +30,7 @@
                                     <li class="list-group-item">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                {{ $bid->class }} класс {{ $bid->subject }}
+                                                {{ $bid->subject }} {{ $bid->modul }}
                                             </div>
                                             <div class="col-md-3">
                                                 {!! $bid->getStatus() !!}
@@ -45,7 +45,7 @@
                                                         <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
                                                            class="btn btn-outline-success">Расписание</a><br>
                                                         @if ($bid->program->schedule->status !== 1)
-                                                            <a href="/schedule/add/{{ $bid->program->schedule->id }}"
+                                                            <a href="schedule/add/{{ $bid->program->schedule->id }}"
                                                                class="btn btn-outline-info btn-sm">Согласовать</a>
                                                             <form action="{{ action('ScheduleController@delete',$bid->program->schedule->id) }}"
                                                                   method="POST">
@@ -66,8 +66,8 @@
                             @endif
                         </ul>
                         <br>
-                        <a href="/bids/create" class="btn btn-outline-primary">Подать заявление</a>
-                        <a href="/bids/add" class="btn btn-outline-primary">Добавить программу</a>
+                        <a href="bids/create" class="btn btn-outline-primary">Подать заявление</a>
+                        <a href="bids/add" class="btn btn-outline-primary">Добавить программу</a>
                     </ul>
                     <div class="card-footer">
                         <a data-toggle="collapse" href="#collapsePrograms" aria-expanded="false"

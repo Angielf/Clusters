@@ -47,7 +47,7 @@ class BidController extends Controller
         $user_id = Auth::user()->id;
 
         $bid = new Bid([
-            'class' => $request->post('class'),
+            'class' => serialize($request->post('class')),
             'subject' => $request->post('subject'),
             'content' => $request->post('content'),
             'modul' => $request->post('modul'),
