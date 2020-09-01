@@ -23,8 +23,6 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/clusters/add/{cluster}', 'ClusterController@add');
 
-Route::resource('appeals', 'AppealController');
-
 Route::get('/bids/add', 'BidController@add')->name('bids.add');
 
 Route::post('/bids/adding', 'BidController@adding')->name('bids.adding');
@@ -44,3 +42,7 @@ Route::get('/schedule/add/{schedule}', 'ScheduleController@approve');
 Route::post('/schedule/{id}', 'ScheduleController@add');
 
 Route::delete('/schedule/{schedule}', 'ScheduleController@delete');
+
+Route::post('/region-clusters', 'RegionClusterController@store');
+
+Route::get('/region-clusters/create', 'RegionClusterController@create');

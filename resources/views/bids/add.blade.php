@@ -17,53 +17,53 @@
                 <form method="post" action="{{ route('bids.adding') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <label for="class">Класс/курс</label><br>
+                    <label for="class">Класс</label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="1">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="1">
                         <label class="form-check-label">1</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="2">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="2">
                         <label class="form-check-label">2</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="3">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="3">
                         <label class="form-check-label">3</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="4">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="4">
                         <label class="form-check-label">4</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="5">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="5">
                         <label class="form-check-label">5</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="6">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="6">
                         <label class="form-check-label">6</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="7">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="7">
                         <label class="form-check-label">7</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="8">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="8">
                         <label class="form-check-label">8</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="9">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="9">
                         <label class="form-check-label">9</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="10">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="10">
                         <label class="form-check-label">10</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="11">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="11">
                         <label class="form-check-label">11</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="class" type="checkbox" value="смешанная группа">
+                        <input class="form-check-input" name="class[]" type="checkbox" value="смешанная группа">
                         <label class="form-check-label">смешанная группа</label>
                     </div>
 
@@ -91,7 +91,7 @@
                         <label for="form_education_implementation">Условия реализации образоватеьных программ</label>
                         <select class="form-control" name="form_education_implementation">
                             <option value=""></option>
-                            <option value="с использованием электронного обучения">с использованием электронного обучения</option>
+                            <option value="с исользование дистанционных образовательных технологий, электронного обучения">с исользование дистанционных образовательных технологий, электронного обучения</option>
 
                             <option value="трансфер детей до организации">трансфер детей до организации</option>
                         </select>

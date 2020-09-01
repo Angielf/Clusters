@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-sm-8 offset-sm-2">
-            <h3>Добавить предмет </h3>
+            <h3>Добавить предмет/курс </h3>
             <div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -17,7 +17,7 @@
                 <form method="post" action="{{ route('bids.store') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <label for="class">Класс/курс</label><br>
+                    <label for="class">Класс</label><br>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" name="class[]" type="checkbox" value="1">
                         <label class="form-check-label">1</label>
@@ -91,7 +91,7 @@
                         <label for="form_education_implementation">Условия реализации образоватеьных программ</label>
                         <select class="form-control" name="form_education_implementation">
                             <option value=""></option>
-                            <option value="с использованием электронного обучения">с использованием электронного обучения</option>
+                            <option value="с исользование дистанционных образовательных технологий, электронного обучения">с исользование дистанционных образовательных технологий, электронного обучения</option>
 
                             <option value="трансфер детей до организации">трансфер детей до организации</option>
                         </select>

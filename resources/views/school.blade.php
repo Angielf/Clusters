@@ -11,9 +11,13 @@
                         </h2>
                         @if ($user->cluster)
                             <p><b>Заявка на создание кластера отправлена</b></p>
-                        @else
+                        @elseif ($user->status === 3)
                             <a href="clusters/create" class="btn btn-outline-primary btn-lg">Подать заявку на создание
                                 кластера</a>
+                            @else
+                            <div class="alert alert-warning" role="alert">
+                                К сожалению, вы не можете подавать заявку на создание образовательного кластера.
+                            </div>
                         @endif
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -21,8 +25,9 @@
                             </div>
                         @endif
                     </div>
+
                     <ul class="card-body">
-                        <h5 class="card-title">Мои заявки</h5>
+                        <h5 class="card-title">Мои заявки </h5>
                         <p class="card-text">
                         <ul>
                             @if ($user->bids)
