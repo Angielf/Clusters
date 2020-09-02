@@ -6,6 +6,7 @@ use App\Appeal;
 use App\Cluster;
 use App\District;
 use App\Program;
+use App\RegionCluster;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -43,14 +44,16 @@ class HomeController extends Controller
             return view('base', ['user' => $user, 'cluster' => $cluster, 'districts' => $districts, 'programs' => $programs]);
 
         } elseif ($user->status === 100) {
-            $districts = District::all();
+            $region_clusters = RegionCluster::all();
 
-            return view('region-cluster', ['user' => $user, 'districts' => $districts]);
+            return view('region-cluster', ['user' => $user, 'region_clusters' => $region_clusters]);
 
         } else {
             $programs = Program::all();
 
-            return view('school', ['user' => $user, 'programs' => $programs]);
+            $regional_cluster = RegionCluster::where('user_id', $user->id)->first();
+
+            return view('school', ['user' => $user, 'programs' => $programs, 'regional_cluster' => $regional_cluster]);
         }
     }
 }

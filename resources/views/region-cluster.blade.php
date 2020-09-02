@@ -14,10 +14,16 @@
                 <table class="table table-striped">
                     <tr>
                         <th>Образовательная организация</th>
-                        <th>Предмет/курс</th>
-                        <th>Соглашение</th>
+                        <th>Договор</th>
+                        <th></th>
                     </tr>
-
+                    @foreach ($region_clusters as $value)
+                        <tr>
+                            <td>{{ $value->user->fullname }}</td>
+                            <td><a href="/files/rc/{{ $value->filename }}">Скачать</a></td>
+                            <td></td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
         </div>

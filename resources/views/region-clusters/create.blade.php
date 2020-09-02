@@ -15,7 +15,7 @@
                         </ul>
                     </div><br/>
                 @endif
-                <form method="post" action="{{ route('clusters.store') }}" enctype="multipart/form-data">
+                <form method="post" action="/region-clusters/" enctype="multipart/form-data">
                     @csrf
                     @foreach ($districts as $district)
                         <h4  data-toggle="collapse" href="#collapse{{ $district->id }}" role="button"
@@ -25,14 +25,14 @@
                         <div class="collapse" id="collapse{{ $district->id }}">
                             <div class="card card-body">
                                 @foreach($district->users as $school)
-                                    @if (($school->id !== $user->id) && ($school->fullname != ''))
+                                    @if ($school->id !== $user->id)
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     {{ $school->fullname }}
                                                 </div>
                                                 <div class="col-md-6 custom-file">
-                                                    <input id="custom-file-input" type="file" class="custom-file-input"
+                                                    <input type="file" class="custom-file-input"
                                                            name="{{ $school->id }}">
                                                     <label class="custom-file-label">Загрузить соглашение</label>
                                                 </div>
@@ -45,7 +45,7 @@
                         <hr>
                     @endforeach
                     <br>
-                    <button type="submit" class="btn btn-outline-primary btn-lg">Подать заявку на создание кластера
+                    <button type="submit" class="btn btn-outline-primary btn-lg">Добавить организации
                     </button>
                 </form>
             </div>

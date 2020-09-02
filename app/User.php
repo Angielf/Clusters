@@ -51,4 +51,18 @@ class User extends Authenticatable
     {
         return $this->hasOne(Cluster::class);
     }
+
+    public function getClusters()
+    {
+        $clusters = Cluster::all();
+        foreach ($clusters as $cluster) {
+            $schools = json_decode($cluster->schools, true);
+            foreach ($schools as $value) {
+                if ($value['school_id'] === $this->id) {
+                    return $cluster->User->fullname;
+                }
+            }
+        }
+        return "Вы не состоите в муниципальных кластерах";
+    }
 }

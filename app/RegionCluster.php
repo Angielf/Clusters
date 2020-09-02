@@ -8,10 +8,19 @@ class RegionCluster extends Model
 {
     protected $table = 'region_clusters';
 
-    protected $fillable = ['filename'];
+    protected $fillable = ['filename', 'organisation', 'user_id'];
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function getClusterName()
+    {
+        if ($user = User::where('id', $this->organisation)->first()) {
+           return $user->fullname;
+        } else {
+            return "К сожалению, вы не состоите в региональных кластерах";
+        }
     }
 }

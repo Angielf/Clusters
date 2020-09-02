@@ -14,7 +14,7 @@
                         @elseif ($user->status === 3)
                             <a href="clusters/create" class="btn btn-outline-primary btn-lg">Подать заявку на создание
                                 кластера</a>
-                            @else
+                        @else
                             <div class="alert alert-warning" role="alert">
                                 К сожалению, вы не можете подавать заявку на создание образовательного кластера.
                             </div>
@@ -25,10 +25,23 @@
                             </div>
                         @endif
                     </div>
-
-                    <ul class="card-body">
-                        <h5 class="card-title">Мои заявки </h5>
+                    <h2 align="center"></h2>
+                    <div class="card-body">
+                        <h5 class="card-title">Региональные кластеры</h5>
                         <p class="card-text">
+                            @if (isset($regional_cluster))
+                                {{ $regional_cluster->getClusterName() }}
+                                <br>
+                                <a href="region-bids/create" class="btn btn-outline-primary">Подать заявление</a>
+                            @else
+                                К сожалению, вы не состоите в региональных кластерах
+                            @endif
+                        </p>
+                    </div>
+                    <ul class="card-body">
+                        <h5 class="card-title">Муниципальные кластеры </h5>
+                        <p class="card-text">
+                        {{ $user->getClusters() }}
                         <ul>
                             @if ($user->bids)
                                 @foreach( $user->bids as $bid)
@@ -72,8 +85,8 @@
                         </ul>
                         <br>
                         <a href="bids/create" class="btn btn-outline-primary">Подать заявление</a>
-                        <a href="bids/add" class="btn btn-outline-primary">Добавить программу</a>
                     </ul>
+                    <a href="bids/add" class="btn btn-outline-primary">Предложить свою образовательную программу</a>
                     <div class="card-footer">
                         <a data-toggle="collapse" href="#collapsePrograms" aria-expanded="false"
                            aria-controls="collapsePrograms">
@@ -88,10 +101,10 @@
                                     endif;
                                 @endphp
                                 <div class="alert {{ $class }}" role="alert">
-                                {{ $program->bid->subject }}
-                                {{ $program->bid->getClasses() }} класс
-                                {{ $program->bid->modul }}
-                                <a href="/files/programs/{{ $program->filename }}">Скачать программу</a><br>
+                                    {{ $program->bid->subject }}
+                                    {{ $program->bid->getClasses() }} класс
+                                    {{ $program->bid->modul }}
+                                    <a href="/files/programs/{{ $program->filename }}">Скачать программу</a><br>
                                 </div>
                             @endforeach
                         </div>
