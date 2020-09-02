@@ -88,10 +88,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="form_education_implementation">Условия реализации образоватеьных программ</label>
+                        <label for="form_education_implementation">Условия реализации образовательных программ</label>
                         <select class="form-control" name="form_education_implementation">
                             <option value=""></option>
-                            <option value="с исользование дистанционных образовательных технологий, электронного обучения">с исользование дистанционных образовательных технологий, электронного обучения</option>
+                            <option value="с использование дистанционных образовательных технологий, электронного обучения">с использование дистанционных образовательных технологий, электронного обучения</option>
 
                             <option value="трансфер детей до организации">трансфер детей до организации</option>
                         </select>
