@@ -18,7 +18,7 @@
                 <form method="post" action="{{ route('clusters.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-md-12 custom-file">
-                        <input id="custom-file-input" type="file" class="custom-file-input" name="dogovor">
+                        <input id="custom-file-input" type="file" class="custom-file-input" name="agreement">
                         <label class="custom-file-label">Загрузить соглашение о взаимодейстии с образовательными организациями</label>
                     </div>
                     <h4 align="center">Прикрепите договор с образовательными организациями</h4>

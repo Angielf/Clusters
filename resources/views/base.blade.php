@@ -17,6 +17,7 @@
                 @if ($cluster->status === 1)
                     <div class="alert alert-success" role="alert">
                         Заяка на создание кластер одобрена
+                        <a href="/files/agreements/{{ $cluster->agreement }}" class="btn btn-outline-success btn-sm">Соглашение о взаимодейстии с образовательными организациями</a>
                     </div>
                 @else
                     <div class="alert alert-warning" role="alert">
@@ -27,7 +28,7 @@
                     <tr>
                         <th>Образовательная организация</th>
                         <th>Предмет/курс</th>
-                        <th>Соглашение</th>
+                        <th>Договор</th>
                     </tr>
                     @foreach(json_decode($cluster->schools, true) as $school)
                         <tr>

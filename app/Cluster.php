@@ -8,7 +8,7 @@ class Cluster extends Model
 {
     protected $table = 'clusters';
 
-    protected $fillable = ['user_id', 'district_id', 'schools', 'status'];
+    protected $fillable = ['user_id', 'district_id', 'schools', 'status', 'agreement'];
 
     public function user()
     {

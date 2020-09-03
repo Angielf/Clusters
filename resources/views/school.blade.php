@@ -49,7 +49,7 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 {{ $bid->subject }} {{ $bid->modul }}
-                                            </div>
+                                   -         </div>
                                             <div class="col-md-3">
                                                 {!! $bid->getStatus() !!}
                                             </div>

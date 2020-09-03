@@ -73,10 +73,17 @@ class ClusterController extends Controller
         }
         $files = json_encode($files);
 
+        if($request->hasFile('agreement')) {
+            $file = $request->file('agreement');
+            $agreement = time() . '.' . $request->agreement->extension();
+            $file->move(public_path() . '/files/agreements/', $agreement);
+        }
+
         $cluster = new Cluster([
             'user_id' => $user->id,
             'district_id' => $district->id,
             'schools' => $files,
+            'agreement' => $agreement,
         ]);
 
         $cluster->save();
