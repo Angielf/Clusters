@@ -15,7 +15,7 @@
                         </ul>
                     </div><br/>
                 @endif
-                <form method="post" action="/region-clusters/" enctype="multipart/form-data">
+                <form method="post" action="/region-clusters" enctype="multipart/form-data">
                     @csrf
                     @foreach ($districts as $district)
                         <h4  data-toggle="collapse" href="#collapse{{ $district->id }}" role="button"

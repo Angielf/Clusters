@@ -17,7 +17,7 @@
                 <form method="post" action="{{ route('bids.store') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <label for="class">Класс</label><br>
+                    <label for="class">Класс/группа</label><br>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" name="class[]" type="checkbox" value="1">
                         <label class="form-check-label">1</label>
