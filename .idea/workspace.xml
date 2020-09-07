@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a099b4f0-f646-4143-8612-00f3da1d645c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Cluster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Cluster.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClusterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClusterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/clusters/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/clusters/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/school.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/school.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,50 +16,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DatabaseSeeder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
+            <state relative-caret-position="28560">
               <caret line="1904" column="39" selection-start-line="1904" selection-start-column="30" selection-end-line="1904" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="school.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="school.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/school.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+            <state relative-caret-position="375">
+              <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/User.php">
+      <file leaf-file-name="BidController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BidController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="1050">
+              <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClusterController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClusterController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ClusterController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="86" column="11" lean-forward="true" selection-start-line="86" selection-start-column="11" selection-end-line="86" selection-end-column="11" />
+            <state relative-caret-position="690">
+              <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
               <folding>
                 <element signature="e#40#56#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/base.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/clusters/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="126" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="126" />
             </state>
           </provider>
         </entry>
@@ -89,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/app/Cluster.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -115,34 +121,34 @@
       <find>Одобрить</find>
       <find>Платонова</find>
       <find>Кольцова</find>
-      <find />
-      <find />
+      <find>Гимназия № 5</find>
+      <find>Лицей № 15</find>
       <find>79</find>
       <find>Черняхо</find>
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
-      <find />
+      <find>Форма реализации образовательной программы</find>
+      <find>Форма получения образования</find>
+      <find>Добавить проблемный предмет</find>
+      <find>Западения по предметам</find>
+      <find>&lt;option value=&quot;сетевая форма&quot;&gt;сетевая форма&lt;/option&gt;</find>
+      <find>наличие подвоза детей до организации</find>
+      <find>Форма реализации образовательных программ</find>
       <find>-&gt;class</find>
       <find>-&gt;getClasses</find>
       <find>length</find>
-      <find />
+      <find>с использованием электронного обучения</find>
       <find>Больше</find>
       <find>Калач</find>
     </findStrings>
     <replaceStrings>
-      <replace />
-      <replace />
-      <replace />
+      <replace>Форма обучения</replace>
+      <replace>Условия реализации обучения</replace>
+      <replace>Добавить предмет</replace>
       <replace>Предмет/курс</replace>
       <replace />
-      <replace />
-      <replace />
+      <replace>трансфер детей до организации</replace>
+      <replace>Условия реализации образоватеьных программ</replace>
       <replace>-&gt;getClasses</replace>
-      <replace />
+      <replace>с исользование дистанционных образовательных технологий, электронного обучения</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -151,7 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Request.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_07_27_091152_rename_requests_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_07_27_091854_add_status_bids_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
@@ -186,8 +191,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2020_09_01_081454_create_region_clusters_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_09_01_083100_add_foreign_key_to_region_clusters_table.php" />
         <option value="$PROJECT_DIR$/resources/views/bids/add.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/BidController.php" />
-        <option value="$PROJECT_DIR$/resources/views/base.blade.php" />
         <option value="$PROJECT_DIR$/database/seeds/UserRegionClusterSeeder.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/bids/create.blade.php" />
@@ -197,11 +200,14 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/app/RegionCluster.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/resources/views/school.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/clusters/create.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_09_03_083708_add_agreement_column_clusters_table.php" />
         <option value="$PROJECT_DIR$/app/Cluster.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ClusterController.php" />
+        <option value="$PROJECT_DIR$/resources/views/base.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/BidController.php" />
+        <option value="$PROJECT_DIR$/resources/views/school.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2020_09_03_095017_add_cluster_id_to_bids_table.php" />
       </list>
     </option>
   </component>
@@ -387,6 +393,12 @@
               <item name="ege" type="b2602c69:ProjectViewProjectNode" />
               <item name="ege" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ege" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
               <item name="seeds" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -431,6 +443,13 @@
             <path>
               <item name="ege" type="b2602c69:ProjectViewProjectNode" />
               <item name="ege" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="region-clusters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ege" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ege" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -442,9 +461,9 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="/var/www/html/vacation_management" />
+    <property name="last_opened_file_path" value="/var/www/html/menedzher-otpuskov" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -509,18 +528,18 @@
       <workItem from="1598945679082" duration="16500000" />
       <workItem from="1599037631648" duration="914000" />
       <workItem from="1599042499612" duration="6516000" />
-      <workItem from="1599093961345" duration="3425000" />
+      <workItem from="1599093961345" duration="6862000" />
+      <workItem from="1599231849908" duration="16000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211498000" />
+    <option name="totallyTimeSpent" value="214951000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="25" width="1922" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1" y="0" width="1922" height="1081" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12135417" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12135417" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3293578" />
@@ -529,7 +548,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947917" weight="0.17889908" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" x="2648" y="75" width="591" height="1031" id="Terminal" order="11" sideWeight="0.5005208" side_tool="true" visible="true" weight="0.25366876" />
+      <window_info active="true" anchor="bottom" x="2648" y="75" width="591" height="1031" id="Terminal" order="11" sideWeight="0.5005208" side_tool="true" visible="true" weight="0.2533197" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -548,13 +567,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2020_08_04_111517_create_programs_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" selection-start-line="16" selection-end-line="19" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_08_04_112707_add_foreign_keys_programs_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -703,13 +715,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/region-cluster.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/base.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/region-clusters/create.blade.php" />
     <entry file="file://$PROJECT_DIR$/app/RegionCluster.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
@@ -727,20 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BidController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/UserRegionClusterSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="42" column="42" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
@@ -748,24 +739,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/school.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
+        <state relative-caret-position="28560">
           <caret line="1904" column="39" selection-start-line="1904" selection-start-column="30" selection-end-line="1904" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/clusters/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="107" selection-start-line="20" selection-start-column="98" selection-end-line="20" selection-end-column="107" />
         </state>
       </provider>
     </entry>
@@ -786,7 +763,7 @@
     <entry file="file://$PROJECT_DIR$/app/Cluster.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -804,13 +781,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/clusters/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="126" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ClusterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="86" column="11" lean-forward="true" selection-start-line="86" selection-start-column="11" selection-end-line="86" selection-end-column="11" />
+        <state relative-caret-position="690">
+          <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
           <folding>
             <element signature="e#40#56#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/base.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/UserRegionClusterSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="42" column="42" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BidController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_09_03_095017_add_cluster_id_to_bids_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/school.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="34" column="48" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
         </state>
       </provider>
     </entry>
