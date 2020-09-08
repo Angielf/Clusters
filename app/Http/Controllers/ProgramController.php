@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
+    private const BID_AOPROVED = 1;
+
     public function index($id)
     {
         $bid = Bid::where('id', $id)->first();
@@ -30,7 +32,7 @@ class ProgramController extends Controller
             $program->save();
 
             $bid = Bid::where('id', $id)->first();
-            $bid->status = 1;
+            $bid->status = self::BID_AOPROVED;
             $bid->save();
 
         }

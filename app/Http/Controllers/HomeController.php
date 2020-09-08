@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    private const REGIONAL_COORD =1;
+    private const BASE_SCHOOL = 2;
+    private const REGIONAL_CLUSTER = 100;
     /**
      * Create a new controller instance.
      *
@@ -32,18 +35,18 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->status === 1) {
+        if ($user->status === self::REGIONAL_COORD) {
             $clusters = Cluster::all();
             return view('clusters.index', compact('clusters'));
 
-        } elseif ($user->status === 2) {
+        } elseif ($user->status === self::BASE_SCHOOL) {
             $districts = District::where('id', $user->district)->get();
             $cluster = Cluster::where('user_id', $user->id)->first();
             $programs = Program::all();
 
             return view('base', ['user' => $user, 'cluster' => $cluster, 'districts' => $districts, 'programs' => $programs]);
 
-        } elseif ($user->status === 100) {
+        } elseif ($user->status === self::REGIONAL_CLUSTER) {
             $region_clusters = RegionCluster::all();
 
             return view('region-cluster', ['user' => $user, 'region_clusters' => $region_clusters]);

@@ -9,13 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ClusterController extends Controller
 {
+    private const CLUSTER_APPROVED = 1;
+    private const BASE_SCHOOL = 2;
+    private const ;
+    private const ;
+    private const ;
     public function add(Cluster $cluster)
     {
-        $cluster->status = 1;
+        $cluster->status = self::CLUSTER_APPROVED;
         $cluster->save();
 
         $user = $cluster->user;
-        $user->status = 2;
+        $user->status = self::BASE_SCHOOL;
         $user->save();
 
         return redirect('/clusters')->with('success', 'Заявка на кластер добавлена!');
