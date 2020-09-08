@@ -58,7 +58,7 @@ class User extends Authenticatable
         foreach ($clusters as $cluster) {
             $schools = json_decode($cluster->schools, true);
             foreach ($schools as $value) {
-                if ($value['school_id'] === $this->id) {
+                if ($value['school_id'] == $this->id) {
                     return $cluster->User->fullname;
                 }
             }

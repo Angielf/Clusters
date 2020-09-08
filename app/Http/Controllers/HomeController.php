@@ -42,11 +42,12 @@ class HomeController extends Controller
             return view('clusters.index', ['clusters' => $clusters, 'region_clusters' => $region_clusters]);
 
         } elseif ($user->status === self::BASE_SCHOOL) {
-            $districts = District::where('id', $user->district)->get();
+            $district = District::where('id', $user->district)->first();
             $cluster = Cluster::where('user_id', $user->id)->first();
+            $schools = json_decode($cluster->schools, true);
             $programs = Program::all();
 
-            return view('base', ['user' => $user, 'cluster' => $cluster, 'districts' => $districts, 'programs' => $programs]);
+            return view('base', ['user' => $user, 'cluster' => $cluster, 'district' => $district, 'programs' => $programs, 'schools' => $schools]);
 
         } elseif ($user->status === self::REGIONAL_CLUSTER) {
             $region_clusters = RegionCluster::all();

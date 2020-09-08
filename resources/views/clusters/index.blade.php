@@ -38,7 +38,7 @@
                         <td>{{$cluster->district->fullname}}</td>
                         <td>
                             @foreach(json_decode($cluster->schools, true) as $school)
-                                {{ $school['school_name'] }} <a href="/files//{{ $school['file_name'] }}">Соглашение</a>
+                                {{ $school['school_name'] }}
                                 <br>
                             @endforeach
                         </td>
