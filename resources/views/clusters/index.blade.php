@@ -3,6 +3,24 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
+            <h2>Региональные кластеры</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Базовая школа</th>
+                    <th>Школы реципиенты</th>
+                </tr>
+                </thead>
+                @foreach($region_clusters as $cluster)
+                    <tr>
+                        <td>{{$cluster->id}}</td>
+                        <td>{{$cluster->getClusterName()}}</td>
+                        <td>{{$cluster->user->fullname}}</td>
+                    </tr>
+                @endforeach
+            </table>
+            <h2>Муниципальные кластеры</h2>
             <table class="table table-striped">
                 <thead>
                 <tr>

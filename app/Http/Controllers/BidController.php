@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class BidController extends Controller
 {
-    private const BID_APROVE = 1;
+    private const BID_APPROVED = 1;
 
     /**
      * Display a listing of the resource.
@@ -87,7 +87,7 @@ class BidController extends Controller
             'user_id' => $user_id,
         ]);
 
-        $bid->status = self::BID_APROVE;
+        $bid->status = self::BID_APPROVED;
 
         $bid->save();
 

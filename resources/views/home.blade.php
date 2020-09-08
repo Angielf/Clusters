@@ -13,7 +13,6 @@
                         <div class="collapse" id="collapse{{ $district->id }}">
                             <div class="row">
                                 <div class="col-md-12">&nbsp;&nbsp;&nbsp;Образовательная организация</div>
-                                {{--<div class="col-md-5">Предмет/курс</div>--}}
                             </div>
                             @foreach($district->users as $school)
                                 <div class="row">
@@ -26,19 +25,6 @@
                                             @endif
                                         </h6>
                                     </div>
-                                    {{--<div class="col-md-5">--}}
-                                        {{--<div class="row">--}}
-                                            {{--@if($bids = $school->bids)--}}
-                                                {{--@foreach ($bids as $bid)--}}
-                                                    {{--<div class="col-md-6">--}}
-                                                        {{--<p><a href="/bids/{{ $bid->id }}">{{ $bid->getClasses }}--}}
-                                                                {{--класс {{ $bid->subject }} </a></p>--}}
-                                                    {{--</div>--}}
-                                                    {{--<div class="col-md-6">{!! $bid->getStatus() !!}</div>--}}
-                                                {{--@endforeach--}}
-                                            {{--@endif--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
                                 </div>
                                 <hr>
                             @endforeach

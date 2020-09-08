@@ -37,7 +37,9 @@ class HomeController extends Controller
 
         if ($user->status === self::REGIONAL_COORD) {
             $clusters = Cluster::all();
-            return view('clusters.index', compact('clusters'));
+            $region_clusters = RegionCluster::all();
+
+            return view('clusters.index', ['clusters' => $clusters, 'region_clusters' => $region_clusters]);
 
         } elseif ($user->status === self::BASE_SCHOOL) {
             $districts = District::where('id', $user->district)->get();
