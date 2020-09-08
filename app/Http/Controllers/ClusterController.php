@@ -11,9 +11,7 @@ class ClusterController extends Controller
 {
     private const CLUSTER_APPROVED = 1;
     private const BASE_SCHOOL = 2;
-    private const ;
-    private const ;
-    private const ;
+
     public function add(Cluster $cluster)
     {
         $cluster->status = self::CLUSTER_APPROVED;
@@ -63,25 +61,20 @@ class ClusterController extends Controller
         $user = Auth::user();
         $district = $user->getDistrict;
         $files = [];
-        foreach ($district->users as $school) {
-            $id = $school->id;
-            if($request->hasFile($id)) {
-                $file = $request->$id;
-                $file_name = $id . time().'.'.$request->$id->extension();
-                $file->move(public_path() . '/files', $file_name);
-                $new_file['file_name']= $file_name;
-                $new_file['school_id'] = $school->id;
-                $new_file['school_name'] = $school->fullname;
+        echo "<pre>"; var_dump($request); die();
+        for ($i=1; $i<797; $i++) {
+            if($request->hasFile($i)) {
+                $file = $request->$i;
+                $file_name = $i . time().'.'.$request->$i->extension();
+                $file->move(public_path() . '/files/rc/', $file_name);
+                $region_cluster = new RegionCluster([
+                    'organisation' => $organisation,
+                    'user_id' => $i,
+                    'filename' => $file_name,
+                ]);
 
-                array_push($files, $new_file);
+                $region_cluster->save();
             }
-        }
-        $files = json_encode($files);
-
-        if($request->hasFile('agreement')) {
-            $file = $request->file('agreement');
-            $agreement = time() . '.' . $request->agreement->extension();
-            $file->move(public_path() . '/files/agreements/', $agreement);
         }
 
         $cluster = new Cluster([

@@ -17,21 +17,17 @@
                 @endif
                 <form method="post" action="{{ route('clusters.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="col-md-12 custom-file">
-                        <input id="custom-file-input" type="file" class="custom-file-input" name="agreement" required>
-                        <label class="custom-file-label">Загрузить соглашение о взаимодейстии с образовательными организациями</label>
-                    </div>
-                    <h4 align="center">Прикрепите договор с образовательными организациями</h4>
+                    <h4 align="center">Выберите образовательные организации в образовательный кластер</h4>
                     @foreach($district->users as $school)
                         @if (($school->id !== $user->id) && ($school->fullname != ''))
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-6">
-                                    {{ $school->fullname }}
-                                </div>
-                                <div class="col-md-6 custom-file">
-                                    <input id="custom-file-input" type="file" class="custom-file-input" name="{{ $school->id }}">
-                                    <label class="custom-file-label">Загрузить договор</label>
+                                <div class="col-md-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="schools[]" value="{{ $school->id }}">
+                                        <label class="form-check-label">{{ $school->fullname }}</label>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
