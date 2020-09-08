@@ -23,6 +23,10 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/clusters/add/{cluster}', 'ClusterController@add');
 
+Route::get('/clusters/addcontract/{school_id}/{cluster_id}', 'ClusterController@addcontract');
+
+Route::post('/clusters/addingprogram/{school_id}/{cluster_id}', 'ClusterController@addingprogram');
+
 Route::get('/bids/add', 'BidController@add')->name('bids.add');
 
 Route::post('/bids/adding', 'BidController@adding')->name('bids.adding');

@@ -24,7 +24,6 @@ class ClusterController extends Controller
         $user->save();
 
         return redirect('/clusters')->with('success', 'Заявка на кластер добавлена!');
-
     }
 
     /**
@@ -84,6 +83,34 @@ class ClusterController extends Controller
         $cluster->save();
 
         return redirect('/')->with('success', 'Заявка на кластер добавлена!');
+    }
+
+    public function addcontract($school_id, $cluster_id)
+    {
+        return view('clusters.addcontract', ['school_id' => $school_id, 'cluster_id' => $cluster_id]);
+    }
+
+    public function addingprogram(Request $request, $school_id, $cluster_id)
+    {
+        if($request->hasFile('contract')) {
+            $file = $request->file('contract');
+            $file_name = $school_id . time() . '.' . $request->contract->extension();
+            $file->move(public_path() . '/files/contracts/', $file_name);
+
+            $cluster = Cluster::where('id', $cluster_id)->first();
+            $schools = json_decode($cluster->schools, true);
+            foreach ($schools as $key => $school) {
+                if ($school_id == $school['school_id']){
+                    $k = $key;
+                }
+            }
+            $schools[$k]['file_name'] = $file_name;
+            $cluster->schools = json_encode($schools);
+
+            $cluster->save();
+
+            return redirect('/')->with('success', 'Расписание добавлено!');
+        }
     }
 
     /**

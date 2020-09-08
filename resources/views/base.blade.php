@@ -17,8 +17,10 @@
                 @if ($cluster->status === 1)
                     <div class="alert alert-success" role="alert">
                         Заяка на создание кластер одобрена
-                        <a href="/files/agreements/{{ $cluster->agreement }}" class="btn btn-outline-success btn-sm">Соглашение
+                        @if($cluster->agreement)
+                            <a href="/files/agreements/{{ $cluster->agreement }}" class="btn btn-outline-success btn-sm">Соглашение
                             о взаимодейстии с образовательными организациями</a>
+                        @endif
                     </div>
                 @else
                     <div class="alert alert-warning" role="alert">
@@ -60,7 +62,12 @@
                                     @endif
                                 @endforeach
                             </td>
-                            <td><a href="/">Добавить</a></td>
+                            <td>@if (isset($school['file_name']))
+                                    <a href="/files/contracts/{{ $school['file_name'] }}">Смотреть</a>
+                                @else
+                                    <a href="/clusters/addcontract/{{ $school['school_id'] }}/{{ $cluster->id }}">Добавить</a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </table>
