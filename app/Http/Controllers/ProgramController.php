@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bid;
 use App\Program;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -19,6 +20,10 @@ class ProgramController extends Controller
 
     public function add(Request $request, $id)
     {
+        $user = Auth::user();
+
+        $cluster = $user->cluster;
+
         if($request->hasFile('program')) {
             $file = $request->file('program');
             $file_name = $id . time() . '.' . $request->program->extension();
@@ -33,6 +38,8 @@ class ProgramController extends Controller
 
             $bid = Bid::where('id', $id)->first();
             $bid->status = self::BID_AOPROVED;
+            $bid->cluster_id = $cluster->id;
+
             $bid->save();
 
         }
