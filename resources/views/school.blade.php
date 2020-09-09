@@ -32,7 +32,7 @@
                             @if (isset($regional_cluster))
                                 {{ $regional_cluster->getClusterName() }}
                                 <br>
-                                <a href="region-bids/create" class="btn btn-outline-primary">Подать заявление</a>
+                                <a href="/bids/createrc/{{ $regional_cluster->id }}" class="btn btn-outline-primary">Подать заявление</a>
                             @else
                                 К сожалению, вы не состоите в региональных кластерах
                             @endif

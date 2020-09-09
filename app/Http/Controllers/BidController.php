@@ -59,7 +59,41 @@ class BidController extends Controller
         ]);
 
         $bid->save();
-        return redirect('/')->with('success', 'Заявка добавлена!');
+        return redirect('/');
+    }
+
+    public function createrc($id)
+    {
+        return view('bids.createrc', ['id' => $id]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storerc(Request $request, $id)
+    {
+        $request->validate([
+            'class' => 'required',
+            'subject' => 'required'
+        ]);
+
+        $user_id = Auth::user()->id;
+
+        $bid = new Bid([
+            'class' => serialize($request->post('class')),
+            'subject' => $request->post('subject'),
+            'content' => $request->post('content'),
+            'modul' => $request->post('modul'),
+            'form_of_education' => $request->post('form_of_education'),
+            'form_education_implementation' => $request->post('form_education_implementation'),
+            'user_id' => $user_id,
+            'rc_cluster_id' => $id,
+        ]);
+        $bid->save();
+        return redirect('/');
     }
 
     public function add()

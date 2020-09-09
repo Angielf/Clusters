@@ -31,6 +31,10 @@ Route::get('/bids/add', 'BidController@add')->name('bids.add');
 
 Route::post('/bids/adding', 'BidController@adding')->name('bids.adding');
 
+Route::get('/bids/createrc/{id}', 'BidController@createrc');
+
+Route::post('/bids/storerc/{id}', 'BidController@storerc');
+
 Route::resource('bids', 'BidController');
 
 Route::resource('clusters', 'ClusterController');

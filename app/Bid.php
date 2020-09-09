@@ -8,7 +8,7 @@ class Bid extends Model
 {
     protected $table = 'bids';
 
-    protected $fillable = ['subject', 'class', 'content', 'user_id', 'modul', 'form_of_education', 'form_education_implementation'];
+    protected $fillable = ['subject', 'class', 'content', 'user_id', 'modul', 'form_of_education', 'form_education_implementation', 'rc_cluster_id'];
 
     public function user()
     {
