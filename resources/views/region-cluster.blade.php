@@ -21,9 +21,9 @@
                             <td>{{ $value->user->fullname }}</td>
                             <td>
                                 @if (isset($value->filename))
-                                    <a href="/files/rc/{{ $value->filename }}">Смотреть</a>
+                                    <a href="/files/rc/contracts/{{ $value->filename }}" class="btn btn-outline-secondary">Смотреть</a>
                                 @else
-                                    <a href="/region-clusters/addcontract/{{ $value->organisation }}/{{ $value->user_id }}">Добавить</a>
+                                    <a href="/region-clusters/addcontract/{{ $value->id }}" class="btn btn-outline-info">Добавить</a>
                                 @endif
                             </td>
                         </tr>

@@ -50,3 +50,7 @@ Route::delete('/schedule/{schedule}', 'ScheduleController@delete');
 Route::post('/region-clusters', 'RegionClusterController@store');
 
 Route::get('/region-clusters/create', 'RegionClusterController@create');
+
+Route::post('/region-clusters/addingprogram/{id}', 'RegionClusterController@addingprogram');
+
+Route::get('/region-clusters/addcontract/{id}', 'RegionClusterController@addcontract');

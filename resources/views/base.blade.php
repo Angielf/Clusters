@@ -64,9 +64,9 @@
                             </td>
                             <td>
                                 @if (isset($school['file_name']))
-                                    <a href="/files/contracts/{{ $school['file_name'] }}">Смотреть</a>
+                                    <a href="/files/contracts/{{ $school['file_name'] }}" class="btn btn-outline-secondary">Смотреть</a>
                                 @else
-                                    <a href="/clusters/addcontract/{{ $school['school_id'] }}/{{ $cluster->id }}">Добавить</a>
+                                    <a href="/clusters/addcontract/{{ $school['school_id'] }}/{{ $cluster->id }}" class="btn btn-outline-info">Добавить</a>
                                 @endif
                             </td>
                         </tr>

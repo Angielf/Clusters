@@ -40,4 +40,26 @@ class RegionClusterController extends Controller
 
         return redirect('/');
     }
+
+    public function addcontract($id)
+    {
+        return view('region-clusters.addcontract', ['id' => $id]);
+    }
+
+    public function addingprogram(Request $request, $id)
+    {
+        if($request->hasFile('contract')) {
+            $file = $request->file('contract');
+            $file_name = $id . time() . '.' . $request->contract->extension();
+            $file->move(public_path() . '/files/rc/contracts/', $file_name);
+
+            $region_cluster = RegionCluster::where('id', $id)->first();
+
+            $region_cluster->filename = $file_name;
+
+            $region_cluster->save();
+
+            return redirect('/');
+        }
+    }
 }
