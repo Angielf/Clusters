@@ -15,13 +15,17 @@
                     <tr>
                         <th>Образовательная организация</th>
                         <th>Договор</th>
-                        <th></th>
                     </tr>
                     @foreach ($region_clusters as $value)
                         <tr>
                             <td>{{ $value->user->fullname }}</td>
-                            <td><a href="/files/rc/{{ $value->filename }}">Скачать</a></td>
-                            <td></td>
+                            <td>
+                                @if (isset($value->filename))
+                                    <a href="/files/rc/{{ $value->filename }}">Смотреть</a>
+                                @else
+                                    <a href="/region-clusters/addcontract/{{ $value->organisation }}/{{ $value->user_id }}">Добавить</a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </table>

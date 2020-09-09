@@ -62,7 +62,8 @@
                                     @endif
                                 @endforeach
                             </td>
-                            <td>@if (isset($school['file_name']))
+                            <td>
+                                @if (isset($school['file_name']))
                                     <a href="/files/contracts/{{ $school['file_name'] }}">Смотреть</a>
                                 @else
                                     <a href="/clusters/addcontract/{{ $school['school_id'] }}/{{ $cluster->id }}">Добавить</a>

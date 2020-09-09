@@ -27,7 +27,6 @@
                                         <input class="form-check-input" type="checkbox" name="schools[]" value="{{ $school->id }}">
                                         <label class="form-check-label">{{ $school->fullname }}</label>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -39,16 +38,4 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="application/javascript">
-        jQuery(document).ready(function() {
-            $('.custom-file input').change(function (e) {
-                var files = [];
-                for (var i = 0; i < $(this)[0].files.length; i++) {
-                    files.push($(this)[0].files[i].name);
-                }
-                $(this).next('.custom-file-label').html(files.join(', '));
-            });
-        })
-    </script>
 @endsection

@@ -29,19 +29,13 @@ class RegionClusterController extends Controller
         $user = Auth::user();
         $organisation = $user->id;
 
-        for ($i=1; $i<797; $i++) {
-            if($request->hasFile($i)) {
-                $file = $request->$i;
-                $file_name = $i . time().'.'.$request->$i->extension();
-                $file->move(public_path() . '/files/rc/', $file_name);
+        foreach ($request->post('schools') as $id) {
                 $region_cluster = new RegionCluster([
                     'organisation' => $organisation,
-                    'user_id' => $i,
-                    'filename' => $file_name,
+                    'user_id' => $id,
                 ]);
 
                 $region_cluster->save();
-            }
         }
 
         return redirect('/');

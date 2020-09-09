@@ -66,7 +66,7 @@ class ClusterController extends Controller
         $files = [];
 
         foreach ($request->post('schools') as $id) {
-            $school = User::where('id', $id)->first();;
+            $school = User::where('id', $id)->first();
             $new_file['school_name'] = $school->fullname;
             $new_file['school_id'] = $id;
             array_push($files, $new_file);
