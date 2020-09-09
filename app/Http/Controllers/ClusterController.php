@@ -78,9 +78,13 @@ class ClusterController extends Controller
             'user_id' => $user->id,
             'district_id' => $district->id,
             'schools' => $files,
+            'status' => self::CLUSTER_APPROVED,
         ]);
 
         $cluster->save();
+
+        $user->status = self::BASE_SCHOOL;
+        $user->save();
 
         return redirect('/')->with('success', 'Заявка на кластер добавлена!');
     }
