@@ -16,7 +16,11 @@
                     <tr>
                         <td>{{$cluster->id}}</td>
                         <td>{{$cluster->getClusterName()}}</td>
-                        <td>{{$cluster->user->fullname}}</td>
+                        <td>{{$cluster->user->fullname}}
+                            @if (isset($cluster->filename))
+                                <a href="/files/rc/contracts/{{ $cluster->filename }}">Договор</a>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </table>
@@ -39,6 +43,9 @@
                         <td>
                             @foreach(json_decode($cluster->schools, true) as $school)
                                 {{ $school['school_name'] }}
+                            @if (isset($school['file_name']))
+                                <a href="/files/contracts/{{ $school['file_name'] }}">Договор</a>
+                            @endif
                                 <br>
                             @endforeach
                         </td>
