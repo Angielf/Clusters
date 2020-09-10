@@ -14,19 +14,19 @@
                 <h3>Кластер № {{$cluster->id}}</h3>
                 <h4>{{$cluster->district->fullname}}</h4>
 
-                @if ($cluster->status === 1)
-                    <div class="alert alert-success" role="alert">
-                        Заяка на создание кластер одобрена
-                        @if($cluster->agreement)
-                            <a href="/files/agreements/{{ $cluster->agreement }}" class="btn btn-outline-success btn-sm">Соглашение
-                            о взаимодейстии с образовательными организациями</a>
-                        @endif
-                    </div>
-                @else
-                    <div class="alert alert-warning" role="alert">
-                        Заявка на создание кластера в рассмотрении
-                    </div>
-                @endif
+                {{--@if ($cluster->status === 1)--}}
+                    {{--<div class="alert alert-success" role="alert">--}}
+                        {{--Заяка на создание кластер одобрена--}}
+                        {{--@if($cluster->agreement)--}}
+                            {{--<a href="/files/agreements/{{ $cluster->agreement }}" class="btn btn-outline-success btn-sm">Соглашение--}}
+                            {{--о взаимодейстии с образовательными организациями</a>--}}
+                        {{--@endif--}}
+                    {{--</div>--}}
+                {{--@else--}}
+                    {{--<div class="alert alert-warning" role="alert">--}}
+                        {{--Заявка на создание кластера в рассмотрении--}}
+                    {{--</div>--}}
+                {{--@endif--}}
                 <table class="table table-striped">
                     <tr>
                         <th>Образовательная организация</th>
