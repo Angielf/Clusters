@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index');
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/clusters/add/{cluster}', 'ClusterController@add');
