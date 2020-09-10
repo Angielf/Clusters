@@ -19,4 +19,11 @@ class Cluster extends Model
     {
         return $this->belongsTo(District::class);
     }
+
+    public function getBids()
+    {
+        if ($bids = Bid::where('cluster_id', $this->id)->get()) {
+            return $bids;
+        } else return false;
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Appeal;
+use App\Bid;
 use App\Cluster;
 use App\District;
 use App\Program;
@@ -38,8 +39,11 @@ class HomeController extends Controller
         if ($user->status === self::REGIONAL_COORD) {
             $clusters = Cluster::all();
             $region_clusters = RegionCluster::all();
+            $bids = Bid::whereNull('cluster_id')
+                ->WhereNull('rc_cluster_id')
+                ->get();
 
-            return view('clusters.index', ['clusters' => $clusters, 'region_clusters' => $region_clusters]);
+            return view('clusters.index', ['clusters' => $clusters, 'region_clusters' => $region_clusters, 'bids' => $bids]);
 
         } elseif ($user->status === self::BASE_SCHOOL) {
             $district = District::where('id', $user->district)->first();

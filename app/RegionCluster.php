@@ -23,4 +23,11 @@ class RegionCluster extends Model
             return "К сожалению, вы не состоите в региональных кластерах";
         }
     }
+
+    public function getBids()
+    {
+        if ($bids = Bid::where('rc_cluster_id', $this->id)->get()) {
+            return $bids;
+        } else return false;
+    }
 }
