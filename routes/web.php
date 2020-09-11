@@ -25,6 +25,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/clusters/add/{cluster}', 'ClusterController@add');
 
+Route::get('/clusters/requestbaseschool/{user}', 'ClusterController@requestbaseschool');
+
 Route::get('/clusters/addcontract/{school_id}/{cluster_id}', 'ClusterController@addcontract');
 
 Route::post('/clusters/addingprogram/{school_id}/{cluster_id}', 'ClusterController@addingprogram');
@@ -64,3 +66,7 @@ Route::get('/region-clusters/create', 'RegionClusterController@create');
 Route::post('/region-clusters/addingprogram/{id}', 'RegionClusterController@addingprogram');
 
 Route::get('/region-clusters/addcontract/{id}', 'RegionClusterController@addcontract');
+
+Route::get('/user/approve/{user_id}', 'UserController@approve');
+
+Route::get('/user/reject/{user_id}', 'UserController@reject');

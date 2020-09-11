@@ -8,15 +8,18 @@ use App\Cluster;
 use App\District;
 use App\Program;
 use App\RegionCluster;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    private const REGIONAL_COORD =1;
+    private const REGIONAL_COORD = 1;
     private const BASE_SCHOOL = 2;
     private const REGIONAL_CLUSTER = 100;
+    private const REQUEST_BASE_SCHOOL = 5;
+
     /**
      * Create a new controller instance.
      *
@@ -39,11 +42,12 @@ class HomeController extends Controller
         if ($user->status === self::REGIONAL_COORD) {
             $clusters = Cluster::all();
             $region_clusters = RegionCluster::all();
+            $request_base_schools = User::where('status', self::REQUEST_BASE_SCHOOL)->get();
             $bids = Bid::whereNull('cluster_id')
                 ->WhereNull('rc_cluster_id')
                 ->get();
 
-            return view('clusters.index', ['clusters' => $clusters, 'region_clusters' => $region_clusters, 'bids' => $bids]);
+            return view('clusters.index', ['clusters' => $clusters, 'region_clusters' => $region_clusters, 'bids' => $bids, 'request_base_schools' => $request_base_schools]);
 
         } elseif ($user->status === self::BASE_SCHOOL) {
             $district = District::where('id', $user->district)->first();

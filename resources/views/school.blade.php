@@ -14,10 +14,15 @@
                         @elseif ($user->status === 3)
                             <a href="clusters/create" class="btn btn-outline-primary btn-lg">Подать заявку на создание
                                 кластера</a>
-                        @else
-                            <div class="alert alert-warning" role="alert">
-                                К сожалению, вы не можете подавать заявку на создание образовательного кластера.
+                        @elseif ($user->status === 5)
+                            <div class="alert alert-light" role="alert">
+                                Заявка на базовую школу отправлена
                             </div>
+                         @else
+                            <a href="clusters/requestbaseschool/{{ $user->id }}" class="btn btn-outline-info btn">Подать заявку на базовую школу</a>
+                            {{--<div class="alert alert-warning" role="alert">--}}
+                                {{--К сожалению, вы не можете подавать заявку на создание образовательного кластера.--}}
+                            {{--</div>--}}
                         @endif
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">

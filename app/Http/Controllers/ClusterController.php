@@ -13,6 +13,7 @@ class ClusterController extends Controller
     private const CLUSTER_APPROVED = 1;
     private const REGIONAL_COORD = 1;
     private const BASE_SCHOOL = 2;
+    private const REQUEST_BASE_SCHOOL = 5;
 
     public function add(Cluster $cluster)
     {
@@ -24,6 +25,16 @@ class ClusterController extends Controller
         $user->save();
 
         return redirect('/clusters')->with('success', 'Заявка на кластер добавлена!');
+    }
+
+    public function requestbaseschool($id)
+    {
+        $user = User::where('id', $id)->first();
+        $user->status = self::REQUEST_BASE_SCHOOL;
+
+        $user->save();
+
+        return redirect('/');
     }
 
     /**
