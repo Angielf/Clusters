@@ -68,6 +68,9 @@
                                 {{$bid->user->fullname}} {{ $bid->subject }} {{ $bid->getClasses() }}
                                 класс {{ $bid->modul }} {{ $bid->form_of_education }} {{ $bid->form_education_implementation }}
                                 <a href="/files/programs/{{ $bid->program->filename }}">Программа</a>
+                                @if ($bid->program->schedule)
+                                    <a href="/files/schedules/{{ $bid->program->schedule->filename }}">Расписание</a>
+                                @endif
                                 <br>
                             @empty
                                 Заявок нет
