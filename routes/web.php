@@ -29,6 +29,10 @@ Route::get('/clusters/addcontract/{school_id}/{cluster_id}', 'ClusterController@
 
 Route::post('/clusters/addingprogram/{school_id}/{cluster_id}', 'ClusterController@addingprogram');
 
+Route::get('/clusters/addagreement/{cluster_id}', 'ClusterController@addagreement');
+
+Route::post('/clusters/addingagreement/{cluster_id}', 'ClusterController@addingagreement');
+
 Route::get('/bids/add', 'BidController@add')->name('bids.add');
 
 Route::post('/bids/adding', 'BidController@adding')->name('bids.adding');

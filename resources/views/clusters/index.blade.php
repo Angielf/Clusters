@@ -52,7 +52,12 @@
                 @foreach($clusters as $cluster)
                     <tr>
                         <td>{{$cluster->id}}</td>
-                        <td>{{$cluster->user->fullname}}</td>
+                        <td>
+                            {{$cluster->user->fullname}}
+                            @if ($cluster->agreement)
+                                <p><a href="/files/agreements/{{ $cluster->agreement }}">Соглашение</a></p>
+                            @endif
+                        </td>
                         <td>{{$cluster->district->fullname}}</td>
                         <td>
                             @foreach(json_decode($cluster->schools, true) as $school)

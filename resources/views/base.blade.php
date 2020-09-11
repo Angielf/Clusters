@@ -4,16 +4,20 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <h2>{{$user->fullname}} </h2>
+                <h2>{{ $user->fullname }} </h2>
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                 @endif
 
-                <h3>Кластер № {{$cluster->id}}</h3>
+                <h3>Кластер № {{ $cluster->id }}</h3>
                 <h4>{{$cluster->district->fullname}}</h4>
-
+                @if ($cluster->agreement)
+                    <a href="/files/agreements/{{ $cluster->agreement }}" class="btn btn-outline-dark">Соглашение о взаимодействии с образовательными организациями</a>
+                @else
+                    <a href="/clusters/addagreement/{{ $cluster->id }}" class="btn btn-outline-dark">Добавить соглашение</a>
+                @endif
                 {{--@if ($cluster->status === 1)--}}
                     {{--<div class="alert alert-success" role="alert">--}}
                         {{--Заяка на создание кластер одобрена--}}

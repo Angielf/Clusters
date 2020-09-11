@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-sm-8 offset-sm-2">
-            <h3>Добавить договор</h3>
+            <h3>Добавить соглашение</h3>
             <div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -14,7 +14,7 @@
                         </ul>
                     </div><br />
                 @endif
-                <form method="post" action="/clusters/addingprogram/{{ $school_id }}/{{ $cluster_id }}" enctype="multipart/form-data">
+                <form method="post" action="/clusters/addingagreement/{{ $cluster_id }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <div class="custom-file">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Добавить договор</button>
+                    <button type="submit" class="btn btn-primary">Добавить соглашение</button>
                 </form>
             </div>
         </div>

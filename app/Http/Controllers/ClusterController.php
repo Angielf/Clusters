@@ -113,7 +113,28 @@ class ClusterController extends Controller
 
             $cluster->save();
 
-            return redirect('/')->with('success', 'Расписание добавлено!');
+            return redirect('/');
+        }
+    }
+
+    public function addagreement($cluster_id)
+    {
+        return view('clusters.addagreement', ['cluster_id' => $cluster_id]);
+    }
+
+    public function addingagreement(Request $request, $cluster_id)
+    {
+        if($request->hasFile('agreement')) {
+            $file = $request->file('agreement');
+            $file_name = $cluster_id . time() . '.' . $request->agreement->extension();
+            $file->move(public_path() . '/files/agreements/', $file_name);
+
+            $cluster = Cluster::where('id', $cluster_id)->first();
+            $cluster->agreement = $file_name;
+
+            $cluster->save();
+
+            return redirect('/');
         }
     }
 
