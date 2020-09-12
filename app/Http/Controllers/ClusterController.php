@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\Auth;
 class ClusterController extends Controller
 {
     private const CLUSTER_APPROVED = 1;
+    private const CLUSTER_SERTIFIED = 2;
+    private const RECIPIENT_SCHOOL = 0;
     private const REGIONAL_COORD = 1;
     private const BASE_SCHOOL = 2;
     private const REQUEST_BASE_SCHOOL = 5;
 
     public function add(Cluster $cluster)
     {
-        $cluster->status = self::CLUSTER_APPROVED;
+        $cluster->status = self::CLUSTER_SERTIFIED;
         $cluster->save();
 
         $user = $cluster->user;
@@ -203,7 +205,12 @@ class ClusterController extends Controller
      */
     public function destroy(Cluster $cluster)
     {
+        $user = $cluster->user;
+        $user->status = self::RECIPIENT_SCHOOL;
+
         $cluster->delete();
+
+        $user->save();
 
         return redirect()->route('clusters.index')
             ->with('success','Кластер удален');
