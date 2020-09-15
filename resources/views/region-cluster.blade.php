@@ -15,6 +15,7 @@
                     <tr>
                         <th>Образовательная организация</th>
                         <th>Договор</th>
+                        <th>Заявки</th>
                     </tr>
                     @foreach ($region_clusters as $value)
                         <tr>
@@ -25,6 +26,11 @@
                                 @else
                                     <a href="/region-clusters/addcontract/{{ $value->id }}" class="btn btn-outline-info">Добавить</a>
                                 @endif
+                            </td>
+                            <td>
+                                @foreach($value->getBids() as $bid)
+                                    {{ $bid->subject }} {{ $bid->getClasses() }} {{ $bid->modul }} {{ $bid->form_of_education }} {{ $bid->form_education_implementation }} {{ $bid->content }}
+                                @endforeach
                             </td>
                         </tr>
                     @endforeach
