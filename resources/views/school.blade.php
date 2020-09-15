@@ -36,6 +36,9 @@
                         <p class="card-text">
                             @if (isset($regional_cluster))
                                 {{ $regional_cluster->getClusterName() }}
+                                @foreach($user->regionBids() as $bid)
+                                <p>{{ $bid->subject }} {{ $bid->modul }} </p>
+                                @endforeach
                                 <br>
                                 <a href="/bids/createrc/{{ $regional_cluster->id }}" class="btn btn-outline-primary">Подать заявление</a>
                             @else
@@ -48,8 +51,8 @@
                         <p class="card-text">
                         {{ $user->getClusters() }}
                         <ul>
-                            @if ($user->bids)
-                                @foreach( $user->bids as $bid)
+                            @if ($user->bids())
+                                @foreach( $user->bids() as $bid)
                                     <li class="list-group-item">
                                         <div class="row">
                                             <div class="col-md-3">

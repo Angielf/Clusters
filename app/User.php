@@ -44,7 +44,18 @@ class User extends Authenticatable
 
     public function bids()
     {
-        return $this->hasMany(Bid::class, 'user_id');
+        if ($bids = Bid::where('user_id', $this->id)->WhereNull('rc_cluster_id')->get()) {
+            return $bids;
+        } else return false;
+
+    }
+
+    public function regionBids()
+    {
+        if ($bids = Bid::where('user_id', $this->id)->WhereNotNull('rc_cluster_id')->get()) {
+            return $bids;
+        } else return false;
+
     }
 
     public function cluster()
