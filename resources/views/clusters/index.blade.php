@@ -28,6 +28,10 @@
                             @forelse( $cluster->getBids() as $bid )
                                 {{ $bid->subject }} {{ $bid->getClasses() }}
                                 класс {{ $bid->modul }} {{ $bid->form_of_education }} {{ $bid->form_education_implementation }}
+                                @if ($bid->status === 1)
+                                    <a href="/files/programs/{{ $bid->program->filename }}"
+                                       class="btn btn-outline-success btn-sm">Программа</a>
+                                @endif
                             @empty
                                 Заявок нет
                             @endforelse

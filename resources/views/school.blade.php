@@ -18,10 +18,11 @@
                             <div class="alert alert-light" role="alert">
                                 Заявка на базовую школу отправлена
                             </div>
-                         @else
-                            <a href="clusters/requestbaseschool/{{ $user->id }}" class="btn btn-outline-info btn">Подать заявку на базовую школу</a>
+                        @else
+                            <a href="clusters/requestbaseschool/{{ $user->id }}" class="btn btn-outline-info btn">Подать
+                                заявку на базовую школу</a>
                             {{--<div class="alert alert-warning" role="alert">--}}
-                                {{--К сожалению, вы не можете подавать заявку на создание образовательного кластера.--}}
+                            {{--К сожалению, вы не можете подавать заявку на создание образовательного кластера.--}}
                             {{--</div>--}}
                         @endif
                         @if (session('status'))
@@ -34,17 +35,22 @@
                     <div class="card-body">
                         <h5 class="card-title">Региональные кластеры</h5>
                         <p class="card-text">
-                            @if (isset($regional_cluster))
-                                {{ $regional_cluster->getClusterName() }}
-                                @foreach($user->regionBids() as $bid)
+                        @if (isset($regional_cluster))
+                            {{ $regional_cluster->getClusterName() }}
+                            @foreach($user->regionBids() as $bid)
                                 <p>{{ $bid->subject }} {{ $bid->modul }} </p>
-                                @endforeach
-                                <br>
-                                <a href="/bids/createrc/{{ $regional_cluster->id }}" class="btn btn-outline-primary">Подать заявление</a>
-                            @else
-                                К сожалению, вы не состоите в региональных кластерах
+                                @if ($bid->status === 1)
+                                    <a href="/files/programs/{{ $bid->program->filename }}"
+                                       class="btn btn-outline-success btn-sm">Программа</a>
+                                @endif
+                            @endforeach
+                            <br>
+                            <a href="/bids/createrc/{{ $regional_cluster->id }}" class="btn btn-outline-primary">Подать
+                                заявление</a>
+                        @else
+                            К сожалению, вы не состоите в региональных кластерах
                             @endif
-                        </p>
+                            </p>
                     </div>
                     <ul class="card-body">
                         <h5 class="card-title">Муниципальные кластеры </h5>
@@ -57,7 +63,8 @@
                                         <div class="row">
                                             <div class="col-md-3">
                                                 {{ $bid->subject }} {{ $bid->modul }}
-                                   -         </div>
+                                                -
+                                            </div>
                                             <div class="col-md-3">
                                                 {!! $bid->getStatus() !!}
                                             </div>
