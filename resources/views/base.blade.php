@@ -44,7 +44,7 @@
                             <td>{{ $school['school_name'] }}</td>
                             <td width="50%">
                                 @foreach($district->users as $user)
-                                    @if(($user->id == $school['school_id']) && ($bids = $user->bids))
+                                    @if(($user->id == $school['school_id']) && ($bids = $user->bids()))
                                         @foreach ($bids as $bid)
                                             <p><a href="/bids/{{ $bid->id }}">{{ $bid->getClasses() }}
                                                     {{ $bid->subject }} {{ $bid->modul }}</a>

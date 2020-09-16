@@ -30,6 +30,14 @@
                             <td>
                                 @foreach($value->getBids() as $bid)
                                     {{ $bid->subject }} {{ $bid->getClasses() }} {{ $bid->modul }} {{ $bid->form_of_education }} {{ $bid->form_education_implementation }} {{ $bid->content }}
+                                    @if ($bid->status !== 1)
+                                        <a href="/program/{{ $bid->id }}"
+                                           class="btn btn-outline-danger btn-sm">Добавить программу</a>
+                                    @else
+                                        <a href="/files/programs/{{ $bid->program->filename }}"
+                                           class="btn btn-outline-success btn-sm">Программа</a>
+                                    @endif
+                                    <br>
                                 @endforeach
                             </td>
                         </tr>

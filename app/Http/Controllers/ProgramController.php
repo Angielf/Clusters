@@ -22,8 +22,6 @@ class ProgramController extends Controller
     {
         $user = Auth::user();
 
-        $cluster = $user->cluster;
-
         if($request->hasFile('program')) {
             $file = $request->file('program');
             $file_name = $id . time() . '.' . $request->program->extension();
@@ -38,7 +36,9 @@ class ProgramController extends Controller
 
             $bid = Bid::where('id', $id)->first();
             $bid->status = self::BID_AOPROVED;
-            $bid->cluster_id = $cluster->id;
+            if ($cluster = $user->cluster) {
+                $bid->cluster_id = $cluster->id;
+            }
 
             $bid->save();
 
