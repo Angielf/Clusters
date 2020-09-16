@@ -36,6 +36,14 @@
                                     @else
                                         <a href="/files/programs/{{ $bid->program->filename }}"
                                            class="btn btn-outline-success btn-sm">Программа</a>
+                                        @if ($bid->program->schedule)
+                                            <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
+                                               class="btn btn-outline-success btn-sm">Расписание</a>
+                                        @else
+                                            <a href="/schedule/{{ $bid->program->id }}"
+                                               class="btn btn-outline-danger btn-sm">Добавить
+                                                расписание</a>
+                                        @endif
                                     @endif
                                     <br>
                                 @endforeach

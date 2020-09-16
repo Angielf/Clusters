@@ -38,11 +38,16 @@
                         @if (isset($regional_cluster))
                             {{ $regional_cluster->getClusterName() }}
                             @foreach($user->regionBids() as $bid)
-                                <p>{{ $bid->subject }} {{ $bid->modul }} </p>
-                                @if ($bid->status === 1)
-                                    <a href="/files/programs/{{ $bid->program->filename }}"
-                                       class="btn btn-outline-success btn-sm">Программа</a>
-                                @endif
+                                <p>{{ $bid->subject }} {{ $bid->modul }}
+                                    @if ($bid->status === 1)
+                                        <a href="/files/programs/{{ $bid->program->filename }}"
+                                           class="btn btn-outline-success btn-sm">Программа</a>
+                                        @if ($bid->program->schedule)
+                                            <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
+                                               class="btn btn-outline-success btn-sm">Расписание</a>
+                                        @endif
+                                    @endif
+                                </p>
                             @endforeach
                             <br>
                             <a href="/bids/createrc/{{ $regional_cluster->id }}" class="btn btn-outline-primary">Подать
