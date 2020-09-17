@@ -18,7 +18,7 @@
                     @csrf
                     <div class="form-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="agreement">
+                            <input type="file" class="custom-file-input" name="contract">
                             <label class="custom-file-label">Загрузить</label>
                         </div>
                     </div>

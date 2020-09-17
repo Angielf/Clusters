@@ -128,6 +128,8 @@ class ClusterController extends Controller
 
             return redirect('/');
         }
+
+        return redirect('/');
     }
 
     public function addagreement($cluster_id)
