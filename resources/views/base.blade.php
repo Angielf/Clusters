@@ -13,6 +13,14 @@
 
                 <h3>Кластер № {{ $cluster->id }}</h3>
                 <h4>{{$cluster->district->fullname}}</h4>
+                <form action="/clusters/addoneschool/{{ $user->id }}">
+                    <select name="schoolid">
+                        @foreach ($district->users as $school)
+                            <option value="{{ $school->id }}">{{ $school->fullname }}</option>
+                        @endforeach
+                    </select>
+                    <input type="submit" value="Добавить школу">
+                </form>
                 @if ($cluster->agreement)
                     <a href="/files/agreements/{{ $cluster->agreement }}" class="btn btn-outline-dark">Соглашение о
                         взаимодействии с образовательными организациями</a>

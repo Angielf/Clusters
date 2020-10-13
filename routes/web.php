@@ -47,6 +47,8 @@ Route::resource('bids', 'BidController');
 
 Route::resource('clusters', 'ClusterController');
 
+Route::get('/clusters/addoneschool/{baseSchoolId}', 'ClusterController@addoneschool');
+
 Route::get('/program/{id}', 'ProgramController@index');
 
 Route::post('/program/{id}', 'ProgramController@add');

@@ -153,6 +153,24 @@ class ClusterController extends Controller
         }
     }
 
+    public function addoneschool($baseSchoolId, Request $request)
+    {
+        if ($request->get('schoolid')) {
+            $schoolId = $request->get('schoolid');
+            $cluster = Cluster::where('user_id', $baseSchoolId)->first();
+            $schoolsInCluster = json_decode($cluster->schools, true);
+            $schoolName = User::where('id', $schoolId)->first()->fullname;
+            $arr["school_name"] = $schoolName;
+            $arr["school_id"] = $schoolId;
+            array_push($schoolsInCluster, $arr);
+            $cluster->schools = $schoolsInCluster;
+
+            $cluster->save();
+
+        }
+        return redirect('/');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -170,6 +188,7 @@ class ClusterController extends Controller
      * @param  \App\Cluster  $cluster
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Cluster $cluster)
     {
         if (Auth::user()->id === 1) {
