@@ -19,28 +19,28 @@ class StudentController extends Controller
     {
         if($request->hasFile('student')) {
             $file = $request->file('student');
-            $file_name = $id . time() . '.' . $request->schedule->extension();
+            $file_name = $id . time() . '.' . $request->student->extension();
             $file->move(public_path() . '/files/students/', $file_name);
 
-            $schedule = new Student([
+            $student = new Student([
                 'filename' => $file_name,
                 'schedule_id' => $id,
             ]);
 
-            $schedule->save();
+            $student->save();
 
             return redirect('/')->with('success', 'Ученики добавлены!');
         }
     }
 
-    public function delete(Student $schedule)
+    public function delete(Student $student)
     {
         $student->delete();
 
         return redirect('/');
     }
 
-    public function approve(Student $schedule)
+    public function approve(Student $student)
     {
         $student->status = 1;
         $student->save();

@@ -14,4 +14,11 @@ class Schedule extends Model
     {
         return $this->belongsTo(Program::class);
     }
+
+
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
 }

@@ -12,6 +12,6 @@ class Student extends Model
 
     public function schedule()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Schedule::class);
     }
 }

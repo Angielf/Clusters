@@ -73,12 +73,12 @@
                                                                 Список учеников
                                                             </a>
                                                         @else
-                                                            <a href="/students/{{ $bid->program->student->id }}"
+                                                            <a href="/student/{{ $bid->program->schedule->id }}"
                                                                 class="btn btn-outline-danger btn-sm">
                                                                 Добавить учеников
                                                             </a>
                                                         @endif
-                                                        
+
                                                 @else
                                                     <a href="/schedule/{{ $bid->program->id }}"
                                                        class="btn btn-outline-danger btn-sm">Добавить
