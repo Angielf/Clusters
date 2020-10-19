@@ -66,6 +66,19 @@
                                                 @if ($bid->program->schedule)
                                                     <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
                                                        class="btn btn-outline-success btn-sm">Расписание</a>
+
+                                                        @if ($bid->program->schedule->student)
+                                                            <a href="/files/students/{{ $bid->program->schedule->student->filename }}"
+                                                                class="btn btn-outline-success btn-sm">
+                                                                Список учеников
+                                                            </a>
+                                                        @else
+                                                            <a href="/students/{{ $bid->program->student->id }}"
+                                                                class="btn btn-outline-danger btn-sm">
+                                                                Добавить учеников
+                                                            </a>
+                                                        @endif
+                                                        
                                                 @else
                                                     <a href="/schedule/{{ $bid->program->id }}"
                                                        class="btn btn-outline-danger btn-sm">Добавить
