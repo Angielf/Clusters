@@ -64,11 +64,11 @@ Route::delete('/schedule/{schedule}', 'ScheduleController@delete');
 
 Route::get('/student/{id}', 'StudentController@index');
 
-Route::get('/student/add/{student}', 'StudentController@approve');
+// Route::get('/student/add/{student}', 'StudentController@approve');
 
 Route::post('/student/{id}', 'StudentController@add');
 
-Route::delete('/student/{student}', 'StudentController@delete');
+// Route::delete('/student/{student}', 'StudentController@delete');
 
 
 Route::post('/region-clusters', 'RegionClusterController@store');

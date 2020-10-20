@@ -72,11 +72,11 @@
                                                                 class="btn btn-outline-success btn-sm">
                                                                 Список учеников
                                                             </a>
-                                                        @else
+                                                         {{-- @else
                                                             <a href="/student/{{ $bid->program->schedule->id }}"
                                                                 class="btn btn-outline-danger btn-sm">
                                                                 Добавить учеников
-                                                            </a>
+                                                            </a> --}}
                                                         @endif
 
                                                 @else

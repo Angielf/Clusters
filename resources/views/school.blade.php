@@ -50,13 +50,16 @@
                                 </p>
                             @endforeach
                             <br>
-                            <a href="/bids/createrc/{{ $regional_cluster->id }}" class="btn btn-outline-primary">Подать
-                                заявление</a>
+                            <a href="/bids/createrc/{{ $regional_cluster->id }}" class="btn btn-outline-primary">
+                                Подать заявление на дефицит
+                            </a>
                         @else
                             К сожалению, вы не состоите в региональных кластерах
                             @endif
                             </p>
                     </div>
+
+
                     <ul class="card-body">
                         <h5 class="card-title">Муниципальные кластеры </h5>
                         <p class="card-text">
@@ -96,6 +99,23 @@
                                                             </form>
                                                         @endif
                                                     </div>
+
+                                                    @if ($bid->program->schedule->student)
+                                                        <div class="col-md-3">
+                                                            <a href="/files/students/{{ $bid->program->schedule->student->filename }}"
+                                                                class="btn btn-outline-success">
+                                                                Список учеников
+                                                            </a><br>
+                                                        </div>
+                                                    @else
+                                                    <div class="col-md-3">
+                                                        <a href="/student/{{ $bid->program->schedule->id }}"
+                                                            class="btn btn-outline-danger btn-sm">
+                                                                Добавить список учеников
+                                                        </a><br>
+                                                        </div>
+                                                    @endif
+
                                                 @endif
                                             @endif
                                         </div>
@@ -104,7 +124,7 @@
                             @endif
                         </ul>
                         <br>
-                        <a href="bids/create" class="btn btn-outline-primary">Подать заявление</a>
+                        <a href="bids/create" class="btn btn-outline-primary">Подать заявление на дефицит</a>
                     </ul>
                     <a href="bids/add" class="btn btn-outline-primary">Предложить свою образовательную программу</a>
                     <div class="card-footer">
