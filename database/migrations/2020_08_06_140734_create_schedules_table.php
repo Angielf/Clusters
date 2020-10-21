@@ -13,12 +13,12 @@ class CreateSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
-            $table->id();
-            $table->smallInteger('program_id')->unsigned();
-            $table->string('filename');
-            $table->timestamps();
-        });
+        // Schema::create('schedules', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->smallInteger('program_id')->unsigned();
+        //     $table->string('filename');
+        //     $table->timestamps();
+        // });
 
         Schema::table('schedules', function (Blueprint $table) {
             $table->foreign('program_id')->references('id')->on('programs');
