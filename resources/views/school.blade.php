@@ -70,8 +70,7 @@
                                     <li class="list-group-item">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                {{ $bid->subject }} {{ $bid->modul }}
-                                                -
+                                                {{ $bid->getClasses() }} {{ $bid->subject }} {{ $bid->modul }}
                                             </div>
                                             <div class="col-md-3">
                                                 {!! $bid->getStatus() !!}
