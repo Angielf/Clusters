@@ -51,7 +51,9 @@
                     <th>Район</th>
                     <th>Школы реципиенты</th>
                     <th>Заявки</th>
-                    <th>Решение</th>
+
+                    {{-- <th>Решение</th> --}}
+
                 </tr>
                 </thead>
                 @foreach($clusters as $cluster)
@@ -86,7 +88,8 @@
                                 Заявок нет
                             @endforelse
                         </td>
-                        <td>
+
+                        {{-- <td>
                             @if ($cluster->status === 2)
                             <svg width="2em" height="2em" viewBox="0 0 16 16"
                             class="bi bi-check-circle-fill text-success" fill="currentColor"
@@ -102,11 +105,14 @@
                             <button type="submit" class="btn btn-outline-danger btn-sm">Удалить кластер</button>
                             </form>
                             @endif
-                        </td>
+                        </td> --}}
+
                     </tr>
                 @endforeach
             </table>
             <br>
+
+
             <div class="alert alert-secondary" role="alert">
                 <h2 data-toggle="collapse" href="#collapseExample3">Заявки в рассмотрении</h2>
             </div>
@@ -134,7 +140,9 @@
                     </tr>
                 @endforeach
             </table>
-            <div class="alert alert-secondary" role="alert">
+
+
+            {{-- <div class="alert alert-secondary" role="alert">
                 <h2 data-toggle="collapse" href="#collapseExample4">Заявки на базовую школу</h2>
             </div>
             <div class="collapse" id="collapseExample4">
@@ -146,7 +154,9 @@
                         <a href="/user/reject/{{ $school->id }}" class="btn btn-outline-danger btn-sm">Удалить</a>
 
                 @endforeach
-            </div>
+            </div> --}}
+
+
         </div>
     </div>
 @endsection

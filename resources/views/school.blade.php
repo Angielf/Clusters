@@ -9,7 +9,7 @@
                         <h2>{{$user->fullname}} <br>
                             <small>{{$user->getDistrict->fullname}}</small>
                         </h2>
-                        @if ($user->cluster)
+                        {{-- @if ($user->cluster)
                             <p><b>Заявка на создание кластера отправлена</b></p>
                         @elseif ($user->status === 3)
                             <a href="clusters/create" class="btn btn-outline-primary btn-lg">Подать заявку на создание
@@ -21,10 +21,7 @@
                         @else
                             <a href="clusters/requestbaseschool/{{ $user->id }}" class="btn btn-outline-info btn">Подать
                                 заявку на базовую школу</a>
-                            {{--<div class="alert alert-warning" role="alert">--}}
-                            {{--К сожалению, вы не можете подавать заявку на создание образовательного кластера.--}}
-                            {{--</div>--}}
-                        @endif
+                        @endif --}}
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
