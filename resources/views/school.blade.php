@@ -28,7 +28,8 @@
                             </div>
                         @endif
                     </div>
-                    <h2 align="center"></h2>
+
+                    {{-- <h2 align="center"></h2>
                     <div class="card-body">
                         <h5 class="card-title">Региональные кластеры</h5>
                         <p class="card-text">
@@ -54,14 +55,14 @@
                             К сожалению, вы не состоите в региональных кластерах
                             @endif
                             </p>
-                    </div>
+                    </div> --}}
 
 
                     <ul class="card-body">
-                        <h5 class="card-title">Муниципальные кластеры </h5>
+                        {{-- <h5 class="card-title">Муниципальные кластеры </h5>
                         <p class="card-text">
-                        {{ $user->getClusters() }}
-                        <ul>
+                        {{ $user->getClusters() }} --}}
+                        {{-- <ul>
                             @if ($user->bids())
                                 @foreach( $user->bids() as $bid)
                                     <li class="list-group-item">
@@ -102,7 +103,6 @@
                                                                 class="btn btn-outline-success">
                                                                 Список учеников
                                                             </a><br>
-                                                        </div>
                                                     @else
                                                     <div class="col-md-3">
                                                         <a href="/student/{{ $bid->program->schedule->id }}"
@@ -118,13 +118,96 @@
                                     </li>
                                 @endforeach
                             @endif
-                        </ul>
+                        </ul> --}}
                         <br>
-                        <a href="bids/create" class="btn btn-outline-primary">Подать заявление на дефицит</a>
+
+                        <a href="bids/create" class="btn btn-outline-primary btn-block">
+                            Подать заявление на дефицит
+                        </a>
+                        <br>
+
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">Предмет/курс</th>
+                                <th scope="col">Статус заявки</th>
+                                <th scope="col">Заявка</th>
+                                <th scope="col">Расписание</th>
+                                <th scope="col">Список учеников</th>
+                                <th scope="col">Количество учеников</th>
+                                <th scope="col">Договор</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    @if ($user->bids())
+                                        @foreach( $user->bids() as $bid)
+                                        <tr>
+                                            <td>
+                                                {{ $bid->getClasses() }} {{ $bid->subject }} {{ $bid->modul }}
+                                            </td>
+                                            <td>
+                                                {!! $bid->getStatus() !!}
+                                            </td>
+                                            @if ($bid->status === 1)
+                                                <td>
+                                                    <a href="/files/programs/{{ $bid->program->filename }}"
+                                                       class="btn btn-outline-success">Программа</a>
+                                                </td>
+                                                @if ($bid->program->schedule)
+                                                    <td>
+                                                        <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
+                                                           class="btn btn-outline-success">Расписание</a><br>
+                                                        @if ($bid->program->schedule->status !== 1)
+                                                            <a href="schedule/add/{{ $bid->program->schedule->id }}"
+                                                               class="btn btn-outline-info btn-sm">Согласовать</a>
+                                                            <form action="{{ action('ScheduleController@delete',$bid->program->schedule->id) }}"
+                                                                  method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                        class="btn btn-outline-danger btn-sm">
+                                                                    Отклонить
+                                                                </button>
+                                                            </form>
+                                                        @endif
+                                                    </td>
+
+                                                    <td>
+                                                        @if ($bid->program->schedule->student)
+                                                            <a href="/files/students/{{ $bid->program->schedule->student->filename }}"
+                                                                class="btn btn-outline-success">
+                                                                Список учеников
+                                                            </a>
+                                                        @else
+                                                            <a href="/student/{{ $bid->program->schedule->id }}"
+                                                                class="btn btn-outline-danger btn-sm">
+                                                                    Добавить список учеников
+                                                            </a>
+                                                        @endif
+                                                    </td>
+
+                                                @endif
+                                            @endif
+                                        </tr>
+                                @endforeach
+                            @endif
+
+                                </tr>
+                            </tbody>
+                          </table>
+
+                        <a href="bids/add" class="btn btn-outline-primary btn-block">
+                            Предложить образовательную программу
+                        </a>
+
                     </ul>
-                    <a href="bids/add" class="btn btn-outline-primary">Предложить свою образовательную программу</a>
+
+                    {{-- <a href="bids/add" class="btn btn-outline-primary">Предложить образовательную программу</a> --}}
+
                     <div class="card-footer">
-                        <a data-toggle="collapse" href="#collapsePrograms" aria-expanded="false"
+                        {{-- <a data-toggle="collapse" href="#collapsePrograms" aria-expanded="false"
                            aria-controls="collapsePrograms">
                             <h4>Предлагаемые программы</h4>
                         </a>
@@ -143,8 +226,94 @@
                                     <a href="/files/programs/{{ $program->filename }}">Скачать программу</a><br>
                                 </div>
                             @endforeach
-                        </div>
+                        </div> --}}
+
+
+                        <div class="accordion" id="accordionExample">
+
+                            <div class="card">
+                              <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <a data-toggle="collapse" href="#collapsePrograms" aria-expanded="false"
+                                    aria-controls="collapsePrograms">
+                                        Предлагаемые программы
+                                    </a>
+                                </h5>
+                              </div>
+
+                              <div id="collapsePrograms" class="collapse"
+                                    aria-labelledby="collapsePrograms" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    @foreach( $programs as $program)
+                                        @php if ($program->bid->status !== 3) :
+                                                $class = 'alert-success';
+                                            else :
+                                                $class = 'alert-info';
+                                            endif;
+                                        @endphp
+
+                                        <div class="alert {{ $class }}" role="alert">
+                                            {{ $program->bid->subject }}
+                                            {{ $program->bid->getClasses() }} класс
+                                            {{ $program->bid->modul }}
+                                            <a href="/files/programs/{{ $program->filename }}">
+                                                Скачать программу
+                                            </a>
+                                            <br>
+                                        </div>
+                                    @endforeach
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                  <h5 class="mb-0">
+                                      <a data-toggle="collapse" href="#collapseDeficits" aria-expanded="false"
+                                      aria-controls="collapseDeficits">
+                                          Дефициты школ
+                                      </a>
+                                  </h5>
+                                </div>
+
+                                <div id="collapseDeficits" class="collapse"
+                                      aria-labelledby="collapseDeficits" data-parent="#accordionExample">
+                                  <div class="card-body">
+                                    <table class="table table-stripe" id="collapseExample3">
+                                        <thead>
+                                        <tr>
+                                            <td>Организация</td>
+                                            <td>Класс</td>
+                                            <td>Предмет/курс</td>
+                                            <td>Раздел/модуль</td>
+                                            <td>Форма обучения</td>
+                                            <td>Условия реализации обучения</td>
+                                            <td>Комментарий</td>
+                                            <td>Предложить программу</td>
+                                        </tr>
+                                        </thead>
+                                        @foreach($bids_all as $bid)
+                                            @if(($bid->user_id != $user->id) and ($bid->user->district == $user->getDistrict->id))
+                                            <tr>
+                                                <td>{{ $bid->user->fullname }}</td>
+                                                <td>{{ $bid->getClasses() }}</td>
+                                                <td>{{ $bid->subject }}</td>
+                                                <td>{{ $bid->modul }}</td>
+                                                <td>{{ $bid->form_of_education }}</td>
+                                                <td>{{ $bid->form_education_implementation }}</td>
+                                                <td>{{ $bid->content }}</td>
+                                                <td></td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+
+                          </div>
                     </div>
+
                 </div>
             </div>
         </div>

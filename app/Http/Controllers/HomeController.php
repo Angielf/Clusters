@@ -67,7 +67,12 @@ class HomeController extends Controller
 
             $regional_cluster = RegionCluster::where('user_id', $user->id)->first();
 
-            return view('school', ['user' => $user, 'programs' => $programs, 'regional_cluster' => $regional_cluster]);
+            $bids_all = Bid::whereNull('cluster_id')
+                ->WhereNull('rc_cluster_id')
+                ->get();
+
+            return view('school', ['user' => $user, 'programs' => $programs, 'regional_cluster' => $regional_cluster,
+            'bids_all' => $bids_all]);
         }
     }
 }
