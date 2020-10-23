@@ -14,7 +14,7 @@ class AddForeignKeysToClustersTable extends Migration
     public function up()
     {
         Schema::table('clusters', function (Blueprint $table) {
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('district_id')->references('id')->on('districts');
         });
     }
