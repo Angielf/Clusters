@@ -130,8 +130,8 @@
                                                 @endif
                                             @endif
                                         </tr>
-                                @endforeach
-                            @endif
+                                        @endforeach
+                                    @endif
 
                                 </tr>
                             </tbody>
@@ -158,13 +158,17 @@
                         </thead>
                         <tbody>
                             @foreach( $programs as $program)
+
+                            {{-- ???? --}}
+                            {{-- @if($program->bid->user_id = $user->id) --}}
+
                                 {{-- @php if ($program->bid->status !== 3) :
                                     $class = 'alert-success';
                                 else :
                                     $class = 'alert-info';
                                 endif;
                                 @endphp --}}
-                                <div class="alert {{ $class }}" role="alert">
+                                <tr>
                                     <td>
                                         {{ $program->bid->getClasses() }}
                                     </td>
@@ -178,8 +182,9 @@
                                     <td>{{ $program->bid->form_education_implementation }}</td>
                                     <td>{{ $program->bid->content }}</td>
                                     <td><a href="/files/programs/{{ $program->filename }}">Скачать программу</a></td>
-                                </div>
+                                </tr>
 
+                            {{-- @endif --}}
                             @endforeach
                         </tbody>
                     </table>
@@ -222,7 +227,7 @@
                                                     $class = 'alert-info';
                                                 endif;
                                                 @endphp --}}
-                                                <tr class="alert {{ $class }}" role="alert">
+                                                <tr class="alert alert-info" role="alert">
                                                     <td>
                                                         {{ $program->bid->getClasses() }}
                                                     </td>
@@ -289,9 +294,9 @@
                                     </table>
                                   </div>
                                 </div>
-                              </div>
+                            </div>
 
-                          </div>
+                        </div>
                     </div>
 
                 </div>
