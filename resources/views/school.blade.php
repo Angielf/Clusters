@@ -65,6 +65,8 @@
                         </a>
                         <br>
 
+                        <h5 align="center">Ваши заявления на дефицит</h5>
+
                         <table class="table table-striped">
                             <thead>
                               <tr>
@@ -165,6 +167,9 @@
                     <a href="bids/add" class="btn btn-outline-primary btn-block">
                         Предложить образовательную программу
                     </a>
+                    <br>
+
+                    <h5 align="center">Предлогаемые вами программы</h5>
 
                     <table class="table table-striped">
                         <thead>
@@ -220,7 +225,7 @@
                                 <h5 class="mb-0">
                                     <a data-toggle="collapse" href="#collapsePrograms" aria-expanded="false"
                                     aria-controls="collapsePrograms">
-                                        Предлагаемые программы
+                                        Предлагаемые программы других школ вашего муниципалитета
                                     </a>
                                 </h5>
                               </div>
@@ -279,7 +284,7 @@
                                   <h5 class="mb-0">
                                       <a data-toggle="collapse" href="#collapseDeficits" aria-expanded="false"
                                       aria-controls="collapseDeficits">
-                                          Дефициты школ
+                                          Дефициты других школ вашего муниципалитета
                                       </a>
                                   </h5>
                                 </div>
