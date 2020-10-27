@@ -89,10 +89,32 @@
                                             <td>
                                                 {!! $bid->getStatus() !!}
                                             </td>
-                                            @if ($bid->status === 1)
+                                            @if ($bid->status === 9)
                                                 <td>
-                                                    <a href="/files/programs/{{ $bid->program->filename }}"
-                                                       class="btn btn-outline-success">Программа</a>
+                                                    @foreach($bid->programs() as $program)
+
+                                                    <p>
+                                                        <a href="/files/programs/{{ $program->filename }}"
+                                                            class="btn btn-outline-success">
+                                                            Программа
+                                                        </a>
+                                                        @if ($program->status !== 1)
+                                                            <a href="program/add/{{ $program->id }}"
+                                                                class="btn btn-outline-info btn-sm">
+                                                                Согласовать
+                                                            </a>
+                                                            <form action="{{ action('ProgramController@delete',$program->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                        class="btn btn-outline-danger btn-sm">
+                                                                    Отклонить
+                                                                </button>
+                                                            </form>
+                                                        @endif
+                                                    </p>
+                                                    @endforeach
                                                 </td>
                                                 @if ($bid->program->schedule)
                                                     <td>
@@ -169,7 +191,7 @@
                                 endif;
                                 @endphp --}}
                                 <tr>
-                                    <td>
+                                    {{-- <td>
                                         {{ $program->bid->getClasses() }}
                                     </td>
                                     <td>
@@ -181,7 +203,7 @@
                                     <td>{{ $program->bid->form_of_education }}</td>
                                     <td>{{ $program->bid->form_education_implementation }}</td>
                                     <td>{{ $program->bid->content }}</td>
-                                    <td><a href="/files/programs/{{ $program->filename }}">Скачать программу</a></td>
+                                    <td><a href="/files/programs/{{ $program->filename }}">Скачать программу</a></td> --}}
                                 </tr>
 
                             {{-- @endif --}}
@@ -221,6 +243,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach( $programs as $program)
+                                            @if($program->bid->user_id != $user->id)
                                                 {{-- @php if ($program->bid->status !== 3) :
                                                     $class = 'alert-success';
                                                 else :
@@ -228,7 +251,7 @@
                                                 endif;
                                                 @endphp --}}
                                                 <tr class="alert alert-info" role="alert">
-                                                    <td>
+                                                    {{-- <td>
                                                         {{ $program->bid->getClasses() }}
                                                     </td>
                                                     <td>
@@ -241,9 +264,9 @@
                                                     <td>{{ $program->bid->form_education_implementation }}</td>
                                                     <td>{{ $program->bid->content }}</td>
                                                     <td><a href="/files/programs/{{ $program->filename }}">Скачать программу</a></td>
-                                                    <td></td>
+                                                    <td></td> --}}
                                                 </tr>
-
+                                            @endif
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -275,6 +298,7 @@
                                             <td>Условия реализации обучения</td>
                                             <td>Комментарий</td>
                                             <td>Предложить программу</td>
+                                            <td>Предложить расписание</td>
                                         </tr>
                                         </thead>
                                         @foreach($bids_all as $bid)
@@ -287,6 +311,22 @@
                                                 <td>{{ $bid->form_of_education }}</td>
                                                 <td>{{ $bid->form_education_implementation }}</td>
                                                 <td>{{ $bid->content }}</td>
+                                                <td>
+                                                    @if ($bid->status !== 1)
+                                                        <a href="/program/{{ $bid->id }}"
+                                                            class="btn btn-outline-danger btn-sm">
+                                                            Добавить программу
+                                                        </a>
+                                                        @else
+                                                            <a href="/files/programs/{{ $bid->program->filename }}"
+                                                                class="btn btn-outline-success btn-sm">Программа</a>
+                                                    {{-- @else
+                                                        <a href="/files/programs/{{ $bid->program->filename }}"
+                                                           class="btn btn-outline-success btn-sm">Программа</a> --}}
+                                                    @endif
+
+                                                </td>
+
                                                 <td></td>
                                             </tr>
                                             @endif

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class ProgramController extends Controller
 {
     private const BID_AOPROVED = 1;
+    private const PROGRAM_NEW = 9;
 
     public function index($id)
     {
@@ -27,15 +28,19 @@ class ProgramController extends Controller
             $file_name = $id . time() . '.' . $request->program->extension();
             $file->move(public_path() . '/files/programs/', $file_name);
 
+            $school_program_id = $user->id;
+
             $program = new Program([
                 'filename' => $file_name,
                 'bid_id' => $id,
+                'school_program_id' => $school_program_id,
             ]);
 
             $program->save();
 
             $bid = Bid::where('id', $id)->first();
-            $bid->status = self::BID_AOPROVED;
+            // $bid->status = self::BID_AOPROVED;
+            $bid->status = self::PROGRAM_NEW;
             if ($cluster = $user->cluster) {
                 $bid->cluster_id = $cluster->id;
             }
@@ -43,6 +48,26 @@ class ProgramController extends Controller
             $bid->save();
 
         }
-        return redirect('/')->with('success', 'Программа добавленар добавлена!');
+        return redirect('/')->with('success', 'Программа добавлена!');
+    }
+
+
+    public function delete(Program $program)
+    {
+        $program->delete();
+
+        return redirect('/');
+    }
+
+    public function approve(Program $program)
+    {
+        $program->status = 1;
+
+        $bid = Bid::where('id', $program->bid->id)->first();
+        $bid->status = 1;
+        $program->save();
+        $bid->save();
+
+        return redirect('/');
     }
 }

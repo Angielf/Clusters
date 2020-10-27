@@ -20,6 +20,14 @@ class Bid extends Model
         return $this->hasOne(Program::class);
     }
 
+    public function programs()
+    {
+        if ($programs = Program::where('bid_id', $this->id)->get()) {
+            return $programs;
+        } else return false;
+
+    }
+
     public function getStatus()
     {
         switch ($this->status) {
@@ -27,6 +35,8 @@ class Bid extends Model
             case 1: return '<div class="alert alert-success" role="alert">Одобрена</div>';
             case 2: return '<div class="alert alert-danger" role="alert">Отклонена</div>';
             case 3: return '<div class="alert alert-info" role="alert">Своя программа</div>';
+
+            case 9: return '<div class="alert alert-info" role="alert">Поступило предложение</div>';
         }
     }
 

@@ -49,9 +49,17 @@ Route::resource('clusters', 'ClusterController');
 
 Route::get('/clusters/addoneschool/{baseSchoolId}', 'ClusterController@addoneschool');
 
+
+
 Route::get('/program/{id}', 'ProgramController@index');
 
+Route::get('/program/add/{program}', 'ProgramController@approve');
+
 Route::post('/program/{id}', 'ProgramController@add');
+
+Route::delete('/program/{program}', 'ProgramController@delete');
+
+
 
 Route::get('/schedule/{id}', 'ScheduleController@index');
 
