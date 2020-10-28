@@ -76,4 +76,9 @@ class User extends Authenticatable
         }
         return "Вы не состоите в муниципальных кластерах";
     }
+
+
+    // public function sender() {
+    //     return $this->belongsTo('Program', 'school_program_id');
+    // }
 }

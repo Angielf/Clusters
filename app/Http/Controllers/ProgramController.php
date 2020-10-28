@@ -30,8 +30,10 @@ class ProgramController extends Controller
             $file->move(public_path() . '/files/programs/', $file_name);
 
             // $user_of_program = $request->program->sender();
-            $user_of_program = User::where('id', $id)->first();
+            $id_of_user = Auth::user()->id;
+            $user_of_program = User::where('id', $id_of_user)->first();
             $school_program_id = $user_of_program->id;
+
 
             $program = new Program([
                 'filename' => $file_name,

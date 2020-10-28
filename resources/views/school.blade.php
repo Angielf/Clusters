@@ -91,35 +91,71 @@
                                             <td>
                                                 {!! $bid->getStatus() !!}
                                             </td>
-                                            @if ($bid->status === 9)
+                                            {{-- @if ($bid->status !== 1) --}}
                                                 <td>
-                                                    @foreach($bid->programs() as $program)
+                                                    @if ($bid->status === 9)
+                                                        @foreach($bid->programs() as $program)
 
-                                                    <p>
-                                                        {{-- {{$program->sender()}} --}}
-                                                        <a href="/files/programs/{{ $program->filename }}"
-                                                            class="btn btn-outline-success">
-                                                            Программа
-                                                        </a>
-                                                        @if ($program->status !== 1)
-                                                            <a href="program/add/{{ $program->id }}"
-                                                                class="btn btn-outline-info btn-sm">
-                                                                Согласовать
-                                                            </a>
-                                                            <form action="{{ action('ProgramController@delete',$program->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit"
-                                                                        class="btn btn-outline-danger btn-sm">
-                                                                    Отклонить
-                                                                </button>
-                                                            </form>
-                                                        @endif
-                                                    </p>
-                                                    @endforeach
+                                                            @if ($program->status !== 2)
+                                                                <div class="card" style="width: 18rem;">
+                                                                    <div class="card-body">
+                                                                        <h6 class="card-title">
+                                                                            {{$program->sender()->first()->fullname}}
+                                                                        </h6>
+                                                                        <p>
+                                                                            <a href="/files/programs/{{ $program->filename }}"
+                                                                                class="btn btn-outline-success">
+                                                                                Программа
+                                                                            </a>
+                                                                            @if ($program->status !== 1)
+                                                                                <p>
+                                                                                    <a href="program/add/{{ $program->id }}"
+                                                                                        class="btn btn-outline-info btn">
+                                                                                        Согласовать
+                                                                                    </a>
+                                                                                <p>
+
+                                                                                <form action="{{ action('ProgramController@delete',$program->id) }}"
+                                                                                    method="POST">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-outline-danger btn">
+                                                                                        Отклонить
+                                                                                    </button>
+                                                                                </form>
+                                                                            @endif
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                             @endif
+
+                                                        @endforeach
+
+                                                    @elseif($bid->status === 1)
+                                                        @foreach($bid->programs() as $program)
+                                                            @if($program->status === 1)
+                                                            <div class="card" style="width: 18rem;">
+                                                                <div class="card-body">
+                                                                    <h6 class="card-title">
+                                                                        {{$program->sender()->first()->fullname}}
+                                                                    </h6>
+                                                                    <p>
+                                                                        <a href="/files/programs/{{ $program->filename }}"
+                                                                            class="btn btn-outline-success">
+                                                                            Программа
+                                                                        </a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+
                                                 </td>
-                                                @if ($bid->program->schedule)
+                                                {{-- @endif --}}
+
+                                                @if (($bid->status === 1) and ($bid->program->schedule))
                                                     <td>
                                                         <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
                                                            class="btn btn-outline-success">Расписание</a><br>
@@ -138,6 +174,7 @@
                                                         @endif
                                                     </td>
 
+                                                    @if($bid->program->schedule->status === 1)
                                                     <td>
                                                         @if ($bid->program->schedule->student)
                                                             <a href="/files/students/{{ $bid->program->schedule->student->filename }}"
@@ -151,9 +188,10 @@
                                                             </a>
                                                         @endif
                                                     </td>
+                                                    @endif
 
                                                 @endif
-                                            @endif
+
                                         </tr>
                                         @endforeach
                                     @endif
@@ -319,21 +357,59 @@
                                                 <td>{{ $bid->content }}</td>
                                                 <td>
                                                     @if ($bid->status !== 1)
+                                                        {{-- @if()
+
+                                                        @endif --}}
                                                         <a href="/program/{{ $bid->id }}"
                                                             class="btn btn-outline-danger btn-sm">
                                                             Добавить программу
                                                         </a>
-                                                        @else
-                                                            <a href="/files/programs/{{ $bid->program->filename }}"
-                                                                class="btn btn-outline-success btn-sm">Программа</a>
-                                                    {{-- @else
-                                                        <a href="/files/programs/{{ $bid->program->filename }}"
-                                                           class="btn btn-outline-success btn-sm">Программа</a> --}}
+                                                    @else
+                                                        @foreach($bid->programs() as $program)
+                                                            @if($program->school_program_id === $user->id)
+                                                                @if($program->status === 1)
+                                                                    <p>
+                                                                        {!! $bid->program->getStatus() !!}
+                                                                    </p>
+
+                                                                    <a href="/files/programs/{{ $bid->program->filename }}"
+                                                                        class="btn btn-outline-success btn-sm">
+                                                                        Программа
+                                                                    </a>
+
+                                                                    <td>
+                                                                        @if ($bid->program->schedule)
+                                                                            @if($bid->program->schedule->status !== 2)
+                                                                                <p>
+                                                                                    {!! $bid->program->schedule->getStatus() !!}
+                                                                                </p>
+                                                                                <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
+                                                                                    class="btn btn-outline-success btn-sm">
+                                                                                    Расписание
+                                                                                </a>
+                                                                            @endif
+                                                                        @else
+                                                                            <a href="/schedule/{{ $bid->program->id }}"
+                                                                                class="btn btn-outline-danger btn-sm">
+                                                                                Добавить расписание
+                                                                            </a>
+                                                                        @endif
+                                                                    </td>
+
+
+                                                                @elseif($program->status === 2)
+                                                                    <p>
+                                                                        <div class="alert alert-danger">
+                                                                            Программа отклонена
+                                                                        </div>
+                                                                    </p>
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+
                                                     @endif
 
                                                 </td>
-
-                                                <td></td>
                                             </tr>
                                             @endif
                                         @endforeach

@@ -32,6 +32,6 @@ class Program extends Model
 
 
     public function sender() {
-        return $this->belongsTo('User', 'school_program_id');
+        return $this->belongsTo(User::class, 'school_program_id', 'id');
     }
 }
