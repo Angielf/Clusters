@@ -96,6 +96,7 @@
                                                     @foreach($bid->programs() as $program)
 
                                                     <p>
+                                                        {{-- {{$program->sender()}} --}}
                                                         <a href="/files/programs/{{ $program->filename }}"
                                                             class="btn btn-outline-success">
                                                             Программа
@@ -169,7 +170,7 @@
                     </a>
                     <br>
 
-                    <h5 align="center">Предлогаемые вами программы</h5>
+                    <h5 align="center">Предлагаемые вами программы</h5>
 
                     <table class="table table-striped">
                         <thead>

@@ -8,7 +8,7 @@ class Program extends Model
 {
     protected $table = 'programs';
 
-    protected $fillable = ['bid_id', 'filename'];
+    protected $fillable = ['bid_id', 'filename', 'school_program_id'];
 
     public function bid()
     {
@@ -28,5 +28,10 @@ class Program extends Model
             case 1: return '<div class="alert alert-success" role="alert">Одобрена</div>';
             case 2: return '<div class="alert alert-danger" role="alert">Отклонена</div>';
         }
+    }
+
+
+    public function sender() {
+        return $this->belongsTo('User', 'school_program_id');
     }
 }
