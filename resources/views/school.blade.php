@@ -181,6 +181,13 @@
                                                                 class="btn btn-outline-success">
                                                                 Список учеников
                                                             </a>
+
+                                                            <td>
+                                                                <p>
+                                                                    {{ $bid->program->schedule->student->students_amount }}
+                                                                </p>
+                                                            </td>
+
                                                         @else
                                                             <a href="/student/{{ $bid->program->schedule->id }}"
                                                                 class="btn btn-outline-danger btn-sm">
@@ -335,25 +342,43 @@
                                         <thead>
                                         <tr>
                                             <td>Организация</td>
-                                            <td>Класс</td>
-                                            <td>Предмет/курс</td>
-                                            <td>Раздел/модуль</td>
-                                            <td>Форма обучения</td>
-                                            <td>Условия реализации обучения</td>
+
+                                            {{-- <td>Класс</td> --}}
+
+                                            <td>Класс/ Предмет(курс)/ Раздел(модуль)</td>
+                                            {{-- <td>Раздел/модуль</td> --}}
+
+                                            <td>Форма обучения/ Условия реализации обучения</td>
+                                            {{-- <td>Условия реализации обучения</td> --}}
+
                                             <td>Комментарий</td>
                                             <td>Предложить программу</td>
                                             <td>Предложить расписание</td>
+                                            <td>Кол-во учеников/Список</td>
+                                            <td>Договор</td>
+
                                         </tr>
                                         </thead>
                                         @foreach($bids_all as $bid)
                                             @if(($bid->user_id != $user->id) and ($bid->user->district == $user->getDistrict->id))
                                             <tr>
                                                 <td>{{ $bid->user->fullname }}</td>
-                                                <td>{{ $bid->getClasses() }}</td>
-                                                <td>{{ $bid->subject }}</td>
-                                                <td>{{ $bid->modul }}</td>
-                                                <td>{{ $bid->form_of_education }}</td>
-                                                <td>{{ $bid->form_education_implementation }}</td>
+
+                                                {{-- <td>{{ $bid->getClasses() }}</td> --}}
+
+                                                <td>
+                                                    <p>{{ $bid->getClasses() }}</p>
+                                                    <p>{{ $bid->subject }}</p>
+                                                    <p>{{ $bid->modul }}</p>
+                                                </td>
+                                                {{-- <td>{{ $bid->modul }}</td> --}}
+
+                                                <td>
+                                                    <p>{{ $bid->form_of_education }}</p>
+                                                    <p>{{ $bid->form_education_implementation }}</p>
+                                                </td>
+                                                {{-- <td>{{ $bid->form_education_implementation }}</td> --}}
+
                                                 <td>{{ $bid->content }}</td>
                                                 <td>
                                                     @if ($bid->status !== 1)
@@ -395,6 +420,26 @@
                                                                             </a>
                                                                         @endif
                                                                     </td>
+
+                                                                    @if($bid->program->schedule->status === 1)
+                                                                        <td>
+                                                                            @if ($bid->program->schedule->student)
+                                                                                <p>
+                                                                                    {{ $bid->program->schedule->student->students_amount }}
+                                                                                </p>
+                                                                                <a href="/files/students/{{ $bid->program->schedule->student->filename }}"
+                                                                                    class="btn btn-outline-success">
+                                                                                    Список учеников
+                                                                                </a>
+
+                                                                                <td>
+
+                                                                                </td>
+
+
+                                                                            @endif
+                                                                        </td>
+                                                                    @endif
 
 
                                                                 @elseif($program->status === 2)

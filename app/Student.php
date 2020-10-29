@@ -8,7 +8,7 @@ class Student extends Model
 {
     protected $table = 'students';
 
-    protected $fillable = ['schedule_id', 'filename'];
+    protected $fillable = ['schedule_id', 'filename', 'students_amount'];
 
     public function schedule()
     {

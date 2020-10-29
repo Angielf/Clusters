@@ -9,6 +9,7 @@ use App\District;
 use App\Program;
 use App\RegionCluster;
 use App\User;
+use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -49,30 +50,36 @@ class HomeController extends Controller
 
             return view('clusters.index', ['clusters' => $clusters, 'region_clusters' => $region_clusters, 'bids' => $bids, 'request_base_schools' => $request_base_schools]);
 
-        } elseif ($user->status === self::BASE_SCHOOL) {
-            $district = District::where('id', $user->district)->first();
-            $cluster = Cluster::where('user_id', $user->id)->first();
-            $schools = json_decode($cluster->schools, true);
-            $programs = Program::all();
+        // } elseif ($user->status === self::BASE_SCHOOL) {
+        //     $district = District::where('id', $user->district)->first();
+        //     $cluster = Cluster::where('user_id', $user->id)->first();
+        //     $schools = json_decode($cluster->schools, true);
+        //     $programs = Program::all();
 
-            return view('base', ['user' => $user, 'cluster' => $cluster, 'district' => $district, 'programs' => $programs, 'schools' => $schools]);
+        //     return view('base', ['user' => $user, 'cluster' => $cluster, 'district' => $district, 'programs' => $programs, 'schools' => $schools]);
 
-        } elseif ($user->status === self::REGIONAL_CLUSTER) {
-            $region_clusters = RegionCluster::all();
+        // } elseif ($user->status === self::REGIONAL_CLUSTER) {
+        //     $region_clusters = RegionCluster::all();
 
-            return view('region-cluster', ['user' => $user, 'region_clusters' => $region_clusters]);
+        //     return view('region-cluster', ['user' => $user, 'region_clusters' => $region_clusters]);
 
         } else {
             $programs = Program::all();
 
-            $regional_cluster = RegionCluster::where('user_id', $user->id)->first();
+            // $regional_cluster = RegionCluster::where('user_id', $user->id)->first();
 
             $bids_all = Bid::whereNull('cluster_id')
                 ->WhereNull('rc_cluster_id')
                 ->get();
 
-            return view('school', ['user' => $user, 'programs' => $programs, 'regional_cluster' => $regional_cluster,
-            'bids_all' => $bids_all]);
+            $students = Student::all();
+
+            return view('school', ['user' => $user,
+                                    'programs' => $programs,
+                                    'bids_all' => $bids_all,
+                                    'students' => $students]);
+
+            // 'regional_cluster' => $regional_cluster,
         }
     }
 }

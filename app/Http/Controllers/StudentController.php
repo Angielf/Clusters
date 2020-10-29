@@ -17,15 +17,18 @@ class StudentController extends Controller
 
     public function add(Request $request, $id)
     {
-        if($request->hasFile('student')) {
-            $file = $request->file('student');
-            $file_name = $id . time() . '.' . $request->student->extension();
+        if($request->hasFile('students')) {
+            $file = $request->file('students');
+            $file_name = $id . time() . '.' . $request->students->extension();
             $file->move(public_path() . '/files/students/', $file_name);
 
             $student = new Student([
                 'filename' => $file_name,
                 'schedule_id' => $id,
+                'students_amount' => $request->post('student'),
             ]);
+
+            $student->status = 1;
 
             $student->save();
 
