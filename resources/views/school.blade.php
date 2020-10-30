@@ -425,10 +425,10 @@
                                                                 @endif
 
 
-                                                            @else
+                                                            {{-- @else
                                                                 <p class="alert alert-dark" role="alert">
                                                                     Программа выполняется другой школой
-                                                                </p>
+                                                                </p> --}}
 
                                                             @endif
                                                         @endforeach
