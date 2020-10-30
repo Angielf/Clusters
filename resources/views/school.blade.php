@@ -298,9 +298,17 @@
                                                 <td>
                                                     @if ($bid->status !== 1)
 
+                                                        @foreach($bid->programs() as $program)
+                                                            @if($program->school_program_id === $user->id)
+                                                                <p class="alert alert-info" role="alert">
+                                                                    Программа отправлена
+                                                                </p>
+                                                            @endif
+                                                        @endforeach
+
                                                         <a href="/program/{{ $bid->id }}"
                                                             class="btn btn-outline-danger">
-                                                            Добавить программу
+                                                            Предложить программу
                                                         </a>
                                                     {{-- @elseif($bid->program->school_program_id === $user->id)
                                                     <a href="/files/programs/{{ $bid->program->filename }}"
