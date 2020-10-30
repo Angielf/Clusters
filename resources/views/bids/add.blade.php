@@ -78,6 +78,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="modul">Кол-во часов:</label>
+                        <input type="text" class="form-control" name="hours"/>
+                    </div>
+
+                    <div class="form-group">
                         <label for="form_of_education">Форма обучения</label>
                         <select class="form-control" name="form_of_education">
                             <option value=""></option>

@@ -59,10 +59,10 @@ class ProgramController extends Controller
 
     public function delete(Program $program)
     {
-        // $program->delete();
+        $program->delete();
 
-        $program->status = 2;
-        $program->save();
+        // $program->status = 2;
+        // $program->save();
 
 
         return redirect('/');

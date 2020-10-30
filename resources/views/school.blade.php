@@ -70,7 +70,9 @@
                         <table class="table table-striped">
                             <thead>
                               <tr>
-                                <th scope="col">Предмет/курс</th>
+                                <th scope="col">
+                                    Класс/предмет/курс
+                                </th>
                                 <th scope="col">Статус заявки</th>
                                 <th scope="col">Заявка</th>
                                 <th scope="col">Расписание</th>
@@ -86,7 +88,11 @@
                                         @foreach( $user->bids() as $bid)
                                         <tr>
                                             <td>
-                                                {{ $bid->getClasses() }} {{ $bid->subject }} {{ $bid->modul }}
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">{{ $bid->getClasses() }}</li>
+                                                    <li class="list-group-item">{{ $bid->subject }} </li>
+                                                    <li class="list-group-item">{{ $bid->modul }}</li>
+                                                </ul>
                                             </td>
                                             <td>
                                                 {!! $bid->getStatus() !!}
@@ -157,17 +163,17 @@
 
                                                 @if (($bid->status === 1) and ($bid->program->schedule))
                                                     <td>
-                                                        <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
-                                                           class="btn btn-outline-success">Расписание</a><br>
+                                                        <p><a href="/files/schedules/{{ $bid->program->schedule->filename }}"
+                                                           class="btn btn-outline-success">Расписание</a><br></p>
                                                         @if ($bid->program->schedule->status !== 1)
-                                                            <a href="schedule/add/{{ $bid->program->schedule->id }}"
-                                                               class="btn btn-outline-info btn-sm">Согласовать</a>
+                                                            <p><a href="schedule/add/{{ $bid->program->schedule->id }}"
+                                                               class="btn btn-outline-info">Согласовать</a></p>
                                                             <form action="{{ action('ScheduleController@delete',$bid->program->schedule->id) }}"
                                                                   method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit"
-                                                                        class="btn btn-outline-danger btn-sm">
+                                                                        class="btn btn-outline-danger">
                                                                     Отклонить
                                                                 </button>
                                                             </form>
@@ -188,9 +194,25 @@
                                                                 </p>
                                                             </td>
 
+                                                            <td>
+                                                                @if ($bid->program->schedule->student->agreement())
+                                                                    <a href="/files/agreements/{{ $bid->program->schedule->student->filename }}"
+                                                                        class="btn btn-outline-success">
+                                                                        Договор
+                                                                    </a>
+                                                                @else
+                                                                    <a href="/agreement/{{ $bid->program->schedule->student->id }}"
+                                                                        class="btn btn-outline-danger">
+                                                                            Добавить договор
+                                                                    </a>
+                                                                @endif
+
+
+                                                            </td>
+
                                                         @else
                                                             <a href="/student/{{ $bid->program->schedule->id }}"
-                                                                class="btn btn-outline-danger btn-sm">
+                                                                class="btn btn-outline-danger">
                                                                     Добавить список учеников
                                                             </a>
                                                         @endif
@@ -210,120 +232,12 @@
                     </ul>
 
 
-                    <a href="bids/add" class="btn btn-outline-primary btn-block">
-                        Предложить образовательную программу
-                    </a>
-                    <br>
-
-                    <h5 align="center">Предлагаемые вами программы</h5>
-
-                    <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <td>Класс</td>
-                            <td>Предмет/курс</td>
-                            <td>Раздел/модуль</td>
-                            <td>Форма обучения</td>
-                            <td>Условия реализации обучения</td>
-                            <td>Комментарий</td>
-                            <td>Файл</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            @foreach( $programs as $program)
-
-                            {{-- ???? --}}
-                            {{-- @if($program->bid->user_id = $user->id) --}}
-
-                                {{-- @php if ($program->bid->status !== 3) :
-                                    $class = 'alert-success';
-                                else :
-                                    $class = 'alert-info';
-                                endif;
-                                @endphp --}}
-                                <tr>
-                                    {{-- <td>
-                                        {{ $program->bid->getClasses() }}
-                                    </td>
-                                    <td>
-                                        {{ $program->bid->subject }}
-                                    </td>
-                                    <td>
-                                        {{ $program->bid->modul }}
-                                    </td>
-                                    <td>{{ $program->bid->form_of_education }}</td>
-                                    <td>{{ $program->bid->form_education_implementation }}</td>
-                                    <td>{{ $program->bid->content }}</td>
-                                    <td><a href="/files/programs/{{ $program->filename }}">Скачать программу</a></td> --}}
-                                </tr>
-
-                            {{-- @endif --}}
-                            @endforeach
-                        </tbody>
-                    </table>
 
 
                     <div class="card-footer">
                         <div class="accordion" id="accordionExample">
 
-                            <div class="card">
-                              <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <a data-toggle="collapse" href="#collapsePrograms" aria-expanded="false"
-                                    aria-controls="collapsePrograms">
-                                        Предлагаемые программы других школ вашего муниципалитета
-                                    </a>
-                                </h5>
-                              </div>
 
-                              <div id="collapsePrograms" class="collapse"
-                                    aria-labelledby="collapsePrograms" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <table class="table table-striped">
-                                        <thead>
-                                          <tr>
-                                            <td>Класс</td>
-                                            <td>Предмет/курс</td>
-                                            <td>Раздел/модуль</td>
-                                            <td>Форма обучения</td>
-                                            <td>Условия реализации обучения</td>
-                                            <td>Комментарий</td>
-                                            <td>Файл</td>
-                                            <td>Взять программу</td>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach( $programs as $program)
-                                            @if($program->bid->user_id != $user->id)
-                                                {{-- @php if ($program->bid->status !== 3) :
-                                                    $class = 'alert-success';
-                                                else :
-                                                    $class = 'alert-info';
-                                                endif;
-                                                @endphp --}}
-                                                <tr class="alert alert-info" role="alert">
-                                                    {{-- <td>
-                                                        {{ $program->bid->getClasses() }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $program->bid->subject }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $program->bid->modul }}
-                                                    </td>
-                                                    <td>{{ $program->bid->form_of_education }}</td>
-                                                    <td>{{ $program->bid->form_education_implementation }}</td>
-                                                    <td>{{ $program->bid->content }}</td>
-                                                    <td><a href="/files/programs/{{ $program->filename }}">Скачать программу</a></td>
-                                                    <td></td> --}}
-                                                </tr>
-                                            @endif
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                              </div>
-                            </div>
 
                             <div class="card">
                                 <div class="card-header" id="headingTwo">
@@ -341,21 +255,21 @@
                                     <table class="table table-stripe" id="collapseExample3">
                                         <thead>
                                         <tr>
-                                            <td>Организация</td>
+                                            <th scope="col">Организация</th>
 
                                             {{-- <td>Класс</td> --}}
 
-                                            <td>Класс/ Предмет(курс)/ Раздел(модуль)</td>
+                                            <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
                                             {{-- <td>Раздел/модуль</td> --}}
 
-                                            <td>Форма обучения/ Условия реализации обучения</td>
+                                            <th scope="col">Форма обучения/ Условия реализации обучения</th>
                                             {{-- <td>Условия реализации обучения</td> --}}
 
-                                            <td>Комментарий</td>
-                                            <td>Предложить программу</td>
-                                            <td>Предложить расписание</td>
-                                            <td>Кол-во учеников/Список</td>
-                                            <td>Договор</td>
+                                            <th scope="col">Комментарий</th>
+                                            <th scope="col">Предложить программу</th>
+                                            <th scope="col">Предложить расписание</th>
+                                            <th scope="col">Кол-во учеников/Список</th>
+                                            <th scope="col">Договор</th>
 
                                         </tr>
                                         </thead>
@@ -370,6 +284,7 @@
                                                     <p>{{ $bid->getClasses() }}</p>
                                                     <p>{{ $bid->subject }}</p>
                                                     <p>{{ $bid->modul }}</p>
+                                                    <p>{{ $bid->hours }}</p>
                                                 </td>
                                                 {{-- <td>{{ $bid->modul }}</td> --}}
 
@@ -382,46 +297,87 @@
                                                 <td>{{ $bid->content }}</td>
                                                 <td>
                                                     @if ($bid->status !== 1)
-                                                        {{-- @if()
 
-                                                        @endif --}}
                                                         <a href="/program/{{ $bid->id }}"
-                                                            class="btn btn-outline-danger btn-sm">
+                                                            class="btn btn-outline-danger">
                                                             Добавить программу
                                                         </a>
+                                                    {{-- @elseif($bid->program->school_program_id === $user->id)
+                                                    <a href="/files/programs/{{ $bid->program->filename }}"
+                                                        class="btn btn-outline-success">
+                                                        Программа
+                                                    </a> --}}
                                                     @else
                                                         @foreach($bid->programs() as $program)
                                                             @if($program->school_program_id === $user->id)
                                                                 @if($program->status === 1)
-                                                                    <p>
+                                                                    {{-- <p>
                                                                         {!! $bid->program->getStatus() !!}
+                                                                    </p> --}}
+                                                                    <p class="alert alert-success" role="alert">
+                                                                        Одобрена
                                                                     </p>
 
                                                                     <a href="/files/programs/{{ $bid->program->filename }}"
-                                                                        class="btn btn-outline-success btn-sm">
+                                                                        class="btn btn-outline-success">
                                                                         Программа
                                                                     </a>
 
+                                                                    @if ($bid->program->schedule)
+                                                                        <td>
+                                                                            {{-- @if ($bid->program->schedule) --}}
+                                                                                @if($bid->program->schedule->status !== 2)
+                                                                                    <p>
+                                                                                        {!! $bid->program->schedule->getStatus() !!}
+                                                                                    </p>
+                                                                                    <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
+                                                                                        class="btn btn-outline-success">
+                                                                                        Расписание
+                                                                                    </a>
+                                                                                @endif
+                                                                        </td>
+                                                                        @if($bid->program->schedule->status === 1)
+                                                                            <td>
+                                                                                @if ($bid->program->schedule->student)
+                                                                                    <p>
+                                                                                        {{ $bid->program->schedule->student->students_amount }}
+                                                                                    </p>
+                                                                                    <a href="/files/students/{{ $bid->program->schedule->student->filename }}"
+                                                                                        class="btn btn-outline-success">
+                                                                                        Список учеников
+                                                                                    </a>
+
+                                                                                    <td>
+                                                                                        @if ($bid->program->schedule->student->agreement())
+                                                                                            <a href="/files/agreements/{{ $bid->program->schedule->student->filename }}"
+                                                                                                class="btn btn-outline-success">
+                                                                                                Договор
+                                                                                            </a>
+                                                                                        {{-- @else
+                                                                                            <a href="/agreement/{{ $bid->program->schedule->student->id }}"
+                                                                                                class="btn btn-outline-danger">
+                                                                                                    Добавить договор
+                                                                                            </a> --}}
+                                                                                        @endif
+                                                                                    </td>
+
+
+                                                                                @endif
+                                                                            </td>
+                                                                        @endif
+
+                                                                    @else
                                                                     <td>
-                                                                        @if ($bid->program->schedule)
-                                                                            @if($bid->program->schedule->status !== 2)
-                                                                                <p>
-                                                                                    {!! $bid->program->schedule->getStatus() !!}
-                                                                                </p>
-                                                                                <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
-                                                                                    class="btn btn-outline-success btn-sm">
-                                                                                    Расписание
-                                                                                </a>
-                                                                            @endif
-                                                                        @else
+
                                                                             <a href="/schedule/{{ $bid->program->id }}"
-                                                                                class="btn btn-outline-danger btn-sm">
+                                                                                class="btn btn-outline-danger">
                                                                                 Добавить расписание
                                                                             </a>
-                                                                        @endif
-                                                                    </td>
 
-                                                                    @if($bid->program->schedule->status === 1)
+                                                                    </td>
+                                                                    @endif
+
+                                                                    {{-- @if($bid->program->schedule->status === 1)
                                                                         <td>
                                                                             @if ($bid->program->schedule->student)
                                                                                 <p>
@@ -433,13 +389,23 @@
                                                                                 </a>
 
                                                                                 <td>
-
+                                                                                    @if ($bid->program->schedule->student->agreement)
+                                                                                        <a href="/files/agreements/{{ $bid->program->schedule->student->agreement->filename }}"
+                                                                                            class="btn btn-outline-success">
+                                                                                            Договор
+                                                                                        </a>
+                                                                                    @else
+                                                                                        <a href="/agreement/{{ $bid->program->schedule->student->id }}"
+                                                                                            class="btn btn-outline-danger">
+                                                                                                Добавить договор
+                                                                                        </a>
+                                                                                    @endif
                                                                                 </td>
 
 
                                                                             @endif
                                                                         </td>
-                                                                    @endif
+                                                                    @endif --}}
 
 
                                                                 @elseif($program->status === 2)
@@ -449,6 +415,13 @@
                                                                         </div>
                                                                     </p>
                                                                 @endif
+
+
+                                                            @else
+                                                                <p class="alert alert-dark" role="alert">
+                                                                    Программа выполняется другой школой
+                                                                </p>
+
                                                             @endif
                                                         @endforeach
 

@@ -14,4 +14,9 @@ class Student extends Model
     {
         return $this->belongsTo(Schedule::class);
     }
+
+    public function agreement()
+    {
+        return $this->hasOne(Agreement::class);
+    }
 }

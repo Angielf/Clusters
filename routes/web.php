@@ -79,6 +79,15 @@ Route::post('/student/{id}', 'StudentController@add');
 // Route::delete('/student/{student}', 'StudentController@delete');
 
 
+Route::get('/agreement/{id}', 'AgreementController@index');
+
+// Route::get('/student/add/{student}', 'StudentController@approve');
+
+Route::post('/agreement/{id}', 'AgreementController@add');
+
+// Route::delete('/student/{student}', 'StudentController@delete');
+
+
 Route::post('/region-clusters', 'RegionClusterController@store');
 
 Route::get('/region-clusters/create', 'RegionClusterController@create');
