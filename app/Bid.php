@@ -8,8 +8,8 @@ class Bid extends Model
 {
     protected $table = 'bids';
 
-    protected $fillable = ['subject', 'class', 'content', 'user_id', 'modul', 'hours',
-        'form_of_education', 'form_education_implementation', 'rc_cluster_id'];
+    protected $fillable = ['subject', 'class', 'content', 'user_id', 'modul', 'hours', 'educational_program',
+        'educational_activity', 'form_of_education', 'form_education_implementation', 'rc_cluster_id'];
 
     public function user()
     {
@@ -47,6 +47,28 @@ class Bid extends Model
         $str = "";
         foreach ($classes as $class) {
             $str .= $class . ", ";
+        }
+
+        return substr($str, 0, -2);
+    }
+
+    public function getEducationalPrograms()
+    {
+        $educational_programs = unserialize($this->educational_program);
+        $str = "";
+        foreach ($educational_programs as $educational_program) {
+            $str .= $educational_program . ", ";
+        }
+
+        return substr($str, 0, -2);
+    }
+
+    public function getEducationalActivities()
+    {
+        $educational_activities = unserialize($this->educational_activity);
+        $str = "";
+        foreach ($educational_activities as $educational_activity) {
+            $str .= $educational_activity . ", ";
         }
 
         return substr($str, 0, -2);

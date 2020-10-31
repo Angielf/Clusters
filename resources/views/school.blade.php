@@ -195,8 +195,8 @@
                                                             </td>
 
                                                             <td>
-                                                                @if ($bid->program->schedule->student->agreement())
-                                                                    <a href="/files/agreements/{{ $bid->program->schedule->student->filename }}"
+                                                                @if ($bid->program->schedule->student->agreement)
+                                                                    <a href="/files/agreements/{{ $bid->program->schedule->student->agreement->filename }}"
                                                                         class="btn btn-outline-success">
                                                                         Договор
                                                                     </a>
@@ -257,13 +257,11 @@
                                         <tr>
                                             <th scope="col">Организация</th>
 
-                                            {{-- <td>Класс</td> --}}
-
                                             <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
-                                            {{-- <td>Раздел/модуль</td> --}}
 
-                                            <th scope="col">Форма обучения/ Условия реализации обучения</th>
-                                            {{-- <td>Условия реализации обучения</td> --}}
+                                            <th scope="col">
+                                                Форма/условия реализации обучения/ Образовательная программа/деятельность
+                                            </th>
 
                                             <th scope="col">Комментарий</th>
                                             <th scope="col">Предложить программу</th>
@@ -278,21 +276,19 @@
                                             <tr>
                                                 <td>{{ $bid->user->fullname }}</td>
 
-                                                {{-- <td>{{ $bid->getClasses() }}</td> --}}
-
                                                 <td>
                                                     <p>{{ $bid->getClasses() }}</p>
                                                     <p>{{ $bid->subject }}</p>
                                                     <p>{{ $bid->modul }}</p>
                                                     <p>{{ $bid->hours }}</p>
                                                 </td>
-                                                {{-- <td>{{ $bid->modul }}</td> --}}
 
                                                 <td>
                                                     <p>{{ $bid->form_of_education }}</p>
                                                     <p>{{ $bid->form_education_implementation }}</p>
+                                                    <p>{{ $bid->getEducationalPrograms() }}</p>
+                                                    <p>{{ $bid->getEducationalActivities() }}</p>
                                                 </td>
-                                                {{-- <td>{{ $bid->form_education_implementation }}</td> --}}
 
                                                 <td>{{ $bid->content }}</td>
                                                 <td>
@@ -310,18 +306,12 @@
                                                             class="btn btn-outline-danger">
                                                             Предложить программу
                                                         </a>
-                                                    {{-- @elseif($bid->program->school_program_id === $user->id)
-                                                    <a href="/files/programs/{{ $bid->program->filename }}"
-                                                        class="btn btn-outline-success">
-                                                        Программа
-                                                    </a> --}}
+
                                                     @else
                                                         @foreach($bid->programs() as $program)
                                                             @if($program->school_program_id === $user->id)
                                                                 @if($program->status === 1)
-                                                                    {{-- <p>
-                                                                        {!! $bid->program->getStatus() !!}
-                                                                    </p> --}}
+
                                                                     <p class="alert alert-success" role="alert">
                                                                         Одобрена
                                                                     </p>
@@ -356,8 +346,8 @@
                                                                                     </a>
 
                                                                                     <td>
-                                                                                        @if ($bid->program->schedule->student->agreement())
-                                                                                            <a href="/files/agreements/{{ $bid->program->schedule->student->filename }}"
+                                                                                        @if ($bid->program->schedule->student->agreement)
+                                                                                            <a href="/files/agreements/{{ $bid->program->schedule->student->agreement->filename }}"
                                                                                                 class="btn btn-outline-success">
                                                                                                 Договор
                                                                                             </a>

@@ -8,7 +8,7 @@ class Agreement extends Model
 {
     protected $table = 'agreements';
 
-    protected $fillable = ['students_id', 'filename'];
+    protected $fillable = ['student_id', 'filename'];
 
     public function student()
     {

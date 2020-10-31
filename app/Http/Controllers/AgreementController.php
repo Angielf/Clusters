@@ -24,7 +24,7 @@ class AgreementController extends Controller
 
             $agreement = new Agreement([
                 'filename' => $file_name,
-                'students_id' => $id,
+                'student_id' => $id,
             ]);
 
             $agreement->status = 1;
