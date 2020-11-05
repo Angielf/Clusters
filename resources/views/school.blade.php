@@ -9,53 +9,13 @@
                         <h2>{{$user->fullname}} <br>
                             <small>{{$user->getDistrict->fullname}}</small>
                         </h2>
-                        {{-- @if ($user->cluster)
-                            <p><b>Заявка на создание кластера отправлена</b></p>
-                        @elseif ($user->status === 3)
-                            <a href="clusters/create" class="btn btn-outline-primary btn-lg">Подать заявку на создание
-                                кластера</a>
-                        @elseif ($user->status === 5)
-                            <div class="alert alert-light" role="alert">
-                                Заявка на базовую школу отправлена
-                            </div>
-                        @else
-                            <a href="clusters/requestbaseschool/{{ $user->id }}" class="btn btn-outline-info btn">Подать
-                                заявку на базовую школу</a>
-                        @endif --}}
-                        @if (session('status'))
+
+                        {{-- @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
-                        @endif
+                        @endif --}}
                     </div>
-
-                    {{-- <h2 align="center"></h2>
-                    <div class="card-body">
-                        <h5 class="card-title">Региональные кластеры</h5>
-                        <p class="card-text">
-                        @if (isset($regional_cluster))
-                            {{ $regional_cluster->getClusterName() }}
-                            @foreach($user->regionBids() as $bid)
-                                <p>{{ $bid->subject }} {{ $bid->modul }}
-                                    @if ($bid->status === 1)
-                                        <a href="/files/programs/{{ $bid->program->filename }}"
-                                           class="btn btn-outline-success btn-sm">Программа</a>
-                                        @if ($bid->program->schedule)
-                                            <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
-                                               class="btn btn-outline-success btn-sm">Расписание</a>
-                                        @endif
-                                    @endif
-                                </p>
-                            @endforeach
-                            <br>
-                            <a href="/bids/createrc/{{ $regional_cluster->id }}" class="btn btn-outline-primary">
-                                Подать заявление на дефицит
-                            </a>
-                        @else
-                            К сожалению, вы не состоите в региональных кластерах
-                            @endif
-                            </p>
-                    </div> --}}
 
 
                     <ul class="card-body">

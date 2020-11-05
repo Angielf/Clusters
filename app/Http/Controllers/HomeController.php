@@ -41,14 +41,15 @@ class HomeController extends Controller
         $user = Auth::user();
 
         if ($user->status === self::REGIONAL_COORD) {
-            $clusters = Cluster::all();
-            $region_clusters = RegionCluster::all();
-            $request_base_schools = User::where('status', self::REQUEST_BASE_SCHOOL)->get();
+            // $clusters = Cluster::all();
+            // $region_clusters = RegionCluster::all();
+            // $request_base_schools = User::where('status', self::REQUEST_BASE_SCHOOL)->get();
             $bids = Bid::whereNull('cluster_id')
                 ->WhereNull('rc_cluster_id')
+                ->where('status', '1')
                 ->get();
 
-            return view('clusters.index', ['clusters' => $clusters, 'region_clusters' => $region_clusters, 'bids' => $bids, 'request_base_schools' => $request_base_schools]);
+            return view('clusters.index', ['bids' => $bids,]);
 
         // } elseif ($user->status === self::BASE_SCHOOL) {
         //     $district = District::where('id', $user->district)->first();
@@ -64,7 +65,7 @@ class HomeController extends Controller
         //     return view('region-cluster', ['user' => $user, 'region_clusters' => $region_clusters]);
 
         } else {
-            $programs = Program::all();
+            // $programs = Program::all();
 
             // $regional_cluster = RegionCluster::where('user_id', $user->id)->first();
 
@@ -75,7 +76,7 @@ class HomeController extends Controller
             $students = Student::all();
 
             return view('school', ['user' => $user,
-                                    'programs' => $programs,
+                                    // 'programs' => $programs,
                                     'bids_all' => $bids_all,
                                     'students' => $students]);
 
