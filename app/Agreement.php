@@ -10,8 +10,8 @@ class Agreement extends Model
 
     protected $fillable = ['student_id', 'filename'];
 
-    public function student()
-    {
-        return $this->belongsTo(Student::class);
-    }
+    // public function student()
+    // {
+    //     return $this->belongsTo(Student::class);
+    // }
 }

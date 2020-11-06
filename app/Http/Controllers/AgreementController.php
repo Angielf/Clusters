@@ -35,18 +35,18 @@ class AgreementController extends Controller
         }
     }
 
-    public function delete(Agreement $agreement)
-    {
-        $agreement->delete();
+    // public function delete(Agreement $agreement)
+    // {
+    //     $agreement->delete();
 
-        return redirect('/');
-    }
+    //     return redirect('/');
+    // }
 
-    public function approve(Agreement $agreement)
-    {
-        $agreement->status = 1;
-        $agreement->save();
+    // public function approve(Agreement $agreement)
+    // {
+    //     $agreement->status = 1;
+    //     $agreement->save();
 
-        return redirect('/');
-    }
+    //     return redirect('/');
+    // }
 }
