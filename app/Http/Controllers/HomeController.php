@@ -46,7 +46,7 @@ class HomeController extends Controller
             // $request_base_schools = User::where('status', self::REQUEST_BASE_SCHOOL)->get();
             $bids = Bid::whereNull('cluster_id')
                 ->WhereNull('rc_cluster_id')
-                ->where('status', '1')
+                // ->where('status', '1')
                 ->get();
 
             return view('clusters.index', ['bids' => $bids,]);

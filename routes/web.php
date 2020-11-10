@@ -88,6 +88,11 @@ Route::post('/agreement/{id}', 'AgreementController@add');
 // Route::delete('/student/{student}', 'StudentController@delete');
 
 
+Route::post('/instruction/add', 'FileController@add');
+
+Route::get('export', 'ExcelRegionController@export')->name('export');
+
+
 Route::post('/region-clusters', 'RegionClusterController@store');
 
 Route::get('/region-clusters/create', 'RegionClusterController@create');

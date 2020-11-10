@@ -26,10 +26,10 @@
                 {{-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ __('Региональные кластеры') }}
                 </a> --}}
-                <a href="{{ asset('/files/instructions/Инструкция_по_использованию_системы_«Региональные_кластеры».pdf') }}"
+                {{-- <a href="{{ asset('/files/instructions/Инструкция_по_использованию_системы_«Региональные_кластеры».pdf') }}"
                     class="btn btn-info">
                     Инструкция
-                </a>
+                </a> --}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
