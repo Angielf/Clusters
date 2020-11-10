@@ -56,21 +56,32 @@ class Bid extends Model
     {
         $educational_programs = unserialize($this->educational_program);
         $str = "";
-        foreach ($educational_programs as $educational_program) {
-            $str .= $educational_program . ", ";
+        if($educational_programs != NULL) {
+            foreach ($educational_programs as $educational_program) {
+                $str .= $educational_program . ", ";
+            }
+            return substr($str, 0, -2);
         }
+        else return '';
 
-        return substr($str, 0, -2);
+        // foreach ($educational_programs as $educational_program) {
+        //     $str .= $educational_program . ", ";
+        // }
+
+        // return substr($str, 0, -2);
     }
 
     public function getEducationalActivities()
     {
         $educational_activities = unserialize($this->educational_activity);
         $str = "";
-        foreach ($educational_activities as $educational_activity) {
-            $str .= $educational_activity . ", ";
+        if($educational_activities != NULL) {
+            foreach ($educational_activities as $educational_activity) {
+                $str .= $educational_activity . ", ";
+            }
+            return substr($str, 0, -2);
         }
+        else return '';
 
-        return substr($str, 0, -2);
     }
 }
