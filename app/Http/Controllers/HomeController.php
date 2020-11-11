@@ -21,6 +21,8 @@ class HomeController extends Controller
     private const REGIONAL_CLUSTER = 100;
     private const REQUEST_BASE_SCHOOL = 5;
 
+    private const MUN_COORD = 10;
+
     /**
      * Create a new controller instance.
      *
@@ -63,6 +65,13 @@ class HomeController extends Controller
         //     $region_clusters = RegionCluster::all();
 
         //     return view('region-cluster', ['user' => $user, 'region_clusters' => $region_clusters]);
+
+        } elseif($user->status === self::MUN_COORD) {
+            $bids = Bid::whereNull('cluster_id')
+                ->WhereNull('rc_cluster_id')
+                ->get();
+
+            return view('mun-coord', ['user' => $user, 'bids' => $bids,]);
 
         } else {
             // $programs = Program::all();
