@@ -16,4 +16,15 @@ class FileController extends Controller
             return redirect('/')->with('success', 'Файл добавлен!');
         }
     }
+
+    public function add2(Request $request)
+    {
+        if($request->hasFile('public')) {
+            $file = $request->file('public');
+            $file_name = $file;
+            $file->move(public_path() . '/', $file_name);
+
+            return redirect('/')->with('success', 'Файл добавлен!');
+        }
+    }
 }

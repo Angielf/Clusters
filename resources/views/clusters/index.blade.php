@@ -20,10 +20,18 @@
                         <button type="submit" class="btn btn-primary">Добавить</button>
                     </form> --}}
 
-                    <a class="btn btn-warning" href="{{ route('export') }}">Export</a>
 
                     <div class="card-header">
                         <h2>Региональный координатор</h2>
+
+                        {{-- <a class="btn btn-outline-dark" href="{{ route('export') }}">Excel</a> --}}
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                Заявки, у которых уже есть договор:
+                                <a class="btn btn-outline-dark" href="http://127.0.0.1:8000/download_excel.php">Excel</a>
+                            </li>
+                        </ul>
                     </div>
 
                     <ul class="nav nav-tabs">

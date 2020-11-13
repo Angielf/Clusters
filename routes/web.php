@@ -90,6 +90,9 @@ Route::post('/agreement/{id}', 'AgreementController@add');
 
 Route::post('/instruction/add', 'FileController@add');
 
+Route::post('/public/add2', 'FileController@add2');
+
+
 Route::get('export', 'ExcelRegionController@export')->name('export');
 
 

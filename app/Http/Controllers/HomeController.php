@@ -23,6 +23,8 @@ class HomeController extends Controller
 
     private const MUN_COORD = 10;
 
+    private const ADMIN_2 = 11;
+
     /**
      * Create a new controller instance.
      *
@@ -72,6 +74,10 @@ class HomeController extends Controller
                 ->get();
 
             return view('mun-coord', ['user' => $user, 'bids' => $bids,]);
+
+        } elseif($user->status === self::ADMIN_2) {
+
+            return view('admin2', ['user' => $user, ]);
 
         } else {
             // $programs = Program::all();
