@@ -32,10 +32,70 @@
                     <div class="tab-content">
                     <div class="tab-pane fade show active" id="bids_with_programs">
                     <ul class="card-body">
-                        <table class="table table-striped">
+
+                        <ul class="list-group">
+
+                            <li class="list-group-item">
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                          Организация реципиент
+                                      </span>
+                                    </div>
+                                    <input type="text" aria-label="First name" class="form-control"
+                                    id="rez" onkeyup="rez()">
+                                </div>
+
+                            </li>
+
+                            <li class="list-group-item">
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                          Базовая организация
+                                      </span>
+                                    </div>
+                                    <input type="text" aria-label="First name" class="form-control"
+                                    id="bas" onkeyup="bas()">
+                                </div>
+
+                            </li>
+
+                            <li class="list-group-item">
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                        Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов
+                                      </span>
+                                    </div>
+                                    <input type="text" aria-label="First name" class="form-control"
+                                    id="classs" onkeyup="classs()">
+                                </div>
+
+                            </li>
+
+                            <li class="list-group-item">
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                        Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
+                                      </span>
+                                    </div>
+                                    <input type="text" aria-label="First name" class="form-control"
+                                    id="forma" onkeyup="forma()">
+                                </div>
+
+                            </li>
+                        </ul>
+
+                        <table class="table table-striped" id="myTable">
                             <thead>
                                 <tr>
-                                    <th scope="col">Муниципалитет</th>
+                                    {{-- <th scope="col">Муниципалитет</th> --}}
                                     <th scope="col">Организация реципиент</th>
                                     <th scope="col">Базовая организация</th>
 
@@ -58,7 +118,7 @@
                                         @if(($bid->status === 1))
                                         @if(($bid->user->district == $user->getDistrict->id))
                                             <tr>
-                                                <td>{{ $bid->user->getDistrict->fullname }}</td>
+                                                {{-- <td>{{ $bid->user->getDistrict->fullname }}</td> --}}
                                                 <td>{{ $bid->user->fullname }}</td>
 
                                                 <td>{{ $bid->program->sender()->first()->fullname }}</td>
@@ -150,10 +210,57 @@
 
                     <div class="tab-pane fade" id="other">
                         <ul class="card-body">
-                            <table class="table table-striped">
+
+                            <ul class="list-group">
+
+                                <li class="list-group-item">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                              Организация реципиент
+                                          </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="rez2" onkeyup="rez2()">
+                                    </div>
+
+                                </li>
+
+                                <li class="list-group-item">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                            Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов
+                                          </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="classs2" onkeyup="classs2()">
+                                    </div>
+
+                                </li>
+
+                                <li class="list-group-item">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                            Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
+                                          </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="forma2" onkeyup="forma2()">
+                                    </div>
+
+                                </li>
+                            </ul>
+
+
+                            <table class="table table-striped" id="myTable2">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Муниципалитет</th>
+                                        {{-- <th scope="col">Муниципалитет</th> --}}
                                         <th scope="col">Организация реципиент</th>
 
                                         <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
@@ -171,7 +278,7 @@
                                         @if(($bid->user->district == $user->getDistrict->id))
                                             @if(($bid->status === 0) or ($bid->status === 9))
                                             <tr>
-                                                <td>{{ $bid->user->getDistrict->fullname }}</td>
+                                                {{-- <td>{{ $bid->user->getDistrict->fullname }}</td> --}}
                                                 <td>{{ $bid->user->fullname }}</td>
 
                                                 <td>
@@ -203,4 +310,140 @@
             </div>
         </div>
     </div>
+
+
+
+    <script>
+        function rez() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("rez");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+        function bas() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("bas");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+        function classs() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("classs");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function forma() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("forma");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+
+        // Остальные
+        function rez2() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("rez2");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable2");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+        function classs2() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("classs2");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable2");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function forma2() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("forma2");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable2");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+        </script>
 @endsection

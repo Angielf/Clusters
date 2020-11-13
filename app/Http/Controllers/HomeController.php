@@ -63,10 +63,12 @@ class HomeController extends Controller
 
         //     return view('base', ['user' => $user, 'cluster' => $cluster, 'district' => $district, 'programs' => $programs, 'schools' => $schools]);
 
-        // } elseif ($user->status === self::REGIONAL_CLUSTER) {
-        //     $region_clusters = RegionCluster::all();
+        } elseif ($user->status === self::REGIONAL_CLUSTER) {
+            $bids_all = Bid::whereNull('cluster_id')
+                ->WhereNull('rc_cluster_id')
+                ->get();
 
-        //     return view('region-cluster', ['user' => $user, 'region_clusters' => $region_clusters]);
+            return view('region-cluster', ['user' => $user, 'bids_all' => $bids_all,]);
 
         } elseif($user->status === self::MUN_COORD) {
             $bids = Bid::whereNull('cluster_id')

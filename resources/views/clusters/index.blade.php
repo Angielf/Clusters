@@ -6,21 +6,6 @@
             <div class="col-md-12">
                 <div class="card">
 
-
-                    {{-- <form method="post" action="/instruction/add" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="instruction">
-                                <label class="custom-file-label">Загрузить</label>
-                            </div>
-                        </div>
-
-                        <br>
-                        <button type="submit" class="btn btn-primary">Добавить</button>
-                    </form> --}}
-
-
                     <div class="card-header">
                         <h2>Региональный координатор</h2>
 
@@ -52,7 +37,80 @@
                     <div class="tab-content">
                     <div class="tab-pane fade show active" id="bids_with_programs">
                     <ul class="card-body">
-                        <table class="table table-striped">
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                          Муниципалитет
+                                      </span>
+                                    </div>
+                                    <input type="text" aria-label="First name" class="form-control"
+                                    id="mun" onkeyup="mun()">
+                                </div>
+
+                            </li>
+
+                            <li class="list-group-item">
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                          Организация реципиент
+                                      </span>
+                                    </div>
+                                    <input type="text" aria-label="First name" class="form-control"
+                                    id="rez" onkeyup="rez()">
+                                </div>
+
+                            </li>
+
+                            <li class="list-group-item">
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                          Базовая организация
+                                      </span>
+                                    </div>
+                                    <input type="text" aria-label="First name" class="form-control"
+                                    id="bas" onkeyup="bas()">
+                                </div>
+
+                            </li>
+
+                            <li class="list-group-item">
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                        Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов
+                                      </span>
+                                    </div>
+                                    <input type="text" aria-label="First name" class="form-control"
+                                    id="classs" onkeyup="classs()">
+                                </div>
+
+                            </li>
+
+                            <li class="list-group-item">
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                        Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
+                                      </span>
+                                    </div>
+                                    <input type="text" aria-label="First name" class="form-control"
+                                    id="forma" onkeyup="forma()">
+                                </div>
+
+                            </li>
+                        </ul>
+
+                        <table class="table table-striped" id="myTable">
                             <thead>
                                 <tr>
                                     <th scope="col">Муниципалитет</th>
@@ -165,9 +223,71 @@
                     </ul>
                     </div>
 
+
+
                     <div class="tab-pane fade" id="other">
                         <ul class="card-body">
-                            <table class="table table-striped">
+
+                            <ul class="list-group">
+                                <li class="list-group-item">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                              Муниципалитет
+                                          </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="mun2" onkeyup="mun2()">
+                                    </div>
+
+                                </li>
+
+                                <li class="list-group-item">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                              Организация реципиент
+                                          </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="rez2" onkeyup="rez2()">
+                                    </div>
+
+                                </li>
+
+                                <li class="list-group-item">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                            Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов
+                                          </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="classs2" onkeyup="classs2()">
+                                    </div>
+
+                                </li>
+
+                                <li class="list-group-item">
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                            Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
+                                          </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="forma2" onkeyup="forma2()">
+                                    </div>
+
+                                </li>
+                            </ul>
+
+
+                            <table class="table table-striped" id="myTable2">
                                 <thead>
                                     <tr>
                                         <th scope="col">Муниципалитет</th>
@@ -218,4 +338,179 @@
             </div>
         </div>
     </div>
+
+
+
+    <script>
+        function mun() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("mun");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+        function rez() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("rez");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+        function bas() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("bas");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+        function classs() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("classs");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function forma() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("forma");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[4];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+
+        // Остальные
+
+        function mun2() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("mun2");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable2");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+        function rez2() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("rez2");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable2");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+
+        function classs2() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("classs2");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable2");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function forma2() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("forma2");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable2");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+        </script>
 @endsection
