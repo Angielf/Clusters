@@ -17,7 +17,7 @@ class Export implements FromCollection, WithHeadings
     {
         $bids = Bid::whereNull('cluster_id')
                 ->WhereNull('rc_cluster_id')
-                ->where('status', '1')
+                // ->where('status', '1')
                 ->get();
 
         return $array = $bids->map(function ($b, $key) {
@@ -26,7 +26,9 @@ class Export implements FromCollection, WithHeadings
                 // "id" => $b->id,
                 "district" => $b->user->getDistrict->fullname,
                 "fullname_r" => $b->user->fullname,
-                "fullname_b" => $b->program->sender()->first()->fullname,
+
+                "fullname_b" => (($b->status === 1)) ? $b->program->sender()->first()->fullname : '',
+
                 "class" => $b->getClasses(),
                 "subject" => $b->subject,
                 "modul" => $b->modul,
@@ -36,21 +38,22 @@ class Export implements FromCollection, WithHeadings
                 "EducationalPrograms" => $b->getEducationalPrograms(),
                 "EducationalActivities" => $b->getEducationalActivities(),
                 "content" => $b->content,
-                "program" => $b->program->filename,
 
-                "schedule" => (($b->program->schedule) and ($b->program->schedule->status === 1)) ?
+                "program" => (($b->status === 1)) ? $b->program->filename : '',
+
+                "schedule" => (($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)) ?
                     $b->program->schedule->filename : '',
 
-                "students_amount" => (($b->program->schedule) and ($b->program->schedule->status === 1)
+                "students_amount" => (($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)
                     and ($b->program->schedule->student)) ?
                     $b->program->schedule->student->students_amount : '',
 
-                "students" => (($b->program->schedule) and ($b->program->schedule->status === 1)
+                "students" => (($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)
                     and ($b->program->schedule->student)) ?
                     $b->program->schedule->student->filename : '',
 
 
-                "agreement" => (($b->program->schedule) and ($b->program->schedule->status === 1)
+                "agreement" => (($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)
                     and ($b->program->schedule->student) and ($b->program->schedule->student->agreement)) ?
                     $b->program->schedule->student->agreement->filename : '',
 
