@@ -29,45 +29,107 @@ function get_un($data)
 
 //Query our MySQL table
 
+// $sql = "SELECT
+//             districts.fullname AS 'Муниципалитет',
+
+//             users.fullname AS 'Организация реципиент' ,
+
+//             u.fullname AS 'Базовая организация',
+
+//             bids.class AS 'Класс',
+//             bids.subject AS 'Предмет(курс)',
+//             bids.modul AS 'Раздел(модуль)',
+//             bids.hours AS 'Кол-во часов',
+//             bids.form_of_education AS 'Форма обучения',
+//             bids.form_education_implementation AS 'Условия реализация обучения',
+//             bids.educational_program AS 'Образовательная программа',
+//             bids.educational_activity AS 'Образовательная деятельность',
+//             bids.content AS 'Комментарий',
+
+//             programs.filename AS 'Программа',
+
+//             schedules.filename AS 'Расписание',
+
+//             students.students_amount AS 'Кол-во учеников',
+//             students.filename AS 'Список учеников',
+
+//             agreements.filename AS 'Договор'
+
+//         FROM
+//             bids, users, districts, programs, (users AS u), schedules, students, agreements
+
+//         WHERE
+//             (bids.user_id = users.id) AND
+//             (districts.id = users.district) AND
+//             (programs.status = 1 AND programs.bid_id = bids.id) AND
+//             (programs.school_program_id = u.id) AND
+//             (schedules.status = 1 AND schedules.program_id = programs.id) AND
+//             (students.schedule_id = schedules.id) AND
+//             (agreements.student_id = students.id)
+//         ;
+//         ";
+
+// "BEGIN
+// SET @var=bids.status;
+// SET @uf='';
+// IF(@var=1) THEN @uf=u.fullname;
+// END IF;
+// END;";
+
 $sql = "SELECT
-            districts.fullname AS 'Муниципалитет',
+        districts.fullname AS 'Муниципалитет',
 
-            users.fullname AS 'Организация реципиент' ,
+        users.fullname AS 'Организация реципиент',
 
-            u.fullname AS 'Базовая реципиент',
 
-            bids.class AS 'Класс',
-            bids.subject AS 'Предмет(курс)',
-            bids.modul AS 'Раздел(модуль)',
-            bids.hours AS 'Кол-во часов',
-            bids.form_of_education AS 'Форма обучения',
-            bids.form_education_implementation AS 'Условия реализация обучения',
-            bids.educational_program AS 'Образовательная программа',
-            bids.educational_activity AS 'Образовательная деятельность',
-            bids.content AS 'Комментарий',
+        IF((bids.status=1), u.fullname, '') AS 'Базовая организация',
 
-            programs.filename AS 'Программа',
+        bids.class AS 'Класс',
+        bids.subject AS 'Предмет(курс)',
+        bids.hours AS 'Кол-во часов',
+        bids.form_of_education AS 'Форма обучения',
+        bids.form_education_implementation AS 'Условия реализация обучения',
+        bids.educational_program AS 'Образовательная программа',
+        bids.educational_activity AS 'Образовательная деятельность',
+        bids.content AS 'Комментарий',
 
-            schedules.filename AS 'Расписание',
+        IF((bids.status=1 AND programs.status=1), programs.filename, '') AS 'Программа',
 
-            students.students_amount AS 'Кол-во учеников',
-            students.filename AS 'Список учеников',
+        IF((bids.status=1 AND programs.status=1 AND schedules.status=1), schedules.filename, '') 'Расписание',
 
-            agreements.filename AS 'Договор'
+        IF((bids.status=1 AND programs.status=1 AND schedules.status=1 AND students.status=1), students.students_amount, '') AS 'Кол-во учеников',
+
+        IF((bids.status=1 AND programs.status=1 AND schedules.status=1 AND students.status=1), students.filename, '') AS 'Список учеников',
+
+        IF((bids.status=1 AND programs.status=1 AND schedules.status=1 AND students.status=1 AND agreements.status=1), agreements.filename, '') AS 'Договор'
 
         FROM
-            bids, users, districts, programs, (users AS u), schedules, students, agreements
+        bids,
+        users,
+        districts,
+        (users AS u),
+        programs,
+        schedules,
+        students,
+        agreements
 
         WHERE
-            (bids.user_id = users.id) AND
-            (districts.id = users.district) AND
-            (programs.status = 1 AND programs.bid_id = bids.id) AND
-            (programs.school_program_id = u.id) AND
-            (schedules.status = 1 AND schedules.program_id = programs.id) AND
-            (students.schedule_id = schedules.id) AND
-            (agreements.student_id = students.id)
+        bids.user_id = users.id
+        AND
+        districts.id = users.district
+        AND
+        programs.bid_id = bids.id
+        AND
+        programs.school_program_id = u.id
+        AND
+        schedules.program_id = programs.id
+        AND
+        students.schedule_id = schedules.id
+        AND
+        agreements.student_id = students.id
         ;
         ";
+
 
 
 

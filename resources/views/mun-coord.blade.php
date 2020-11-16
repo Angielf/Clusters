@@ -43,7 +43,7 @@
                                           Организация реципиент
                                       </span>
                                     </div>
-                                    <input type="text" aria-label="First name" class="form-control"
+                                    <input type="text" class="form-control"
                                     id="rez" onkeyup="rez()">
                                 </div>
 
@@ -57,7 +57,7 @@
                                           Базовая организация
                                       </span>
                                     </div>
-                                    <input type="text" aria-label="First name" class="form-control"
+                                    <input type="text" class="form-control"
                                     id="bas" onkeyup="bas()">
                                 </div>
 
@@ -68,11 +68,37 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text">
-                                        Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов
+                                        Класс
                                       </span>
                                     </div>
-                                    <input type="text" aria-label="First name" class="form-control"
+                                    <input type="text" class="form-control"
                                     id="classs" onkeyup="classs()">
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                          Предмет(курс)
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                    id="subject" onkeyup="subject()">
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                        Раздел(модуль)
+                                      </span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                    id="modul" onkeyup="modul()">
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            Кол-во часов
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                    id="hour" onkeyup="hour()">
                                 </div>
 
                             </li>
@@ -82,22 +108,77 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text">
-                                        Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
+                                        Форма обучения
                                       </span>
                                     </div>
-                                    <input type="text" aria-label="First name" class="form-control"
-                                    id="forma" onkeyup="forma()">
+                                    <input type="text" class="form-control"
+                                    id="forma" onkeyup="forma()" list="Forma">
+                                    <datalist id="Forma">
+                                        <option value="очная">очная</option>
+                                        <option value="очно-заочная">очно-заочная</option>
+                                        <option value="заочная">заочная</option>
+                                    </datalist>
+
+
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            Условия реализации обучения
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                    id="imp" onkeyup="imp()" list="Imp">
+                                    <datalist id="Imp">
+                                        <option value="с использование дистанционных образовательных технологий, электронного обучения">
+                                            с использование дистанционных образовательных технологий, электронного обучения
+                                        </option>
+                                        <option value="трансфер детей до организации">трансфер детей до организации</option>
+                                    </datalist>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">
+                                        Образовательная программа
+                                      </span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                    id="pro" onkeyup="pro()" list="Pro">
+                                    <datalist id="Pro">
+                                        <option value="основная">основная</option>
+                                        <option value="дополнительная">дополнительная</option>
+                                    </datalist>
+
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            Образовательная деятельность
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                    id="act" onkeyup="act()" list="Act">
+                                    <datalist id="Act">
+                                        <option value="урочная">урочная</option>
+                                        <option value="внеурочная">внеурочная</option>
+                                    </datalist>
                                 </div>
 
                             </li>
+
+
                         </ul>
 
+
+
                         <table class="table table-striped" id="myTable">
+                            <input type="hidden" id="rez_order" value="asc">
+                            <input type="hidden" id="bas_order" value="asc">
+                            <input type="hidden" id="dog_order" value="asc">
                             <thead>
                                 <tr>
                                     {{-- <th scope="col">Муниципалитет</th> --}}
-                                    <th scope="col">Организация реципиент</th>
-                                    <th scope="col">Базовая организация</th>
+                                    <th scope="col" onclick="sort_rez();">Организация реципиент <i class="fas fa-arrows-alt-v"></th>
+                                    <th scope="col" onclick="sort_bas();">Базовая организация <i class="fas fa-arrows-alt-v"></th>
 
                                     <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
 
@@ -108,11 +189,11 @@
                                     {{-- <th scope="col">Комментарий</th> --}}
                                     <th scope="col">Программа/ Расписание</th>
                                     <th scope="col">Кол-во учеников/Список</th>
-                                    <th scope="col">Договор</th>
+                                    <th scope="col" onclick="sort_dog();">Договор <i class="fas fa-arrows-alt-v"></th>
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="table1">
                                     @foreach($bids as $bid)
                                     {{-- @if(($bid->user->district == $user->getDistrict->id)) --}}
                                         @if(($bid->status === 1))
@@ -124,18 +205,22 @@
                                                 <td>{{ $bid->program->sender()->first()->fullname }}</td>
 
                                                 <td>
-                                                    <p>{{ $bid->getClasses() }}</p>
-                                                    <p>{{ $bid->subject }}</p>
-                                                    <p>{{ $bid->modul }}</p>
-                                                    <p>{{ $bid->hours }}</p>
+                                                    <ul class="list-group" id="ul1">
+                                                        <li class="list-group-item">{{ $bid->getClasses() }}</li>
+                                                        <li class="list-group-item">{{ $bid->subject }}</li>
+                                                        <li class="list-group-item"{{ $bid->modul }}</li>
+                                                        <li class="list-group-item">{{ $bid->hours }}</li>
+                                                    </ul>
                                                 </td>
 
                                                 <td>
-                                                    <p>{{ $bid->form_of_education }}</p>
-                                                    <p>{{ $bid->form_education_implementation }}</p>
-                                                    <p>{{ $bid->getEducationalPrograms() }}</p>
-                                                    <p>{{ $bid->getEducationalActivities() }}</p>
-                                                    <p>{{ $bid->content }}</p>
+                                                    <ul class="list-group" id="ul2">
+                                                        <li class="list-group-item">{{ $bid->form_of_education }} </li>
+                                                        <li class="list-group-item">{{ $bid->form_education_implementation }}</li>
+                                                        <li class="list-group-item"{{ $bid->getEducationalPrograms() }}</li>
+                                                        <li class="list-group-item">{{ $bid->getEducationalActivities() }}</li>
+                                                        <li class="list-group-item">{{ $bid->content }}</li>
+                                                    </ul>
                                                 </td>
 
                                                 {{-- <td>{{ $bid->content }}</td> --}}
@@ -232,11 +317,37 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                           <span class="input-group-text">
-                                            Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов
+                                            Класс
                                           </span>
                                         </div>
                                         <input type="text" aria-label="First name" class="form-control"
                                         id="classs2" onkeyup="classs2()">
+
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              Предмет(курс)
+                                            </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="subject2" onkeyup="subject2()">
+                                    </div>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                            Раздел(модуль)
+                                          </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="modul2" onkeyup="modul2()">
+
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                Кол-во часов
+                                            </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="hour2" onkeyup="hour2()">
                                     </div>
 
                                 </li>
@@ -246,22 +357,72 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                           <span class="input-group-text">
-                                            Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
+                                            Форма обучения
                                           </span>
                                         </div>
                                         <input type="text" aria-label="First name" class="form-control"
-                                        id="forma2" onkeyup="forma2()">
+                                        id="forma2" onkeyup="forma2()" list="Forma2">
+                                        <datalist id="Forma2">
+                                            <option value="очная">очная</option>
+                                            <option value="очно-заочная">очно-заочная</option>
+                                            <option value="заочная">заочная</option>
+                                        </datalist>
+
+
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                Условия реализации обучения
+                                            </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="imp2" onkeyup="imp2()" list="Imp2">
+                                        <datalist id="Imp2">
+                                            <option value="с использование дистанционных образовательных технологий, электронного обучения">
+                                                с использование дистанционных образовательных технологий, электронного обучения
+                                            </option>
+                                            <option value="трансфер детей до организации">трансфер детей до организации</option>
+                                        </datalist>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                            Образовательная программа
+                                          </span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control"
+                                        id="pro2" onkeyup="pro2()" list="Pro2">
+                                        <datalist id="Pro2">
+                                            <option value="основная">основная</option>
+                                            <option value="дополнительная">дополнительная</option>
+                                        </datalist>
+
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                Образовательная деятельность
+                                            </span>
+                                        </div>
+                                          <input type="text" aria-label="First name" class="form-control"
+                                          id="act2" onkeyup="act2()" list="Act2">
+                                          <datalist id="Act2">
+                                            <option value="урочная">урочная</option>
+                                            <option value="внеурочная">внеурочная</option>
+                                        </datalist>
                                     </div>
 
                                 </li>
+
+
                             </ul>
 
 
+
                             <table class="table table-striped" id="myTable2">
+                                <input type="hidden" id="rez2_order" value="asc">
                                 <thead>
                                     <tr>
                                         {{-- <th scope="col">Муниципалитет</th> --}}
-                                        <th scope="col">Организация реципиент</th>
+                                        <th scope="col" onclick="sort_rez2();">Организация реципиент <i class="fas fa-arrows-alt-v"></th>
 
                                         <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
 
@@ -273,7 +434,7 @@
                                     </tr>
                                     </thead>
 
-                                    <tbody>
+                                    <tbody id="table2">
                                         @foreach($bids as $bid)
                                         @if(($bid->user->district == $user->getDistrict->id))
                                             @if(($bid->status === 0) or ($bid->status === 9))
@@ -282,18 +443,22 @@
                                                 <td>{{ $bid->user->fullname }}</td>
 
                                                 <td>
-                                                    <p>{{ $bid->getClasses() }}</p>
-                                                    <p>{{ $bid->subject }}</p>
-                                                    <p>{{ $bid->modul }}</p>
-                                                    <p>{{ $bid->hours }}</p>
+                                                    <ul class="list-group" id="ul3">
+                                                        <li class="list-group-item">{{ $bid->getClasses() }}</li>
+                                                        <li class="list-group-item">{{ $bid->subject }}</li>
+                                                        <li class="list-group-item"{{ $bid->modul }}</li>
+                                                        <li class="list-group-item">{{ $bid->hours }}</li>
+                                                    </ul>
                                                 </td>
 
                                                 <td>
-                                                    <p>{{ $bid->form_of_education }}</p>
-                                                    <p>{{ $bid->form_education_implementation }}</p>
-                                                    <p>{{ $bid->getEducationalPrograms() }}</p>
-                                                    <p>{{ $bid->getEducationalActivities() }}</p>
-                                                    <p>{{ $bid->content }}</p>
+                                                    <ul class="list-group" id="ul4">
+                                                        <li class="list-group-item">{{ $bid->form_of_education }}</li>
+                                                        <li class="list-group-item">{{ $bid->form_education_implementation }}</li>
+                                                        <li class="list-group-item"{{ $bid->getEducationalPrograms() }}</li>
+                                                        <li class="list-group-item">{{ $bid->getEducationalActivities() }}</li>
+                                                        <li class="list-group-item">{{ $bid->content }}</li>
+                                                    </ul>
                                                 </td>
                                             </tr>
                                             @endif
@@ -313,137 +478,6 @@
 
 
 
-    <script>
-        function rez() {
-          var input, filter, table, tr, td, i;
-          input = document.getElementById("rez");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable");
-          tr = table.getElementsByTagName("tr");
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-          }
-        }
-
-
-        function bas() {
-          var input, filter, table, tr, td, i;
-          input = document.getElementById("bas");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable");
-          tr = table.getElementsByTagName("tr");
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-          }
-        }
-
-
-        function classs() {
-          var input, filter, table, tr, td, i;
-          input = document.getElementById("classs");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable");
-          tr = table.getElementsByTagName("tr");
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[2];
-            if (td) {
-              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-          }
-        }
-
-        function forma() {
-          var input, filter, table, tr, td, i;
-          input = document.getElementById("forma");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable");
-          tr = table.getElementsByTagName("tr");
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[3];
-            if (td) {
-              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-          }
-        }
-
-
-
-        // Остальные
-        function rez2() {
-          var input, filter, table, tr, td, i;
-          input = document.getElementById("rez2");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable2");
-          tr = table.getElementsByTagName("tr");
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-          }
-        }
-
-
-        function classs2() {
-          var input, filter, table, tr, td, i;
-          input = document.getElementById("classs2");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable2");
-          tr = table.getElementsByTagName("tr");
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-          }
-        }
-
-        function forma2() {
-          var input, filter, table, tr, td, i;
-          input = document.getElementById("forma2");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable2");
-          tr = table.getElementsByTagName("tr");
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[2];
-            if (td) {
-              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-          }
-        }
-        </script>
+    <script src="js/poisk_mun.js"></script>
+    <script src="js/sort_mun.js"></script>
 @endsection
