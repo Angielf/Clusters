@@ -9,7 +9,7 @@
                     <div class="card-header">
                         <h2>Региональный координатор</h2>
 
-                        {{-- <a class="btn btn-outline-dark" href="{{ route('export') }}">Excel</a> --}}
+                        <a class="btn btn-outline-dark" href="{{ route('export') }}">Excel</a>
 
                     </div>
 
