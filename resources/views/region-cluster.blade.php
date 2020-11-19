@@ -207,7 +207,7 @@
                                 <tbody id="table1">
                                 @foreach($bids_all as $bid)
                                     @if(($bid->user_id != $user->id))
-                                    <tr>
+                                    <tr class="tr_h">
                                         <td>{{ $bid->user->getDistrict->fullname }}</td>
                                         <td>{{ $bid->user->fullname }}</td>
 
@@ -235,14 +235,14 @@
 
                                                 @foreach($bid->programs() as $program)
                                                     @if($program->school_program_id === $user->id)
-                                                        <p class="alert alert-info" role="alert">
+                                                        <p class="alert alert-info p1" role="alert">
                                                             Программа отправлена
                                                         </p>
                                                     @endif
                                                 @endforeach
 
                                                 <a href="/program/{{ $bid->id }}"
-                                                    class="btn btn-outline-danger">
+                                                    class="btn btn-outline-danger p1">
                                                     Предложить программу
                                                 </a>
 
@@ -251,7 +251,7 @@
                                                     @if($program->school_program_id === $user->id)
                                                         @if($program->status === 1)
 
-                                                            <p class="alert alert-success" role="alert">
+                                                            <p class="alert alert-success p1" role="alert">
                                                                 Одобрена
                                                             </p>
 
@@ -343,6 +343,8 @@
         </div>
     </div>
 
-    <script src="js/poisk_reg.js"></script>
-    <script src="js/sort_reg.js"></script>
+
+<script src="js/poisk_reg.js"></script>
+<script src="js/sort_reg.js"></script>
+<script src="js/hide_reg.js"></script>
 @endsection

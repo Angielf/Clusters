@@ -356,7 +356,7 @@
                                         <tbody id="table2">
                                         @foreach($bids_all as $bid)
                                             @if(($bid->user_id != $user->id) and ($bid->user->district == $user->getDistrict->id))
-                                            <tr>
+                                            <tr class="tr_h">
                                                 <td>{{ $bid->user->fullname }}</td>
 
                                                 <td>
@@ -383,14 +383,14 @@
 
                                                         @foreach($bid->programs() as $program)
                                                             @if($program->school_program_id === $user->id)
-                                                                <p class="alert alert-info" role="alert">
+                                                                <p class="alert alert-info p1" role="alert">
                                                                     Программа отправлена
                                                                 </p>
                                                             @endif
                                                         @endforeach
 
                                                         <a href="/program/{{ $bid->id }}"
-                                                            class="btn btn-outline-danger">
+                                                            class="btn btn-outline-danger p1">
                                                             Предложить программу
                                                         </a>
 
@@ -399,7 +399,7 @@
                                                             @if($program->school_program_id === $user->id)
                                                                 @if($program->status === 1)
 
-                                                                    <p class="alert alert-success" role="alert">
+                                                                    <p class="alert alert-success p1" role="alert">
                                                                         Одобрена
                                                                     </p>
 
@@ -503,6 +503,8 @@
 
 
 
-    <script src="js/poisk_sch.js"></script>
-    <script src="js/sort_sch.js"></script>
+<script src="js/poisk_sch.js"></script>
+<script src="js/sort_sch.js"></script>
+<script src="js/hide_sch.js"></script>
+
 @endsection
