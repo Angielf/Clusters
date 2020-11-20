@@ -250,7 +250,7 @@
                                                     <ul class="list-group" id="ul1">
                                                         <li class="list-group-item">{{ $bid->getClasses() }}</li>
                                                         <li class="list-group-item">{{ $bid->subject }}</li>
-                                                        <li class="list-group-item"{{ $bid->modul }}</li>
+                                                        <li class="list-group-item">{{ $bid->modul }}</li>
                                                         <li class="list-group-item">{{ $bid->hours }}</li>
                                                     </ul>
                                                 </td>
@@ -259,7 +259,7 @@
                                                     <ul class="list-group" id="ul2">
                                                         <li class="list-group-item">{{ $bid->form_of_education }} </li>
                                                         <li class="list-group-item">{{ $bid->form_education_implementation }}</li>
-                                                        <li class="list-group-item"{{ $bid->getEducationalPrograms() }}</li>
+                                                        <li class="list-group-item">{{ $bid->getEducationalPrograms() }}</li>
                                                         <li class="list-group-item">{{ $bid->getEducationalActivities() }}</li>
                                                         <li class="list-group-item">{{ $bid->content }}</li>
                                                     </ul>
