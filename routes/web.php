@@ -95,6 +95,8 @@ Route::post('/public/add2', 'FileController@add2');
 
 Route::get('export', 'ExcelRegionController@export')->name('export');
 
+Route::get('export_mun', 'ExcelMunController@export')->name('export_mun');
+
 
 Route::post('/region-clusters', 'RegionClusterController@store');
 

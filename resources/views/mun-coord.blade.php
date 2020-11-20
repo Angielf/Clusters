@@ -6,12 +6,12 @@
             <div class="col-md-12">
                 <div class="card">
 
-                    {{-- <a class="btn btn-warning" href="{{ route('export') }}">Export</a> --}}
-
                     <div class="card-header">
                         <h2>{{$user->fullname}} <br>
                             <small>{{$user->getDistrict->fullname}}</small>
                         </h2>
+
+                        <a class="btn btn-outline-dark" href="{{ route('export_mun') }}">Excel</a>
                     </div>
 
                     <ul class="nav nav-tabs">
@@ -176,7 +176,6 @@
                             <input type="hidden" id="dog_order" value="asc">
                             <thead>
                                 <tr>
-                                    {{-- <th scope="col">Муниципалитет</th> --}}
                                     <th scope="col" onclick="sort_rez();">Организация реципиент <i class="fas fa-arrows-alt-v"></th>
                                     <th scope="col" onclick="sort_bas();">Базовая организация <i class="fas fa-arrows-alt-v"></th>
 
@@ -186,7 +185,6 @@
                                         Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
                                     </th>
 
-                                    {{-- <th scope="col">Комментарий</th> --}}
                                     <th scope="col">Программа/ Расписание</th>
                                     <th scope="col">Кол-во учеников/Список</th>
                                     <th scope="col" onclick="sort_dog();">Договор <i class="fas fa-arrows-alt-v"></th>
@@ -199,7 +197,6 @@
                                         @if(($bid->status === 1))
                                         @if(($bid->user->district == $user->getDistrict->id))
                                             <tr>
-                                                {{-- <td>{{ $bid->user->getDistrict->fullname }}</td> --}}
                                                 <td>{{ $bid->user->fullname }}</td>
 
                                                 <td>{{ $bid->program->sender()->first()->fullname }}</td>
@@ -222,8 +219,6 @@
                                                         <li class="list-group-item">{{ $bid->content }}</li>
                                                     </ul>
                                                 </td>
-
-                                                {{-- <td>{{ $bid->content }}</td> --}}
 
                                                 <td>
                                                     <ul class="list-group">
@@ -446,7 +441,7 @@
                                                     <ul class="list-group" id="ul3">
                                                         <li class="list-group-item">{{ $bid->getClasses() }}</li>
                                                         <li class="list-group-item">{{ $bid->subject }}</li>
-                                                        <li class="list-group-item"{{ $bid->modul }}</li>
+                                                        <li class="list-group-item">{{ $bid->modul }}</li>
                                                         <li class="list-group-item">{{ $bid->hours }}</li>
                                                     </ul>
                                                 </td>
@@ -455,7 +450,7 @@
                                                     <ul class="list-group" id="ul4">
                                                         <li class="list-group-item">{{ $bid->form_of_education }}</li>
                                                         <li class="list-group-item">{{ $bid->form_education_implementation }}</li>
-                                                        <li class="list-group-item"{{ $bid->getEducationalPrograms() }}</li>
+                                                        <li class="list-group-item">{{ $bid->getEducationalPrograms() }}</li>
                                                         <li class="list-group-item">{{ $bid->getEducationalActivities() }}</li>
                                                         <li class="list-group-item">{{ $bid->content }}</li>
                                                     </ul>
