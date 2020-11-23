@@ -29,7 +29,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ __('Сетевые кластеры') }}
                 </a>
-                <a href="{{ asset('/files/instructions/instruction.pdf') }}"
+                <a href="{{ asset('/instructions/instruction.pdf') }}"
                     class="btn btn-outline-dark">
                     Инструкция
                 </a>
