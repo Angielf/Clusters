@@ -20,14 +20,14 @@ class Export implements FromCollection, WithHeadings
                 // ->where('status', '1')
                 ->get();
 
-        return $array = $bids->map(function ($b, $key) {
+        $array = $bids->map(function ($b, $key) {
 
-            return [
-                // "id" => $b->id,
+             return [
                 "district" => $b->user->getDistrict->fullname,
                 "fullname_r" => $b->user->fullname,
 
-                "fullname_b" => (($b->status === 1)) ? $b->program->sender()->first()->fullname : '',
+                "fullname_b" => (($b->status === 1)) ? $b->programs()->sortByDesc('status')->first()->
+                sender()->first()->fullname : '',
 
                 "class" => $b->getClasses(),
                 "subject" => $b->subject,
@@ -39,26 +39,30 @@ class Export implements FromCollection, WithHeadings
                 "EducationalActivities" => $b->getEducationalActivities(),
                 "content" => $b->content,
 
-                "program" => (($b->status === 1)) ? $b->program->filename : '',
+                "program" => (($b->status === 1)) ? $b->programs()->sortByDesc('status')->first()->filename : '',
 
-                "schedule" => (($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)) ?
-                    $b->program->schedule->filename : '',
+                "schedule" => (($b->status === 1) and ($b->programs()->sortByDesc('status')->first()->schedule) and ($b->programs()->sortByDesc('status')->first()->schedule->status === 1)) ?
+                    $b->programs()->sortByDesc('status')->first()->schedule->filename : '',
 
-                "students_amount" => (($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)
-                    and ($b->program->schedule->student)) ?
-                    $b->program->schedule->student->students_amount : '',
+                "students_amount" => (($b->status === 1) and ($b->programs()->sortByDesc('status')->first()->schedule) and ($b->programs()->sortByDesc('status')->first()->schedule->status === 1)
+                    and ($b->programs()->sortByDesc('status')->first()->schedule->student)) ?
+                    $b->programs()->sortByDesc('status')->first()->schedule->student->students_amount : '',
 
-                "students" => (($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)
-                    and ($b->program->schedule->student)) ?
-                    $b->program->schedule->student->filename : '',
+                "students" => (($b->status === 1) and ($b->programs()->sortByDesc('status')->first()->schedule) and ($b->programs()->sortByDesc('status')->first()->schedule->status === 1)
+                    and ($b->programs()->sortByDesc('status')->first()->schedule->student)) ?
+                    $b->programs()->sortByDesc('status')->first()->schedule->student->filename : '',
 
 
-                "agreement" => (($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)
-                    and ($b->program->schedule->student) and ($b->program->schedule->student->agreement)) ?
-                    $b->program->schedule->student->agreement->filename : '',
+                "agreement" => (($b->status === 1) and ($b->programs()->sortByDesc('status')->first()->schedule) and ($b->programs()->sortByDesc('status')->first()->schedule->status === 1)
+                    and ($b->programs()->sortByDesc('status')->first()->schedule->student) and ($b->programs()->sortByDesc('status')->first()->schedule->student->agreement)) ?
+                    $b->programs()->sortByDesc('status')->first()->schedule->student->agreement->filename : '',
 
                 ];
             });
+
+        return $array;
+
+
     }
 
     public function headings(): array

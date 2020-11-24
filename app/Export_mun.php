@@ -34,7 +34,8 @@ class Export_mun implements FromCollection, WithHeadings
                     "district" => ($dis_u == $dis) ? $b->user->getDistrict->fullname :'',
                     "fullname_r" => ($dis_u == $dis) ? $b->user->fullname :'',
 
-                    "fullname_b" => (($dis_u == $dis) and ($b->status === 1)) ? $b->program->sender()->first()->fullname : '',
+                    "fullname_b" => (($dis_u == $dis) and ($b->status === 1)) ? $b->programs()->sortByDesc('status')->first()->
+                    sender()->first()->fullname : '',
 
                     "class" => ($dis_u == $dis) ? $b->getClasses() :'',
                     "subject" => ($dis_u == $dis) ? $b->subject :'',
@@ -46,23 +47,23 @@ class Export_mun implements FromCollection, WithHeadings
                     "EducationalActivities" => ($dis_u == $dis) ? $b->getEducationalActivities() :'',
                     "content" => ($dis_u == $dis) ? $b->content :'',
 
-                    "program" => (($dis_u == $dis) and ($b->status === 1)) ? $b->program->filename : '',
+                    "program" => (($dis_u == $dis) and ($b->status === 1)) ? $b->programs()->sortByDesc('status')->first()->filename : '',
 
-                    "schedule" => (($dis_u == $dis) and ($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)) ?
-                        $b->program->schedule->filename : '',
+                    "schedule" => (($dis_u == $dis) and ($b->status === 1) and ($b->programs()->sortByDesc('status')->first()->schedule) and ($b->programs()->sortByDesc('status')->first()->schedule->status === 1)) ?
+                    $b->programs()->sortByDesc('status')->first()->schedule->filename : '',
 
-                    "students_amount" => (($dis_u == $dis) and ($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)
-                        and ($b->program->schedule->student)) ?
-                        $b->program->schedule->student->students_amount : '',
+                    "students_amount" => (($dis_u == $dis) and ($b->status === 1) and ($b->programs()->sortByDesc('status')->first()->schedule) and ($b->programs()->sortByDesc('status')->first()->schedule->status === 1)
+                    and ($b->programs()->sortByDesc('status')->first()->schedule->student)) ?
+                    $b->programs()->sortByDesc('status')->first()->schedule->student->students_amount : '',
 
-                    "students" => (($dis_u == $dis) and ($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)
-                        and ($b->program->schedule->student)) ?
-                        $b->program->schedule->student->filename : '',
+                    "students" => (($dis_u == $dis) and ($b->programs()->sortByDesc('status')->first()->schedule) and ($b->programs()->sortByDesc('status')->first()->schedule->status === 1)
+                    and ($b->programs()->sortByDesc('status')->first()->schedule->student)) ?
+                    $b->programs()->sortByDesc('status')->first()->schedule->student->filename : '',
 
 
-                    "agreement" => (($dis_u == $dis) and ($b->status === 1) and ($b->program->schedule) and ($b->program->schedule->status === 1)
-                        and ($b->program->schedule->student) and ($b->program->schedule->student->agreement)) ?
-                        $b->program->schedule->student->agreement->filename : '',
+                    "agreement" => (($dis_u == $dis) and ($b->status === 1) and ($b->programs()->sortByDesc('status')->first()->schedule) and ($b->programs()->sortByDesc('status')->first()->schedule->status === 1)
+                    and ($b->programs()->sortByDesc('status')->first()->schedule->student) and ($b->programs()->sortByDesc('status')->first()->schedule->student->agreement)) ?
+                    $b->programs()->sortByDesc('status')->first()->schedule->student->agreement->filename : '',
 
                     ];
             });
