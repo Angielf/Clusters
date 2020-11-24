@@ -37,7 +37,7 @@
                               </tr>
                             </thead>
 
-                            <tbody>
+                            <tbody id="own_bids">
                                 <tr>
                                     @if ($user->bids())
                                         @foreach( $user->bids() as $bid)
@@ -182,7 +182,14 @@
 
                                 </tr>
                             </tbody>
+
                           </table>
+
+                          <nav aria-label="Page navigation example">
+                            <ul class="pagination" id="pag1">
+
+                            </ul>
+                          </nav>
 
                     </ul>
 
@@ -506,5 +513,6 @@
 <script src="js/poisk_sch.js"></script>
 <script src="js/sort_sch.js"></script>
 <script src="js/hide_sch.js"></script>
+<script src="js/pag_sch.js"></script>
 
 @endsection
