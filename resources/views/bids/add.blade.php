@@ -17,7 +17,7 @@
                 <form method="post" action="{{ route('bids.adding') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <ul class="list-group">
+                    {{-- <ul class="list-group">
                         <label for="class">Класс/группа:</label>
                         <li class="list-group-item">
                             <div class="form-check form-check-inline">
@@ -69,7 +69,26 @@
                                 <label class="form-check-label">смешанная группа</label>
                             </div>
                         </li>
-                    </ul>
+                    </ul> --}}
+
+                    <div class="form-group">
+                        <label for="class">Класс/группа:</label>
+                        <select class="form-control" name="class[]">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="смешанная группа">смешанная группа</option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <label for="subject">Предмет/курс:</label>
@@ -87,7 +106,7 @@
                     </div>
 
 
-                    <ul class="list-group">
+                    {{-- <ul class="list-group">
                         <label for="educational_program">Образовательная программа:</label>
                         <li class="list-group-item">
                             <div class="form-check form-check-inline">
@@ -101,9 +120,18 @@
                                 <label class="form-check-label">дополнительная</label>
                             </div>
                         </li>
-                    </ul>
+                    </ul> --}}
+                    <div class="form-group">
+                        <label for="educational_program">Образовательная программа:</label>
+                        <select class="form-control" name="educational_program[]">
+                            <option value=""></option>
+                            <option value="основная">основная</option>
 
-                    <ul class="list-group">
+                            <option value="дополнительная">дополнительная</option>
+                        </select>
+                    </div>
+
+                    {{-- <ul class="list-group">
                         <label for="educational_activity">Образовательная деятельность:</label>
                         <li class="list-group-item">
                             <div class="form-check form-check-inline">
@@ -117,7 +145,16 @@
                                 <label class="form-check-label">внеурочная</label>
                             </div>
                         </li>
-                    </ul>
+                    </ul> --}}
+                    <div class="form-group">
+                        <label for="educational_activity">Образовательная деятельность:</label>
+                        <select class="form-control" name="educational_activity[]">
+                            <option value=""></option>
+                            <option value="урочная">урочная</option>
+
+                            <option value="внеурочная">внеурочная</option>
+                        </select>
+                    </div>
 
 
                     <div class="form-group">
