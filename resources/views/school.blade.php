@@ -48,6 +48,17 @@
                                                     <li class="list-group-item">{{ $bid->subject }} </li>
                                                     <li class="list-group-item">{{ $bid->modul }}</li>
                                                 </ul>
+                                                @if($bid->status === 0)
+                                                <form action="{{ action('BidController@delete',$bid->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-outline-danger btn">
+                                                        Удалить заявление
+                                                    </button>
+                                                </form>
+                                                @endif
                                             </td>
                                             <td>
                                                 {!! $bid->getStatus() !!}

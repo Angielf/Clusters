@@ -208,4 +208,11 @@ class BidController extends Controller
         return redirect()->route('bid.index')
             ->with('success', 'Аппеляция удалена');
     }
+
+    public function delete(Bid $bid)
+    {
+        $bid->delete();
+
+        return redirect('/');
+    }
 }

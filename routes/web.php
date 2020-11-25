@@ -49,6 +49,8 @@ Route::resource('clusters', 'ClusterController');
 
 Route::get('/clusters/addoneschool/{baseSchoolId}', 'ClusterController@addoneschool');
 
+Route::delete('/bid/{bid}', 'BidController@delete');
+
 
 
 Route::get('/program/{id}', 'ProgramController@index');
