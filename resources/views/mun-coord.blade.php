@@ -6,7 +6,16 @@
             <div class="col-md-12">
                 <div class="card">
 
-                    <a class="btn btn-outline-dark" href="{{ route('export_mun') }}">Excel</a>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            Выгрузка всех заявок:
+                            <a class="btn btn-outline-dark" href="{{ route('export') }}">Export</a>
+                        </li>
+                        <li class="list-group-item">
+                            Выгрузка заявок муниципалитета:
+                            <a class="btn btn-outline-dark" href="{{ route('export_mun') }}">Export</a>
+                        </li>
+                    </ul>
 
                     <div class="card-header">
                         <h2>{{$user->fullname}} <br>
@@ -184,6 +193,7 @@
                                     <th scope="col">
                                         Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
                                     </th>
+
                                     <th scope="col">Программа/ Расписание</th>
                                     <th scope="col">Кол-во учеников/Список</th>
                                     <th scope="col" onclick="sort_dog();">Договор <i class="fas fa-arrows-alt-v"></th>
@@ -192,16 +202,14 @@
 
                                 <tbody id="table1">
                                     @foreach($bids as $bid)
+
                                         @if(($bid->status === 1))
                                         @if(($bid->user->district == $user->getDistrict->id))
                                             <tr>
+
                                                 <td>{{ $bid->user->fullname }}</td>
                                                 <td>
-                                                    @foreach($bid->programs() as $program)
-                                                        @if($program->status === 1)
-                                                            {{$program->sender()->first()->fullname}}
-                                                        @endif
-                                                    @endforeach
+                                                    {{ $bid->programs()->sortByDesc('status')->first()->sender()->first()->fullname}}
                                                 </td>
 
                                                 <td>
@@ -223,66 +231,50 @@
                                                     </ul>
                                                 </td>
 
-                                                {{-- <td>{{ $bid->content }}</td> --}}
+                                                <td>
+                                                    <li class="list-group-item">
+                                                        <a href="/files/programs/{{ $bid->programs()->sortByDesc('status')->first()->filename }}"
+                                                            class="btn btn-outline-success">
+                                                            Программа
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        @if(($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1))
+                                                            <a href="/files/schedules/{{ $bid->programs()->sortByDesc('status')->first()->schedule->filename }}"
+                                                                class="btn btn-outline-success">
+                                                                Расписание
+                                                            </a>
+                                                        @endif
+                                                    </li>
+
+                                                </td>
 
                                                 <td>
-                                                    <ul class="list-group">
-                                                        @foreach($bid->programs() as $program)
-                                                            @if($program->status === 1)
-                                                                    <li class="list-group-item">
-                                                                        <a href="/files/programs/{{ $program->filename }}"
-                                                                            class="btn btn-outline-success">
-                                                                            Программа
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-group-item">
-                                                                        @if(($program->schedule) and ($program->schedule->status === 1))
-                                                                            <a href="/files/schedules/{{ $program->schedule->filename }}"
-                                                                                class="btn btn-outline-success">
-                                                                                Расписание
-                                                                            </a>
-                                                                        @endif
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
+                                                    @if (($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1)
+                                                    and ($bid->programs()->sortByDesc('status')->first()->schedule->student))
+                                                        <li class="list-group-item">
+                                                            {{$bid->programs()->sortByDesc('status')->first()->schedule->student->students_amount}}
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <a href="/files/students/{{ $bid->programs()->sortByDesc('status')->first()->schedule->student->filename }}"
+                                                                class="btn btn-outline-success">
+                                                                Список учеников
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                </td>
 
-                                                            @if(($program->schedule) and ($program->schedule->status === 1))
-                                                            <td>
-                                                                @if($program->schedule->student)
-                                                                    <ul class="list-group">
-                                                                        <li class="list-group-item">
-                                                                            {{ $program->schedule->student->students_amount }}
-                                                                        </li>
-                                                                        <li class="list-group-item">
-                                                                            <a href="/files/students/{{ $program->schedule->student->filename }}"
-                                                                                class="btn btn-outline-success">
-                                                                                Список учеников
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-
-                                                                    <td>
-                                                                        @if ($program->schedule->student->agreement)
-                                                                            <a href="/files/agreements/{{ $program->schedule->student->agreement->filename }}"
-                                                                            class="btn btn-outline-success">
-                                                                                Договор
-                                                                            </a>
-                                                                        @else
-                                                                            <p></p>
-                                                                        @endif
-
-
-                                                                    </td>
-                                                                @else
-                                                                    <p></p>
-                                                                @endif
-                                                            </td>
-
-                                                            @endif
-
-
-                                                            @endif
-                                                        @endforeach
+                                                <td>
+                                                    @if (($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1)
+                                                    and ($bid->programs()->sortByDesc('status')->first()->schedule->student) and ($bid->programs()->sortByDesc('status')->first()->schedule->student->agreement))
+                                                        <li class="list-group-item">
+                                                            <a href="/files/agreements/{{ $bid->programs()->sortByDesc('status')->first()->schedule->student->agreement->filename }}"
+                                                                class="btn btn-outline-success">
+                                                                    Договор
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                </td>
 
                                             <tr>
 
@@ -425,6 +417,7 @@
                                 <input type="hidden" id="rez2_order" value="asc">
                                 <thead>
                                     <tr>
+                                        {{-- <th scope="col">Муниципалитет</th> --}}
                                         <th scope="col" onclick="sort_rez2();">Организация реципиент <i class="fas fa-arrows-alt-v"></th>
 
                                         <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
