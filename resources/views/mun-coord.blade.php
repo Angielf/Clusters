@@ -6,6 +6,11 @@
             <div class="col-md-12">
                 <div class="card">
 
+                    <div class="card-header">
+                        <h2>{{$user->fullname}} <br>
+                            <small>{{$user->getDistrict->fullname}}</small>
+                        </h2>
+                    </div>
                     <ul class="list-group">
                         <li class="list-group-item">
                             Выгрузка всех заявок:
@@ -16,12 +21,6 @@
                             <a class="btn btn-outline-dark" href="{{ route('export_mun') }}">Export</a>
                         </li>
                     </ul>
-
-                    <div class="card-header">
-                        <h2>{{$user->fullname}} <br>
-                            <small>{{$user->getDistrict->fullname}}</small>
-                        </h2>
-                    </div>
 
                     <ul class="nav nav-tabs">
                         <!-- Первая вкладка (активная) -->

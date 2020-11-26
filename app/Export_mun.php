@@ -56,7 +56,7 @@ class Export_mun implements FromCollection, WithHeadings
                     and ($b->programs()->sortByDesc('status')->first()->schedule->student)) ?
                     $b->programs()->sortByDesc('status')->first()->schedule->student->students_amount : '',
 
-                    "students" => (($dis_u == $dis) and ($b->programs()->sortByDesc('status')->first()->schedule) and ($b->programs()->sortByDesc('status')->first()->schedule->status === 1)
+                    "students" => (($dis_u == $dis) and ($b->status === 1) and ($b->programs()->sortByDesc('status')->first()->schedule) and ($b->programs()->sortByDesc('status')->first()->schedule->status === 1)
                     and ($b->programs()->sortByDesc('status')->first()->schedule->student)) ?
                     $b->programs()->sortByDesc('status')->first()->schedule->student->filename : '',
 
