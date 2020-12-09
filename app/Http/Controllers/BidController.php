@@ -215,4 +215,15 @@ class BidController extends Controller
 
         return redirect('/');
     }
+
+    public function delete2(Bid $bid)
+    {
+        foreach($bid->programs() as $program){
+            $program->delete();
+        }
+
+        $bid->delete();
+
+        return redirect('/');
+    }
 }

@@ -51,6 +51,8 @@ Route::get('/clusters/addoneschool/{baseSchoolId}', 'ClusterController@addonesch
 
 Route::delete('/bid/{bid}', 'BidController@delete');
 
+Route::delete('/bid/{bid}/2', 'BidController@delete2');
+
 
 
 Route::get('/program/{id}', 'ProgramController@index');

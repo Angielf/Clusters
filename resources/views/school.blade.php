@@ -48,20 +48,34 @@
                                                     <li class="list-group-item">{{ $bid->subject }} </li>
                                                     <li class="list-group-item">{{ $bid->modul }}</li>
                                                 </ul>
-                                                @if($bid->status === 0)
-                                                <form action="{{ action('BidController@delete',$bid->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit"
-                                                        class="btn btn-outline-danger btn">
-                                                        Удалить заявление
-                                                    </button>
-                                                </form>
-                                                @endif
                                             </td>
                                             <td>
-                                                {!! $bid->getStatus() !!}
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">{!! $bid->getStatus() !!}</li>
+                                                    <li class="list-group-item">
+                                                        @if($bid->status === 0)
+                                                            <form action="{{ action('BidController@delete',$bid->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="btn btn-outline-danger btn">
+                                                                    Удалить дефицит
+                                                                </button>
+                                                            </form>
+                                                        @elseif($bid->status === 9)
+                                                            <form action="{{ action('BidController@delete2',$bid->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="btn btn-outline-danger btn">
+                                                                    Удалить дефицит и программы
+                                                                </button>
+                                                            </form>
+                                                        @endif
+                                                    </li>
+                                                </ul>
                                             </td>
                                             {{-- @if ($bid->status !== 1) --}}
                                                 <td>
