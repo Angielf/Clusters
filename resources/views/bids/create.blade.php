@@ -17,8 +17,27 @@
                 <form method="post" action="{{ route('bids.store') }}" enctype="multipart/form-data">
                     @csrf
 
-                    {{-- <ul class="list-group">
+                    <div class="form-group">
                         <label for="class">Класс/группа:</label>
+                        <select class="form-control" name="class[]" id="selectid">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="смешанная группа" id="smesh">смешанная группа</option>
+                        </select>
+                    </div>
+
+                    <ul class="list-group" id="mix" style="margin:0 auto; display:none;">
+                        <label for="class">Выберите классы для смешанной группы:</label>
                         <li class="list-group-item">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" name="class[]" type="checkbox" value="1">
@@ -64,31 +83,8 @@
                                 <input class="form-check-input" name="class[]" type="checkbox" value="11">
                                 <label class="form-check-label">11</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="class[]" type="checkbox" value="смешанная группа">
-                                <label class="form-check-label">смешанная группа</label>
-                            </div>
                         </li>
-                    </ul> --}}
-
-                    <div class="form-group">
-                        <label for="class">Класс/группа:</label>
-                        <select class="form-control" name="class[]">
-                            <option value=""></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="смешанная группа">смешанная группа</option>
-                        </select>
-                    </div>
+                    </ul>
 
 
                     <div class="form-group">
@@ -106,22 +102,6 @@
                         <input type="text" class="form-control" name="hours"/>
                     </div>
 
-
-                    {{-- <ul class="list-group">
-                        <label for="educational_program">Образовательная программа:</label>
-                        <li class="list-group-item">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="educational_program[]" type="checkbox"
-                                    value="основная">
-                                <label class="form-check-label">основная</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="educational_program[]" type="checkbox"
-                                    value="дополнительная">
-                                <label class="form-check-label">дополнительная</label>
-                            </div>
-                        </li>
-                    </ul> --}}
                     <div class="form-group">
                         <label for="educational_program">Образовательная программа:</label>
                         <select class="form-control" name="educational_program[]">
@@ -132,21 +112,7 @@
                         </select>
                     </div>
 
-                    {{-- <ul class="list-group">
-                        <label for="educational_activity">Образовательная деятельность:</label>
-                        <li class="list-group-item">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="educational_activity[]" type="checkbox"
-                                    value="урочная">
-                                <label class="form-check-label">урочная</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" name="educational_activity[]" type="checkbox"
-                                    value="внеурочная">
-                                <label class="form-check-label">внеурочная</label>
-                            </div>
-                        </li>
-                    </ul> --}}
+
                     <div class="form-group">
                         <label for="educational_activity">Образовательная деятельность:</label>
                         <select class="form-control" name="educational_activity[]">
@@ -189,4 +155,18 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        $(function() {
+            $("#selectid").change(function() {
+                if ($("#smesh").is(":selected")) {
+                    $("#mix").show();
+                }
+                else {
+                    $("#mix").hide();
+                }
+            }).trigger('change');
+        });
+    </script>
 @endsection
