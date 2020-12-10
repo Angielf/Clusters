@@ -34,6 +34,24 @@
                     class="btn btn-outline-dark">
                     Инструкция
                 </a>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Документы
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{ asset('/documents/Положение о персонализации.docx') }}">Положение о персонализации</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{{ asset('/documents/приказ_Минпрос_5.08.2020.pdf') }}">Приказ Минпросвещения от 5.08.2020</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{{ asset('/documents/сетевая форма_метод.рекомендации Минпрос.pdf') }}">Методические рекомендации</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
