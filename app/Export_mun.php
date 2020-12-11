@@ -45,6 +45,10 @@ class Export_mun implements FromCollection, WithHeadings
                     "form_education_implementation" => ($dis_u == $dis) ? $b->form_education_implementation :'',
                     "EducationalPrograms" => ($dis_u == $dis) ? $b->getEducationalPrograms() :'',
                     "EducationalActivities" => ($dis_u == $dis) ? $b->getEducationalActivities() :'',
+
+                    "date_begin" => ($dis_u == $dis) ? $b->getDataBegin() :'',
+                    "date_end" => ($dis_u == $dis) ? $b->getDataEnd() :'',
+
                     "content" => ($dis_u == $dis) ? $b->content :'',
 
                     "program" => (($dis_u == $dis) and ($b->status === 1)) ? $b->programs()->sortByDesc('status')->first()->filename : '',
@@ -86,6 +90,8 @@ class Export_mun implements FromCollection, WithHeadings
             'Условия реализации обучения',
             'Образовательная программа',
             'Образовательная деятельность',
+            'Начало',
+            'Конец',
             'Комментарий',
             'Программа',
             'Расписание',

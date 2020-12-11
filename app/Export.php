@@ -37,6 +37,10 @@ class Export implements FromCollection, WithHeadings
                 "form_education_implementation" => $b->form_education_implementation,
                 "EducationalPrograms" => $b->getEducationalPrograms(),
                 "EducationalActivities" => $b->getEducationalActivities(),
+
+                "date_begin" => $b->getDataBegin(),
+                "date_end" => $b->getDataEnd(),
+
                 "content" => $b->content,
 
                 "program" => (($b->status === 1)) ? $b->programs()->sortByDesc('status')->first()->filename : '',
@@ -79,6 +83,8 @@ class Export implements FromCollection, WithHeadings
             'Условия реализации обучения',
             'Образовательная программа',
             'Образовательная деятельность',
+            'Начало',
+            'Конец',
             'Комментарий',
             'Программа',
             'Расписание',

@@ -9,7 +9,8 @@ class Bid extends Model
     protected $table = 'bids';
 
     protected $fillable = ['subject', 'class', 'content', 'user_id', 'modul', 'hours', 'educational_program',
-        'educational_activity', 'form_of_education', 'form_education_implementation', 'rc_cluster_id'];
+        'educational_activity', 'form_of_education', 'form_education_implementation', 'date_begin', 'date_end',
+         'rc_cluster_id'];
 
     public function user()
     {
@@ -63,12 +64,6 @@ class Bid extends Model
             return substr($str, 0, -2);
         }
         else return '';
-
-        // foreach ($educational_programs as $educational_program) {
-        //     $str .= $educational_program . ", ";
-        // }
-
-        // return substr($str, 0, -2);
     }
 
     public function getEducationalActivities()
@@ -84,4 +79,32 @@ class Bid extends Model
         else return '';
 
     }
+
+    public function getDataBegin()
+    {
+        $date = $this->date_begin;
+        if($date !== NULL) {
+            $year = substr($date, 0, -6);
+            $month = substr($date, 5, -3);
+            $day = substr($date, -2);
+            $date_begin = $day . "-" . $month . "-" . $year;
+            return $date_begin;
+        }
+        else return '';
+    }
+
+    public function getDataEnd()
+    {
+        $date = $this->date_end;
+        if($date !== NULL) {
+            $year = substr($date, 0, -6);
+            $month = substr($date, 5, -3);
+            $day = substr($date, -2);
+            $date_end = $day . "-" . $month . "-" . $year;
+            return $date_end;
+        }
+        else return '';
+    }
+
+
 }

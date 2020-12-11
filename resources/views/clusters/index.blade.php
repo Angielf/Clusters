@@ -238,6 +238,10 @@
                                         Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
                                     </th>
 
+                                    <th scope="col">
+                                        Даты
+                                    </th>
+
                                     <th scope="col">Программа/ Расписание</th>
                                     <th scope="col">Кол-во учеников/Список</th>
                                     <th scope="col" onclick="sort_dog();">Договор <i class="fas fa-arrows-alt-v"></th>
@@ -271,6 +275,13 @@
                                                         <li class="list-group-item">{{ $bid->getEducationalPrograms() }}</li>
                                                         <li class="list-group-item">{{ $bid->getEducationalActivities() }}</li>
                                                         <li class="list-group-item">{{ $bid->content }}</li>
+                                                    </ul>
+                                                </td>
+
+                                                <td>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">{{ $bid->getDataBegin() }} </li>
+                                                        <li class="list-group-item">{{ $bid->getDataEnd() }}</li>
                                                     </ul>
                                                 </td>
 
@@ -519,6 +530,10 @@
                                             Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
                                         </th>
 
+                                        <th scope="col">
+                                            Даты
+                                        </th>
+
                                     </tr>
                                     </thead>
 
@@ -545,6 +560,13 @@
                                                         <li class="list-group-item">{{ $bid->getEducationalPrograms() }}</li>
                                                         <li class="list-group-item">{{ $bid->getEducationalActivities() }}</li>
                                                         <li class="list-group-item">{{ $bid->content }}</li>
+                                                    </ul>
+                                                </td>
+
+                                                <td>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">{{ $bid->getDataBegin() }} </li>
+                                                        <li class="list-group-item">{{ $bid->getDataEnd() }}</li>
                                                     </ul>
                                                 </td>
                                             </tr>

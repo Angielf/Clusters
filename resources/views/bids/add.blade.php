@@ -146,6 +146,18 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="date_begin">Начало:</label>
+                        <input type="date" class="form-control" data-date-format="dd/mm/yyyy" name="date_begin"/>
+                        <small class="form-text text-muted">нажмите на значок справа</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date_end">Конец:</label>
+                        <input type="date" class="form-control" data-date-format="dd/mm/yyyy" name="date_end"/>
+                        <small class="form-text text-muted">нажмите на значок справа</small>
+                    </div>
+
+                    <div class="form-group">
                         <label for="content">Комментарий:</label>
                         <textarea class="form-control" name="content"></textarea>
                     </div>

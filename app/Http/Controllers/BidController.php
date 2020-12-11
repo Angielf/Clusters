@@ -58,6 +58,8 @@ class BidController extends Controller
             'educational_activity' => serialize($request->post('educational_activity')),
             'form_of_education' => $request->post('form_of_education'),
             'form_education_implementation' => $request->post('form_education_implementation'),
+            'date_begin' => $request->post('date_begin'),
+            'date_end' => $request->post('date_end'),
             'user_id' => $user_id,
         ]);
 
@@ -95,6 +97,8 @@ class BidController extends Controller
             'educational_activity' => serialize($request->post('educational_activity')),
             'form_of_education' => $request->post('form_of_education'),
             'form_education_implementation' => $request->post('form_education_implementation'),
+            'date_begin' => $request->post('date_begin'),
+            'date_end' => $request->post('date_end'),
             'user_id' => $user_id,
             'rc_cluster_id' => $id,
         ]);
@@ -127,6 +131,8 @@ class BidController extends Controller
             'educational_activity' => serialize($request->post('educational_activity')),
             'form_of_education' => $request->post('form_of_education'),
             'form_education_implementation' => $request->post('form_education_implementation'),
+            'date_begin' => $request->post('date_begin'),
+            'date_end' => $request->post('date_end'),
             'user_id' => $user_id,
         ]);
 
@@ -224,6 +230,37 @@ class BidController extends Controller
 
         $bid->delete();
 
+        return redirect('/');
+    }
+
+    public function show_update(Bid $bid)
+    {
+        return view('bids.update', compact('bid'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Bid $bid
+     * @return \Illuminate\Http\Response
+     */
+    public function update_subject(Request $request, Bid $bid)
+    {
+        // $bid->update($request->all());
+        // $bid->update(['posts.subject'=> 'closed']);
+
+        // $bid->subject = $request->subject;
+        // $bid->save();
+
+
+        // $bid = Bid::where('id', $bid)->update(['subject' => $request->subject]);
+        // $bid->update(['subject' => $request->subject]);
+
+        $subject = $request->input('subject');
+        $bid->update(['subject' => $subject]);
+
+        // return view('bids.update', compact('bid'));
         return redirect('/');
     }
 }

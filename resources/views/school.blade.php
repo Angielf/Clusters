@@ -47,6 +47,12 @@
                                                     <li class="list-group-item">{{ $bid->getClasses() }}</li>
                                                     <li class="list-group-item">{{ $bid->subject }} </li>
                                                     <li class="list-group-item">{{ $bid->modul }}</li>
+                                                    <li class="list-group-item">
+                                                        <a href="/bids/{{ $bid->id }}/update"
+                                                            class="btn btn-outline-info btn">
+                                                            Редактировать
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </td>
                                             <td>
@@ -372,10 +378,10 @@
                                             <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
 
                                             <th scope="col">
-                                                Форма/условия реализации обучения/ Образовательная программа/деятельность
+                                                Форма/условия реализации обучения/ Образовательная программа/деятельность / Комментарий
                                             </th>
 
-                                            <th scope="col">Комментарий</th>
+                                            <th scope="col">Даты</th>
 
                                             <th scope="col" onclick="sort_pr();">Предложить программу <i class="fas fa-arrows-alt-v"></th>
                                             <th scope="col" onclick="sort_ra();">Предложить расписание <i class="fas fa-arrows-alt-v"></th>
@@ -406,10 +412,17 @@
                                                         <li class="list-group-item">{{ $bid->form_education_implementation }}</li>
                                                         <li class="list-group-item">{{ $bid->getEducationalPrograms() }}</li>
                                                         <li class="list-group-item">{{ $bid->getEducationalActivities() }}</li>
+                                                        <li class="list-group-item">{{ $bid->content }}</li>
                                                     </ul>
                                                 </td>
 
-                                                <td>{{ $bid->content }}</td>
+                                                <td>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">{{ $bid->getDataBegin() }} </li>
+                                                        <li class="list-group-item">{{ $bid->getDataEnd() }}</li>
+                                                    </ul>
+                                                </td>
+
                                                 <td>
                                                     @if ($bid->status !== 1)
 
