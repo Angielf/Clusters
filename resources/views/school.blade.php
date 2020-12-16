@@ -22,6 +22,10 @@
 
                         <h5 align="center">Ваши заявления на дефицит</h5>
 
+                        <div class="alert alert-info" role="alert">
+                            <i class="fas fa-exclamation"></i> Сначала отклоните неподходящие программы, затем согласуйте нужную программу.
+                        </div>
+
                         <table class="table table-striped">
                             <thead>
                               <tr>
@@ -50,7 +54,7 @@
                                                     <li class="list-group-item">
                                                         <a href="/bids/{{ $bid->id }}/update"
                                                             class="btn btn-outline-info btn">
-                                                            Редактировать
+                                                            <i class="far fa-eye"></i> Редактировать
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -66,7 +70,7 @@
                                                                 @method('DELETE')
                                                                 <button type="submit"
                                                                     class="btn btn-outline-danger btn">
-                                                                    Удалить дефицит
+                                                                    <i class="far fa-trash-alt"></i> Удалить дефицит
                                                                 </button>
                                                             </form>
                                                         @elseif($bid->status === 9)
@@ -76,7 +80,7 @@
                                                                 @method('DELETE')
                                                                 <button type="submit"
                                                                     class="btn btn-outline-danger btn">
-                                                                    Удалить дефицит и программы
+                                                                    <i class="far fa-trash-alt"></i> Удалить дефицит и программы
                                                                 </button>
                                                             </form>
                                                         @endif
@@ -103,7 +107,7 @@
                                                                                 <p>
                                                                                     <a href="program/add/{{ $program->id }}"
                                                                                         class="btn btn-outline-info btn">
-                                                                                        Согласовать
+                                                                                        <i class="far fa-check-square"></i> Согласовать
                                                                                     </a>
                                                                                 <p>
 
@@ -113,7 +117,7 @@
                                                                                     @method('DELETE')
                                                                                     <button type="submit"
                                                                                         class="btn btn-outline-danger btn">
-                                                                                        Отклонить
+                                                                                        <i class="far fa-trash-alt"></i> Отклонить
                                                                                     </button>
                                                                                 </form>
                                                                             @endif
@@ -150,17 +154,21 @@
                                                 @if (($bid->status === 1) and ($bid->program->schedule))
                                                     <td>
                                                         <p><a href="/files/schedules/{{ $bid->program->schedule->filename }}"
-                                                           class="btn btn-outline-success">Расписание</a><br></p>
+                                                           class="btn btn-outline-success">
+                                                           Расписание
+                                                        </a><br></p>
                                                         @if ($bid->program->schedule->status !== 1)
                                                             <p><a href="schedule/add/{{ $bid->program->schedule->id }}"
-                                                               class="btn btn-outline-info">Согласовать</a></p>
+                                                               class="btn btn-outline-info">
+                                                               <i class="far fa-check-square"></i> Согласовать
+                                                            </a></p>
                                                             <form action="{{ action('ScheduleController@delete',$bid->program->schedule->id) }}"
                                                                   method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit"
                                                                         class="btn btn-outline-danger">
-                                                                    Отклонить
+                                                                        <i class="far fa-trash-alt"></i> Отклонить
                                                                 </button>
                                                             </form>
                                                         @endif
@@ -189,7 +197,7 @@
                                                                 @else
                                                                     <a href="/agreement/{{ $bid->program->schedule->student->id }}"
                                                                         class="btn btn-outline-danger">
-                                                                            Добавить договор
+                                                                        <i class="fas fa-file-upload"></i> Добавить договор
                                                                     </a>
                                                                 @endif
 
@@ -199,7 +207,7 @@
                                                         @else
                                                             <a href="/student/{{ $bid->program->schedule->id }}"
                                                                 class="btn btn-outline-danger">
-                                                                    Добавить список учеников
+                                                                <i class="fas fa-file-upload"></i> Добавить список учеников
                                                             </a>
                                                         @endif
                                                     </td>
@@ -436,7 +444,7 @@
 
                                                         <a href="/program/{{ $bid->id }}"
                                                             class="btn btn-outline-danger p1">
-                                                            Предложить программу
+                                                            <i class="fas fa-file-upload"></i> Предложить программу
                                                         </a>
 
                                                     @else
@@ -501,7 +509,7 @@
 
                                                                             <a href="/schedule/{{ $bid->program->id }}"
                                                                                 class="btn btn-outline-danger">
-                                                                                Добавить расписание
+                                                                                <i class="fas fa-file-upload"></i> Добавить расписание
                                                                             </a>
 
                                                                     </td>
