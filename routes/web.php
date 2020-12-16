@@ -53,6 +53,30 @@ Route::delete('/bid/{bid}', 'BidController@delete');
 
 Route::delete('/bid/{bid}/2', 'BidController@delete2');
 
+Route::get('/bids/{bid}/update', 'BidController@show_update');
+
+Route::put('/bids/{bid}/subject-update', 'BidController@update_subject');
+
+Route::put('/bids/{bid}/modul-update', 'BidController@update_modul');
+
+Route::put('/bids/{bid}/hours-update', 'BidController@update_hours');
+
+Route::put('/bids/{bid}/class-update', 'BidController@update_class');
+
+Route::put('/bids/{bid}/form_of_education-update', 'BidController@update_form_of_education');
+
+Route::put('/bids/{bid}/form_education_implementation-update', 'BidController@update_form_education_implementation');
+
+Route::put('/bids/{bid}/educational_program-update', 'BidController@update_educational_program');
+
+Route::put('/bids/{bid}/educational_activity-update', 'BidController@update_educational_activity');
+
+Route::put('/bids/{bid}/date_begin-update', 'BidController@update_date_begin');
+
+Route::put('/bids/{bid}/date_end-update', 'BidController@update_date_end');
+
+Route::put('/bids/{bid}/date_end-content', 'BidController@update_content');
+
 
 
 Route::get('/program/{id}', 'ProgramController@index');

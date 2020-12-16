@@ -245,22 +245,91 @@ class BidController extends Controller
      * @param  \App\Bid $bid
      * @return \Illuminate\Http\Response
      */
+    public function update_class(Request $request, Bid $bid)
+    {
+        $class = $request->input('class');
+        $bid->update(['class' => serialize($class)]);
+
+        return view('bids.update', compact('bid'));
+    }
+
     public function update_subject(Request $request, Bid $bid)
     {
-        // $bid->update($request->all());
-        // $bid->update(['posts.subject'=> 'closed']);
-
-        // $bid->subject = $request->subject;
-        // $bid->save();
-
-
-        // $bid = Bid::where('id', $bid)->update(['subject' => $request->subject]);
-        // $bid->update(['subject' => $request->subject]);
-
         $subject = $request->input('subject');
         $bid->update(['subject' => $subject]);
 
-        // return view('bids.update', compact('bid'));
-        return redirect('/');
+        return view('bids.update', compact('bid'));
+    }
+
+    public function update_modul(Request $request, Bid $bid)
+    {
+        $modul = $request->input('modul');
+        $bid->update(['modul' => $modul]);
+
+        return view('bids.update', compact('bid'));
+    }
+
+    public function update_hours(Request $request, Bid $bid)
+    {
+        $hours = $request->input('hours');
+        $bid->update(['hours' => $hours]);
+
+        return view('bids.update', compact('bid'));
+    }
+
+    public function update_form_of_education(Request $request, Bid $bid)
+    {
+        $form_of_education = $request->input('form_of_education');
+        $bid->update(['form_of_education' => $form_of_education]);
+
+        return view('bids.update', compact('bid'));
+    }
+
+    public function update_form_education_implementation(Request $request, Bid $bid)
+    {
+        $form_education_implementation = $request->input('form_education_implementation');
+        $bid->update(['form_education_implementation' => $form_education_implementation]);
+
+        return view('bids.update', compact('bid'));
+    }
+
+    public function update_educational_program(Request $request, Bid $bid)
+    {
+        $educational_program = $request->input('educational_program');
+        $bid->update(['educational_program' => serialize($educational_program)]);
+
+        return view('bids.update', compact('bid'));
+    }
+
+    public function update_educational_activity(Request $request, Bid $bid)
+    {
+        $educational_activity = $request->input('educational_activity');
+        $bid->update(['educational_activity' => serialize($educational_activity)]);
+
+        return view('bids.update', compact('bid'));
+    }
+
+    public function update_date_begin(Request $request, Bid $bid)
+    {
+        $date_begin = $request->input('date_begin');
+        $bid->update(['date_begin' => $date_begin]);
+
+        return view('bids.update', compact('bid'));
+    }
+
+    public function update_date_end(Request $request, Bid $bid)
+    {
+        $date_end = $request->input('date_end');
+        $bid->update(['date_end' => $date_end]);
+
+        return view('bids.update', compact('bid'));
+    }
+
+    public function update_content(Request $request, Bid $bid)
+    {
+        $content = $request->input('content');
+        $bid->update(['content' => $content]);
+
+        return view('bids.update', compact('bid'));
     }
 }

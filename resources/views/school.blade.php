@@ -33,7 +33,7 @@
                                     Класс/предмет/курс
                                 </th>
                                 <th scope="col">Статус заявки</th>
-                                <th scope="col">Заявка</th>
+                                <th scope="col">Программа</th>
                                 <th scope="col">Расписание</th>
                                 <th scope="col">Список учеников</th>
                                 <th scope="col">Количество учеников</th>
