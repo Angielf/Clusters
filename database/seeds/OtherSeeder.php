@@ -12,12 +12,12 @@ class OtherSeeder extends Seeder
     public function run()
     {
         $user_info = array(
-            // array(
-            //     "loginOrg" => "sch18_028",
-            //     "nameOrg" => "МБУ ДО «Центр развития физической культуры и спорта»",
-            //     "passOrg" => "wk8bzwnm",
-            //     "district" => 18,
-            // ),
+            array(
+                "loginOrg" => "sch18_028",
+                "nameOrg" => "МБУ ДО «Центр развития физической культуры и спорта»",
+                "passOrg" => "wk8bzwnm",
+                "district" => 18,
+            ),
             array(
                 "loginOrg" => "d01",
                 "nameOrg" => "МКУ ДО «Аннинская детско-юношенская спортивная школа»",
