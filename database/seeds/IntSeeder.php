@@ -163,9 +163,9 @@ class IntSeeder extends Seeder
                 "district" => 30,
             ),
             array(
-                "loginOrg" => "brd_029",
+                "loginOrg" => "brd_030",
                 "nameOrg" => "КОУ ВО «Семилукский центр психолого-педагогической, медицинской и социальной помощи»",
-                "passOrg" => "krn9ggrt3",
+                "passOrg" => "nvgbc5mr4",
                 "district" => 30,
             ),
 
