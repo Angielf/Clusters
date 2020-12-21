@@ -54,7 +54,7 @@
                                                     <li class="list-group-item">
                                                         <a href="/bids/{{ $bid->id }}/update"
                                                             class="btn btn-outline-info btn">
-                                                            <i class="far fa-eye"></i> Редактировать
+                                                            <i class="far fa-eye"></i> Редактирование и удаление
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -84,6 +84,8 @@
                                                                 </button>
                                                             </form>
                                                         @endif
+
+
                                                     </li>
                                                 </ul>
                                             </td>
@@ -146,23 +148,25 @@
                                                             </div>
                                                             @endif
                                                         @endforeach
+
                                                     @endif
 
                                                 </td>
                                                 {{-- @endif --}}
 
-                                                @if (($bid->status === 1) and ($bid->program->schedule))
+                                                @if (($bid->status === 1) and ($bid->programs()->sortByDesc('status')->first()->schedule))
                                                     <td>
-                                                        <p><a href="/files/schedules/{{ $bid->program->schedule->filename }}"
+                                                        <p><a href="/files/schedules/{{ $bid->programs()->sortByDesc('status')->first()->schedule->filename }}"
                                                            class="btn btn-outline-success">
                                                            Расписание
                                                         </a><br></p>
-                                                        @if ($bid->program->schedule->status !== 1)
-                                                            <p><a href="schedule/add/{{ $bid->program->schedule->id }}"
+
+                                                        @if ($bid->programs()->sortByDesc('status')->first()->schedule->status !== 1)
+                                                            <p><a href="schedule/add/{{ $bid->programs()->sortByDesc('status')->first()->schedule->id }}"
                                                                class="btn btn-outline-info">
                                                                <i class="far fa-check-square"></i> Согласовать
                                                             </a></p>
-                                                            <form action="{{ action('ScheduleController@delete',$bid->program->schedule->id) }}"
+                                                            <form action="{{ action('ScheduleController@delete',$bid->programs()->sortByDesc('status')->first()->schedule->id) }}"
                                                                   method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -174,29 +178,30 @@
                                                         @endif
                                                     </td>
 
-                                                    @if($bid->program->schedule->status === 1)
+                                                    @if($bid->programs()->sortByDesc('status')->first()->schedule->status === 1)
                                                     <td>
-                                                        @if ($bid->program->schedule->student)
-                                                            <a href="/files/students/{{ $bid->program->schedule->student->filename }}"
+                                                        @if ($bid->programs()->sortByDesc('status')->first()->schedule->student)
+                                                            <p><a href="/files/students/{{ $bid->programs()->sortByDesc('status')->first()->schedule->student->filename }}"
                                                                 class="btn btn-outline-success">
                                                                 Список учеников
-                                                            </a>
+                                                            </a><br></p>
 
                                                             <td>
                                                                 <p>
-                                                                    {{ $bid->program->schedule->student->students_amount }}
+                                                                    {{ $bid->programs()->sortByDesc('status')->first()->schedule->student->students_amount }}
                                                                 </p>
                                                             </td>
 
                                                             <td>
-                                                                @if ($bid->program->schedule->student->agreement)
-                                                                    <a href="/files/agreements/{{ $bid->program->schedule->student->agreement->filename }}"
+                                                                @if ($bid->programs()->sortByDesc('status')->first()->schedule->student->agreement)
+                                                                    <a href="/files/agreements/{{ $bid->programs()->sortByDesc('status')->first()->schedule->student->agreement->filename }}"
                                                                         class="btn btn-outline-success">
                                                                         Договор
                                                                     </a>
+
                                                                 @else
-                                                                    <a href="/agreement/{{ $bid->program->schedule->student->id }}"
-                                                                        class="btn btn-outline-danger">
+                                                                    <a href="/agreement/{{ $bid->programs()->sortByDesc('status')->first()->schedule->student->id }}"
+                                                                        class="btn btn-outline-primary">
                                                                         <i class="fas fa-file-upload"></i> Добавить договор
                                                                     </a>
                                                                 @endif
@@ -205,8 +210,8 @@
                                                             </td>
 
                                                         @else
-                                                            <a href="/student/{{ $bid->program->schedule->id }}"
-                                                                class="btn btn-outline-danger">
+                                                            <a href="/student/{{ $bid->programs()->sortByDesc('status')->first()->schedule->id }}"
+                                                                class="btn btn-outline-primary">
                                                                 <i class="fas fa-file-upload"></i> Добавить список учеников
                                                             </a>
                                                         @endif
@@ -391,10 +396,18 @@
 
                                             <th scope="col">Даты</th>
 
-                                            <th scope="col" onclick="sort_pr();">Предложить программу <i class="fas fa-arrows-alt-v"></th>
-                                            <th scope="col" onclick="sort_ra();">Предложить расписание <i class="fas fa-arrows-alt-v"></th>
-                                            <th scope="col" onclick="sort_st();">Кол-во учеников/Список <i class="fas fa-arrows-alt-v"></th>
-                                            <th scope="col" onclick="sort_dog();">Договор <i class="fas fa-arrows-alt-v"></th>
+                                            <th scope="col" onclick="sort_pr();">Предложить программу
+                                                {{-- <i class="fas fa-arrows-alt-v"> --}}
+                                            </th>
+                                            <th scope="col" onclick="sort_ra();">Предложить расписание
+                                                {{-- <i class="fas fa-arrows-alt-v"> --}}
+                                            </th>
+                                            <th scope="col" onclick="sort_st();">Кол-во учеников/Список
+                                                {{-- <i class="fas fa-arrows-alt-v"> --}}
+                                            </th>
+                                            <th scope="col" onclick="sort_dog();">Договор
+                                                {{-- <i class="fas fa-arrows-alt-v"> --}}
+                                            </th>
 
                                         </tr>
                                         </thead>
@@ -443,7 +456,7 @@
                                                         @endforeach
 
                                                         <a href="/program/{{ $bid->id }}"
-                                                            class="btn btn-outline-danger p1">
+                                                            class="btn btn-outline-primary p1">
                                                             <i class="fas fa-file-upload"></i> Предложить программу
                                                         </a>
 
@@ -456,38 +469,38 @@
                                                                         Одобрена
                                                                     </p>
 
-                                                                    <a href="/files/programs/{{ $bid->program->filename }}"
+                                                                    <a href="/files/programs/{{ $bid->programs()->sortByDesc('status')->first()->filename }}"
                                                                         class="btn btn-outline-success">
                                                                         Программа
                                                                     </a>
 
-                                                                    @if ($bid->program->schedule)
+                                                                    @if ($bid->programs()->sortByDesc('status')->first()->schedule)
                                                                         <td>
                                                                             {{-- @if ($bid->program->schedule) --}}
-                                                                                @if($bid->program->schedule->status !== 2)
+                                                                                @if($bid->programs()->sortByDesc('status')->first()->schedule->status !== 2)
                                                                                     <p>
-                                                                                        {!! $bid->program->schedule->getStatus() !!}
+                                                                                        {!! $bid->programs()->sortByDesc('status')->first()->schedule->getStatus() !!}
                                                                                     </p>
-                                                                                    <a href="/files/schedules/{{ $bid->program->schedule->filename }}"
+                                                                                    <a href="/files/schedules/{{ $bid->programs()->sortByDesc('status')->first()->schedule->filename }}"
                                                                                         class="btn btn-outline-success">
                                                                                         Расписание
                                                                                     </a>
                                                                                 @endif
                                                                         </td>
-                                                                        @if($bid->program->schedule->status === 1)
+                                                                        @if($bid->programs()->sortByDesc('status')->first()->schedule->status === 1)
                                                                             <td>
-                                                                                @if ($bid->program->schedule->student)
+                                                                                @if ($bid->programs()->sortByDesc('status')->first()->schedule->student)
                                                                                     <p>
-                                                                                        {{ $bid->program->schedule->student->students_amount }}
+                                                                                        {{ $bid->programs()->sortByDesc('status')->first()->schedule->student->students_amount }}
                                                                                     </p>
-                                                                                    <a href="/files/students/{{ $bid->program->schedule->student->filename }}"
+                                                                                    <a href="/files/students/{{ $bid->programs()->sortByDesc('status')->first()->schedule->student->filename }}"
                                                                                         class="btn btn-outline-success">
                                                                                         Список учеников
                                                                                     </a>
 
                                                                                     <td>
-                                                                                        @if ($bid->program->schedule->student->agreement)
-                                                                                            <a href="/files/agreements/{{ $bid->program->schedule->student->agreement->filename }}"
+                                                                                        @if ($bid->programs()->sortByDesc('status')->first()->schedule->student->agreement)
+                                                                                            <a href="/files/agreements/{{ $bid->programs()->sortByDesc('status')->first()->schedule->student->agreement->filename }}"
                                                                                                 class="btn btn-outline-success">
                                                                                                 Договор
                                                                                             </a>
@@ -507,8 +520,12 @@
                                                                     @else
                                                                     <td>
 
-                                                                            <a href="/schedule/{{ $bid->program->id }}"
-                                                                                class="btn btn-outline-danger">
+                                                                            {{-- <a href="/schedule/{{ $bid->program->id }}"
+                                                                                class="btn btn-outline-primary">
+                                                                                <i class="fas fa-file-upload"></i> Добавить расписание
+                                                                            </a> --}}
+                                                                            <a href="/schedule/{{ $bid->programs()->where('status', '=', 1)->first()->id }}"
+                                                                                class="btn btn-outline-primary">
                                                                                 <i class="fas fa-file-upload"></i> Добавить расписание
                                                                             </a>
 
@@ -559,6 +576,6 @@
 <script src="js/poisk_sch.js"></script>
 <script src="js/sort_sch.js"></script>
 <script src="js/hide_sch.js"></script>
-<script src="js/pag_sch.js"></script>
+{{-- <script src="js/pag_sch.js"></script> --}}
 
 @endsection

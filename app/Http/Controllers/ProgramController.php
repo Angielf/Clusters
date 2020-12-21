@@ -61,10 +61,6 @@ class ProgramController extends Controller
     {
         $program->delete();
 
-        // $program->status = 2;
-        // $program->save();
-
-
         return redirect('/');
     }
 

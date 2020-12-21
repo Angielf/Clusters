@@ -36,12 +36,12 @@ class StudentController extends Controller
         }
     }
 
-    // public function delete(Student $student)
-    // {
-    //     $student->delete();
+    public function delete(Student $student)
+    {
+        $student->delete();
 
-    //     return redirect('/');
-    // }
+        return redirect('/');
+    }
 
     // public function approve(Student $student)
     // {

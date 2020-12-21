@@ -111,6 +111,226 @@
                         </button>
                     </td>
                   </tr>
+
+                  @if($bid->status === 1)
+
+                  @if(($bid->programs()->sortByDesc('status')->first()) and ($bid->programs()->sortByDesc('status')->first()->status === 1))
+                  <tr>
+                    <th scope="row">Программа</th>
+                    <td>
+                        @foreach($bid->programs() as $program)
+                            @if($program->status === 1)
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h6 class="card-title">
+                                            {{$program->sender()->first()->fullname}}
+                                        </h6>
+                                        <p>
+                                            <a href="/files/programs/{{ $program->filename }}"
+                                                class="btn btn-outline-success">
+                                                Программа
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </td>
+                    <td>
+                        @if ($bid->programs()->sortByDesc('status')->first()->schedule === NULL)
+                            <p><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteProgram">
+                                <i class="far fa-trash-alt"></i> Удалить программу
+                            </button></p>
+
+                            <!-- Удалить программу -->
+                            <div class="modal fade" id="deleteProgram" tabindex="-1" aria-labelledby="deleteProgramLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteProgramLabel">
+                                                {{ $bid->getClasses() }}; {{ $bid->subject }}; {{ $bid->modul }}
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Вы уверены, что хотите удалить программу?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                            <form action="{{ action('BidController@back_programs',$bid->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="btn btn-outline-success btn">
+                                                    Да
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </td>
+                  </tr>
+                  @endif
+
+                  @if(($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1))
+                  <tr>
+                    <th scope="row">Расписание</th>
+                    <td>
+                        <p><a href="/files/schedules/{{ $bid->programs()->sortByDesc('status')->first()->schedule->filename }}"
+                            class="btn btn-outline-success">
+                            Расписание
+                         </a><br></p>
+                    </td>
+                    <td>
+                        @if (($bid->programs()->sortByDesc('status')->first()->schedule->student === NULL) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1))
+                            <p><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteSchedule">
+                                <i class="far fa-trash-alt"></i> Удалить расписание
+                            </button></p>
+
+                            <!-- Удалить расписание -->
+                            <div class="modal fade" id="deleteSchedule" tabindex="-1" aria-labelledby="deleteScheduleLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteScheduleLabel">
+                                                {{ $bid->getClasses() }}; {{ $bid->subject }}; {{ $bid->modul }}
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Вы уверены, что хотите удалить расписание?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                                <form action="{{ action('ScheduleController@delete',$bid->programs()->sortByDesc('status')->first()->schedule->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-outline-success btn">
+                                                        Да
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </td>
+                  </tr>
+                  @endif
+
+                  @if(($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1) and ($bid->programs()->sortByDesc('status')->first()->schedule->student))
+                  <tr>
+                    <th scope="row">Кол-во/ Список учеников</th>
+                    <td>
+                        <p>{{ $bid->programs()->sortByDesc('status')->first()->schedule->student->students_amount }}</p>
+                        <p><a href="/files/students/{{ $bid->programs()->sortByDesc('status')->first()->schedule->student->filename }}"
+                            class="btn btn-outline-success">
+                            Список учеников
+                        </a><br></p>
+                    </td>
+                    <td>
+                        @if ($bid->programs()->sortByDesc('status')->first()->schedule->student->agreement === NULL)
+                            <p><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteStudents">
+                                <i class="far fa-trash-alt"></i> Удалить список учеников
+                            </button></p>
+
+                            <!-- Удалить список учеников и их количество -->
+                            <div class="modal fade" id="deleteStudents" tabindex="-1" aria-labelledby="deleteStudentsLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteStudentsLabel">
+                                                {{ $bid->getClasses() }}; {{ $bid->subject }}; {{ $bid->modul }}
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Вы уверены, что хотите удалить список учеников и их количество?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                                <form action="{{ action('StudentController@delete',$bid->programs()->sortByDesc('status')->first()->schedule->student->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-outline-success btn">
+                                                        Да
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </td>
+                  </tr>
+                  @endif
+
+
+                  @if(($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1) and ($bid->programs()->sortByDesc('status')->first()->schedule->student) and ($bid->programs()->sortByDesc('status')->first()->schedule->student->agreement))
+                  <tr>
+                    <th scope="row">Договор</th>
+                    <td>
+                        <a href="/files/agreements/{{ $bid->programs()->sortByDesc('status')->first()->schedule->student->agreement->filename }}"
+                            class="btn btn-outline-success">
+                            Договор
+                        </a>
+                    </td>
+                    <td>
+                        <p><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteAgreement">
+                            <i class="far fa-trash-alt"></i> Удалить договор
+                        </button></p>
+
+                        <!-- Удалить Договор -->
+                        <div class="modal fade" id="deleteAgreement" tabindex="-1" aria-labelledby="deleteAgreementLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteAgreementLabel">
+                                            {{ $bid->getClasses() }}; {{ $bid->subject }}; {{ $bid->modul }}
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Вы уверены, что хотите удалить договор?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                        <form action="{{ action('AgreementController@delete',$bid->programs()->sortByDesc('status')->first()->schedule->student->agreement->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="btn btn-outline-success btn">
+                                                Да
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+                  </tr>
+                  @endif
+
+                  @endif
                 </tbody>
             </table>
 

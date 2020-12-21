@@ -332,4 +332,18 @@ class BidController extends Controller
 
         return view('bids.update', compact('bid'));
     }
+
+    public function back_programs(Bid $bid)
+    {
+
+        foreach($bid->programs() as $program){
+            $program->delete();
+        }
+
+        $bid->status = 0;
+
+        $bid->save();
+
+        return redirect('/');
+    }
 }

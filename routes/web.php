@@ -77,6 +77,8 @@ Route::put('/bids/{bid}/date_end-update', 'BidController@update_date_end');
 
 Route::put('/bids/{bid}/date_end-content', 'BidController@update_content');
 
+Route::delete('/bids/{bid}/back-programs', 'BidController@back_programs');
+
 
 
 Route::get('/program/{id}', 'ProgramController@index');
@@ -104,7 +106,7 @@ Route::get('/student/{id}', 'StudentController@index');
 
 Route::post('/student/{id}', 'StudentController@add');
 
-// Route::delete('/student/{student}', 'StudentController@delete');
+Route::delete('/student/{student}', 'StudentController@delete');
 
 
 Route::get('/agreement/{id}', 'AgreementController@index');
@@ -113,7 +115,7 @@ Route::get('/agreement/{id}', 'AgreementController@index');
 
 Route::post('/agreement/{id}', 'AgreementController@add');
 
-// Route::delete('/student/{student}', 'StudentController@delete');
+Route::delete('/agreement/{agreement}', 'AgreementController@delete');
 
 
 Route::post('/instruction/add', 'FileController@add');
