@@ -37,6 +37,43 @@
                         </button>
                     </td>
                   </tr>
+
+                  <tr>
+                    <th scope="row">Адрес</th>
+                    <td>{{ $user_org->address }}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myAdd">
+                            <i class="far fa-edit"></i> Изменить
+                        </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Телефон</th>
+                    <td>{{ $user_org->tel }}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myTel">
+                            <i class="far fa-edit"></i> Изменить
+                        </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Почта</th>
+                    <td>{{ $user_org->email_real }}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myEmail">
+                            <i class="far fa-edit"></i> Изменить
+                        </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Сайт</th>
+                    <td><a href="http://{{ $user_org->website }}" target="_blank">{{ $user_org->website }}</a></td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myWeb">
+                            <i class="far fa-edit"></i> Изменить
+                        </button>
+                    </td>
+                  </tr>
                 </tbody>
             </table>
             <br/>
@@ -70,6 +107,126 @@
                 </div>
             </div>
             {{-- Конец окна inn --}}
+
+            <!-- Модальное окно Add-->
+            <div class="modal fade" id="myAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabelAdd" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabelAdd">Адрес {{ $user_org->fullname }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ action('UserController@update_add', $user_org->id) }}" method="POST">
+                                @method('PUT')
+                                @csrf
+                                <div class="form-group">
+                                    <textarea class="form-control" name="add" id="add" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Сохранить изменения</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Конец окна Add --}}
+
+            <!-- Модальное окно Tel-->
+            <div class="modal fade" id="myTel" tabindex="-1" role="dialog" aria-labelledby="myModalLabelTel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabelTel">Телефон {{ $user_org->fullname }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ action('UserController@update_tel', $user_org->id) }}" method="POST">
+                                @method('PUT')
+                                @csrf
+                                <div class="form-group">
+                                    <textarea class="form-control" name="tel" id="tel" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Сохранить изменения</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Конец окна Tel --}}
+
+            <!-- Модальное окно Email-->
+            <div class="modal fade" id="myEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEmail" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabelEmail">Почта {{ $user_org->fullname }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ action('UserController@update_email_real', $user_org->id) }}" method="POST">
+                                @method('PUT')
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text" name="email_real" id="email_real" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Сохранить изменения</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Конец окна Email --}}
+
+            <!-- Модальное окно Web-->
+            <div class="modal fade" id="myWeb" tabindex="-1" role="dialog" aria-labelledby="myModalLabelWeb" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabelWeb">Сайт {{ $user_org->fullname }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ action('UserController@update_web', $user_org->id) }}" method="POST">
+                                @method('PUT')
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text" name="website" id="website" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Сохранить изменения</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Конец окна Web --}}
 
 
             <h5 align="center">Заявки на дефицит</h5>

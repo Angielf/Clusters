@@ -146,3 +146,11 @@ Route::get('/users/org-list', 'UserController@show_users')->name('org_list');
 Route::get('/users/{user_org}/show-org', 'UserController@show_user');
 
 Route::put('/users/{user_org}/update-inn', 'UserController@update_inn');
+
+Route::put('/users/{user_org}/update-add', 'UserController@update_add');
+
+Route::put('/users/{user_org}/update-tel', 'UserController@update_tel');
+
+Route::put('/users/{user_org}/update-email_real', 'UserController@update_email_real');
+
+Route::put('/users/{user_org}/update-web', 'UserController@update_web');
