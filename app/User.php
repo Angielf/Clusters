@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'inn',
     ];
 
     /**
@@ -81,4 +81,12 @@ class User extends Authenticatable
     // public function sender() {
     //     return $this->belongsTo('Program', 'school_program_id');
     // }
+
+    public function programs_send()
+    {
+        if ($programs = Program::where('school_program_id', $this->id)->get()) {
+            return $programs;
+        } else return false;
+
+    }
 }

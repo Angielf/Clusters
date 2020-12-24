@@ -139,3 +139,10 @@ Route::get('/region-clusters/addcontract/{id}', 'RegionClusterController@addcont
 Route::get('/user/approve/{user_id}', 'UserController@approve');
 
 Route::get('/user/reject/{user_id}', 'UserController@reject');
+
+
+Route::get('/users/org-list', 'UserController@show_users')->name('org_list');
+
+Route::get('/users/{user_org}/show-org', 'UserController@show_user');
+
+Route::put('/users/{user_org}/update-inn', 'UserController@update_inn');

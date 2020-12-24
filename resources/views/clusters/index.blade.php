@@ -15,6 +15,10 @@
                                 Выгрузка всех заявок:
                                 <a class="btn btn-outline-dark" href="{{ route('export') }}">Export</a>
                             </li>
+                            <li class="list-group-item">
+                                Список организаций Воронежской области:
+                                <a class="btn btn-outline-dark" href="{{ route('org_list') }}">Организации</a>
+                            </li>
                         </ul>
 
                     </div>
@@ -244,7 +248,9 @@
 
                                     <th scope="col">Программа/ Расписание</th>
                                     <th scope="col">Кол-во учеников/Список</th>
-                                    <th scope="col" onclick="sort_dog();">Договор <i class="fas fa-arrows-alt-v"></th>
+                                    <th scope="col" onclick="sort_dog();">Договор
+                                        {{-- <i class="fas fa-arrows-alt-v"> --}}
+                                    </th>
                                 </tr>
                                 </thead>
 

@@ -29,4 +29,27 @@ class UserController extends Controller
 
         return redirect('/');
     }
+
+    public function show_users()
+    {
+        $users = User::all()
+        ->where('name', '!=', 'admin')
+        ->where('name', '!=', 'admin2')
+        ->where('fullname', '!=', 'Муниципальный координатор')
+        ->where('district', '!=', '100');
+        return view('clusters.organizations_list_reg', compact('users'));
+    }
+
+    public function show_user(User $user_org)
+    {
+        return view('clusters.org_inf', compact('user_org'));
+    }
+
+    public function update_inn(Request $request, User $user_org)
+    {
+        $inn = $request->input('inn');
+        $user_org->update(['inn' => $inn]);
+
+        return view('clusters.org_inf', compact('user_org'));
+    }
 }
