@@ -89,4 +89,30 @@ class User extends Authenticatable
         } else return false;
 
     }
+
+    public function programs_1_send()
+    {
+        if ($programs = Program::where('school_program_id', $this->id)->where('status', 1)->get()) {
+            return $programs;
+        } else return false;
+
+    }
+
+    public function amount_of_bids()
+    {
+        $i = 0;
+        if($this->bids() !== false){
+            $i = $this->bids()->count();
+        }
+        return $i;
+    }
+
+    public function amount_of_programs_1()
+    {
+        $i = 0;
+        if($this->programs_1_send() !== false){
+            $i = $this->programs_1_send()->count();
+        }
+        return $i;
+    }
 }

@@ -74,6 +74,16 @@
                         </button>
                     </td>
                   </tr>
+                  <tr>
+                    <th scope="row">Кол-во заявок</th>
+                    <td>{{ $user_org->amount_of_bids() }}</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Кол-во одобренных программ</th>
+                    <td>{{ $user_org->amount_of_programs_1() }}</td>
+                    <td></td>
+                  </tr>
                 </tbody>
             </table>
             <br/>

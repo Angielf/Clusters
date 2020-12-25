@@ -94,6 +94,8 @@
                         <th scope="col">Район</th>
                         <th scope="col">Организация</th>
                         <th scope="col">ИНН</th>
+                        <th scope="col">Кол-во заявок</th>
+                        <th scope="col">Кол-во одобренных программ</th>
                         <th scope="col">Информация</th>
                     </tr>
                 </thead>
@@ -104,6 +106,8 @@
                         <td>{{ $user_org->getDistrict->fullname }}</td>
                         <td>{{ $user_org->fullname }}</td>
                         <td>{{ $user_org->inn }}</td>
+                        <td>{{ $user_org->amount_of_bids() }}</td>
+                        <td>{{ $user_org->amount_of_programs_1() }}</td>
                         <td>
                             <a class="btn btn-outline-dark" href="/users/{{ $user_org->id }}/show-org">Информация</a>
                         </td>
