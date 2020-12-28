@@ -88,9 +88,6 @@
             </ul>
 
             <table class="table table-striped" id="myTable">
-                <input type="hidden" id="mun_order" value="asc">
-                <input type="hidden" id="bid_order" value="asc">
-                <input type="hidden" id="prog_order" value="asc">
                 <thead>
                     <tr>
                         <th scope="col">id <i class="fas fa-arrows-alt-v"></i></th>
