@@ -89,24 +89,23 @@
 
             <table class="table table-striped" id="myTable">
                 <input type="hidden" id="mun_order" value="asc">
-                <input type="hidden" id="org_order" value="asc">
                 <input type="hidden" id="bid_order" value="asc">
                 <input type="hidden" id="prog_order" value="asc">
                 <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col" onclick="sort_mun();">Район <i class="fas fa-arrows-alt-v"></i></th>
-                        <th scope="col" onclick="sort_org();">Организация <i class="fas fa-arrows-alt-v"></th>
-                        <th scope="col">ИНН</th>
-                        <th scope="col" onclick="sort_bid();">Кол-во заявок <i class="fas fa-arrows-alt-v"></th>
-                        <th scope="col" onclick="sort_prog();">Кол-во одобренных программ <i class="fas fa-arrows-alt-v"></th>
+                        <th scope="col">id <i class="fas fa-arrows-alt-v"></i></th>
+                        <th scope="col">Район <i class="fas fa-arrows-alt-v"></i></th>
+                        <th scope="col">Организация <i class="fas fa-arrows-alt-v"></i></th>
+                        <th scope="col">ИНН <i class="fas fa-arrows-alt-v"></i></th>
+                        <th scope="col">Кол-во заявок <i class="fas fa-arrows-alt-v"></i></th>
+                        <th scope="col">Кол-во одобренных программ <i class="fas fa-arrows-alt-v"></i></th>
                         <th scope="col">Информация</th>
                     </tr>
                 </thead>
                 <tbody id="table1">
                     @foreach($users as $user_org)
                     <tr>
-                        <th scope="row">{{ $user_org->id }}</th>
+                        <td scope="row">{{ $user_org->id }}</td>
                         <td>{{ $user_org->getDistrict->fullname }}</td>
                         <td>{{ $user_org->fullname }}</td>
                         <td>{{ $user_org->inn }}</td>
