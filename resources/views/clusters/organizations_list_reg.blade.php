@@ -88,18 +88,22 @@
             </ul>
 
             <table class="table table-striped" id="myTable">
+                <input type="hidden" id="mun_order" value="asc">
+                <input type="hidden" id="org_order" value="asc">
+                <input type="hidden" id="bid_order" value="asc">
+                <input type="hidden" id="prog_order" value="asc">
                 <thead>
                     <tr>
                         <th scope="col">id</th>
-                        <th scope="col">Район</th>
-                        <th scope="col">Организация</th>
+                        <th scope="col" onclick="sort_mun();">Район <i class="fas fa-arrows-alt-v"></i></th>
+                        <th scope="col" onclick="sort_org();">Организация <i class="fas fa-arrows-alt-v"></th>
                         <th scope="col">ИНН</th>
-                        <th scope="col">Кол-во заявок</th>
-                        <th scope="col">Кол-во одобренных программ</th>
+                        <th scope="col" onclick="sort_bid();">Кол-во заявок <i class="fas fa-arrows-alt-v"></th>
+                        <th scope="col" onclick="sort_prog();">Кол-во одобренных программ <i class="fas fa-arrows-alt-v"></th>
                         <th scope="col">Информация</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="table1">
                     @foreach($users as $user_org)
                     <tr>
                         <th scope="row">{{ $user_org->id }}</th>
@@ -128,5 +132,6 @@
 
 
 <script src="{{ asset('js/poisk_organizations_list_reg.js') }}"></script>
+<script src="{{ asset('js/sort_org_list_reg.js') }}"></script>
 @endif
 @endsection
