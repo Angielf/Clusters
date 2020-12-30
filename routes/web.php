@@ -154,3 +154,6 @@ Route::put('/users/{user_org}/update-tel', 'UserController@update_tel');
 Route::put('/users/{user_org}/update-email_real', 'UserController@update_email_real');
 
 Route::put('/users/{user_org}/update-web', 'UserController@update_web');
+
+
+Route::get('/users/{id}/org-list-mun', 'UserController@show_users_mun');

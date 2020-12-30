@@ -84,4 +84,15 @@ class UserController extends Controller
 
         return view('clusters.org_inf', compact('user_org'));
     }
+
+    public function show_users_mun($id)
+    {
+        $users = User::all()
+        ->where('name', '!=', 'admin')
+        ->where('name', '!=', 'admin')
+        ->where('name', '!=', 'admin2')
+        ->where('fullname', '!=', 'Муниципальный координатор')
+        ->where('district', '!=', '100');
+        return view('org_list_mun', compact('users'));
+    }
 }

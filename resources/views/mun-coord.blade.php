@@ -20,6 +20,10 @@
                             Выгрузка заявок муниципалитета:
                             <a class="btn btn-outline-dark" href="{{ route('export_mun') }}">Export</a>
                         </li>
+                        <li class="list-group-item">
+                            Список организаций муниципалитета:
+                            <a class="btn btn-outline-dark" href="/users/{{ Auth::user()->getDistrict->id }}/org-list-mun">Организации</a>
+                        </li>
                     </ul>
 
                     <ul class="nav nav-tabs">
