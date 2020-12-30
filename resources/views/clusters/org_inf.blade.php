@@ -65,7 +65,7 @@
                   </tr>
                   <tr>
                     <th scope="row">Почта</th>
-                    <td>{{ $user_org->email_real }}</td>
+                    <td><a href="mailto:{{ $user_org->email_real }}">{{ $user_org->email_real }}</a></td>
                     <td>
                         <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myEmail">
                             <i class="far fa-edit"></i> Изменить
@@ -231,6 +231,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" name="website" id="website" class="form-control" />
+                                    <small class="form-text text-muted">Без http:// или https://</small>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success">Сохранить изменения</button>
