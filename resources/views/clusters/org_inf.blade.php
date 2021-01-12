@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if (Auth::user() && (Auth::user()->status == 1 || Auth::user()->status == 10))
+@if (Auth::user() && (Auth::user()->status == 1 || Auth::user()->status == 10 || Auth::user()->id == $user_org->id))
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -16,15 +16,22 @@
                 class="btn btn-outline-info btn">
                 <i class="fas fa-arrow-left"></i> Вернуться к списку организаций муниципалитета
             </a></p>
+            @elseif(Auth::user()->id == $user_org->id)
+            <p><a href="{{ route('home')}}"
+                class="btn btn-outline-info btn">
+                <i class="fas fa-arrow-left"></i> Вернуться на главную страницу
+            </a></p>
             @endif
 
             <table class="table table-striped table-bordered">
                 <tbody>
+                    @if(Auth::user()->id != $user_org->id)
                   <tr>
                     <th scope="row">id</th>
                     <td>{{ $user_org->id }}</td>
                     <td></td>
                   </tr>
+                  @endif
                   <tr>
                     <th scope="row">Район</th>
                     <td>{{ $user_org->getDistrict->fullname }}</td>
@@ -498,16 +505,21 @@
               </table>
 
               @if(Auth::user()->status == 1)
-              <p><a href="{{ route('org_list')}}"
-                  class="btn btn-outline-info btn">
-                  <i class="fas fa-arrow-left"></i> Вернуться к списку организаций Воронежской области
-              </a></p>
-              @elseif(Auth::user()->status == 10)
-              <p><a href="/users/{{ Auth::user()->getDistrict->id }}/org-list-mun"
-                  class="btn btn-outline-info btn">
-                  <i class="fas fa-arrow-left"></i> Вернуться к списку организаций муниципалитета
-              </a></p>
-              @endif
+                <p><a href="{{ route('org_list')}}"
+                    class="btn btn-outline-info btn">
+                    <i class="fas fa-arrow-left"></i> Вернуться к списку организаций Воронежской области
+                </a></p>
+                @elseif(Auth::user()->status == 10)
+                <p><a href="/users/{{ Auth::user()->getDistrict->id }}/org-list-mun"
+                    class="btn btn-outline-info btn">
+                    <i class="fas fa-arrow-left"></i> Вернуться к списку организаций муниципалитета
+                </a></p>
+                @elseif(Auth::user()->id == $user_org->id)
+                <p><a href="{{ route('home')}}"
+                    class="btn btn-outline-info btn">
+                    <i class="fas fa-arrow-left"></i> Вернуться на главную страницу
+                </a></p>
+                @endif
 
         </div>
     </div>

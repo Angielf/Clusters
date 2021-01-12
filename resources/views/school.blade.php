@@ -10,6 +10,8 @@
                             <small>{{$user->getDistrict->fullname}}</small>
                         </h2>
 
+                        <a class="btn btn-outline-dark" href="/users/{{ $user->id }}/show-org">Сведения о вашей организации</a>
+
                     </div>
 
 
