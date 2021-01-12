@@ -34,8 +34,13 @@ class Export_mun implements FromCollection, WithHeadings
                     "district" => ($dis_u == $dis) ? $b->user->getDistrict->fullname :'',
                     "fullname_r" => ($dis_u == $dis) ? $b->user->fullname :'',
 
+                    "inn_r" => ($dis_u == $dis) ? $b->user->inn :'',
+
                     "fullname_b" => (($dis_u == $dis) and ($b->status === 1)) ? $b->programs()->sortByDesc('status')->first()->
                     sender()->first()->fullname : '',
+
+                    "inn_b" => (($dis_u == $dis) and ($b->status === 1)) ? $b->programs()->sortByDesc('status')->first()->
+                    sender()->first()->inn : '',
 
                     "class" => ($dis_u == $dis) ? $b->getClasses() :'',
                     "subject" => ($dis_u == $dis) ? $b->subject :'',
@@ -81,7 +86,9 @@ class Export_mun implements FromCollection, WithHeadings
         return [
             'Муниципалитет',
             'Организация реципиент',
+            'ИНН реципиента',
             'Базовая организация',
+            'ИНН базовой организации',
             'Класс',
             'Предмет(курс)',
             'Раздел(модуль)',

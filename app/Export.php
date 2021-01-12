@@ -26,8 +26,13 @@ class Export implements FromCollection, WithHeadings
                 "district" => $b->user->getDistrict->fullname,
                 "fullname_r" => $b->user->fullname,
 
+                "inn_r" => $b->user->inn,
+
                 "fullname_b" => (($b->status === 1)) ? $b->programs()->sortByDesc('status')->first()->
                 sender()->first()->fullname : '',
+
+                "inn_b" => (($b->status === 1)) ? $b->programs()->sortByDesc('status')->first()->
+                sender()->first()->inn : '',
 
                 "class" => $b->getClasses(),
                 "subject" => $b->subject,
@@ -74,7 +79,9 @@ class Export implements FromCollection, WithHeadings
         return [
             'Муниципалитет',
             'Организация реципиент',
+            'ИНН реципиента',
             'Базовая организация',
+            'ИНН базовой организации',
             'Класс',
             'Предмет(курс)',
             'Раздел(модуль)',
