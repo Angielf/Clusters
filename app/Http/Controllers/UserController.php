@@ -95,4 +95,9 @@ class UserController extends Controller
         ->where('district', '!=', '100');
         return view('org_list_mun', compact('users'));
     }
+
+    public function show_org(User $org)
+    {
+        return view('about_org', compact('org'));
+    }
 }

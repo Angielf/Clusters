@@ -102,6 +102,7 @@
                                                                         <h6 class="card-title">
                                                                             {{$program->sender()->first()->fullname}}
                                                                         </h6>
+                                                                        <p><a class="btn btn-outline-dark" href="/users/{{ $program->sender()->first()->id }}/about-org">Сведения</a></p>
                                                                         <p>
                                                                             <a href="/files/programs/{{ $program->filename }}"
                                                                                 class="btn btn-outline-success">
@@ -140,6 +141,7 @@
                                                                     <h6 class="card-title">
                                                                         {{$program->sender()->first()->fullname}}
                                                                     </h6>
+                                                                    <p><a class="btn btn-outline-dark" href="/users/{{ $program->sender()->first()->id }}/about-org">Сведения</a></p>
                                                                     <p>
                                                                         <a href="/files/programs/{{ $program->filename }}"
                                                                             class="btn btn-outline-success">
@@ -418,7 +420,10 @@
                                         @foreach($bids_all as $bid)
                                             @if(($bid->user_id != $user->id) and ($bid->user->district == $user->getDistrict->id))
                                             <tr class="tr_h">
-                                                <td>{{ $bid->user->fullname }}</td>
+                                                <td>
+                                                    {{ $bid->user->fullname }}
+                                                    <p><a class="btn btn-outline-dark" href="/users/{{ $bid->user->id }}/about-org">Сведения</a></p>
+                                                </td>
 
                                                 <td>
                                                     <ul class="list-group" id="ul1">
