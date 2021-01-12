@@ -262,7 +262,7 @@
                                   <div class="card-body">
 
                                     {{-- Поиск --}}
-                                    <ul class="list-group">
+                                    {{-- <ul class="list-group">
                                         <li class="list-group-item">
 
                                             <div class="input-group">
@@ -376,7 +376,7 @@
                                             </div>
 
                                         </li>
-                                    </ul>
+                                    </ul> --}}
                                     {{-- Конец поиска --}}
 
 
