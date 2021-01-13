@@ -282,8 +282,8 @@
                                 <tr>
                                     <td>
                                         {{ $bid->programs()->sortByDesc('status')->first()->sender()->first()->fullname}}
-                                        <p>@if (Auth::user()->status == 1 || Auth::user()->status == 10)
-                                        <a class="btn btn-outline-dark" href="/users/{{ $bid->programs()->sortByDesc('status')->first()->sender()->first()->id }}/show-org">Информация</a></p>
+                                        @if (Auth::user()->status == 1 || Auth::user()->status == 10)
+                                        <p><a class="btn btn-outline-dark" href="/users/{{ $bid->programs()->sortByDesc('status')->first()->sender()->first()->id }}/show-org">Информация</a></p>
                                         @elseif(Auth::user()->id == $user_org->id)
                                         <p><a class="btn btn-outline-dark" href="/users/{{ $bid->programs()->sortByDesc('status')->first()->sender()->first()->id }}/about-org">Сведения</a></p>
                                         @endif
