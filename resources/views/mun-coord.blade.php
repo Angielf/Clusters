@@ -12,10 +12,10 @@
                         </h2>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item">
+                        {{-- <li class="list-group-item">
                             Выгрузка всех заявок:
                             <a class="btn btn-outline-dark" href="{{ route('export') }}">Export</a>
-                        </li>
+                        </li> --}}
                         <li class="list-group-item">
                             Выгрузка заявок муниципалитета:
                             <a class="btn btn-outline-dark" href="{{ route('export_mun') }}">Export</a>

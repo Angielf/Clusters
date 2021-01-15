@@ -24,9 +24,9 @@
 
                         <h5 align="center">Ваши заявления на дефицит</h5>
 
-                        <div class="alert alert-info" role="alert">
+                        {{-- <div class="alert alert-info" role="alert">
                             <i class="fas fa-exclamation"></i> Сначала отклоните неподходящие программы, затем согласуйте нужную программу.
-                        </div>
+                        </div> --}}
 
                         <table class="table table-striped">
                             <thead>
