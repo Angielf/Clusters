@@ -127,6 +127,8 @@ Route::get('export', 'ExcelRegionController@export')->name('export');
 
 Route::get('export_mun', 'ExcelMunController@export')->name('export_mun');
 
+Route::get('export_hours', 'ExcelRegionController@months_hours_export')->name('export_hours');
+
 
 Route::post('/region-clusters', 'RegionClusterController@store');
 
@@ -160,3 +162,89 @@ Route::get('/users/{id}/org-list-mun', 'UserController@show_users_mun');
 
 
 Route::get('/users/{org}/about-org', 'UserController@show_org');
+
+
+Route::get('/months_hours/{id}', 'MonthsHourController@index');
+
+Route::post('/months_hours/{id}', 'MonthsHourController@add');
+
+Route::delete('/months_hours/{months_hour}', 'MonthsHourController@delete');
+
+Route::get('/months_hours/{months_hour}/update', 'MonthsHourController@show_update');
+
+Route::put('/months_hours/{months_hour}/real_1-update', 'MonthsHourController@update_real_1');
+
+Route::put('/months_hours/{months_hour}/real_2-update', 'MonthsHourController@update_real_2');
+
+Route::put('/months_hours/{months_hour}/real_3-update', 'MonthsHourController@update_real_3');
+
+Route::put('/months_hours/{months_hour}/real_4-update', 'MonthsHourController@update_real_4');
+
+Route::put('/months_hours/{months_hour}/real_5-update', 'MonthsHourController@update_real_5');
+
+Route::put('/months_hours/{months_hour}/real_6-update', 'MonthsHourController@update_real_6');
+
+Route::put('/months_hours/{months_hour}/real_7-update', 'MonthsHourController@update_real_7');
+
+Route::put('/months_hours/{months_hour}/real_8-update', 'MonthsHourController@update_real_8');
+
+Route::put('/months_hours/{months_hour}/real_9-update', 'MonthsHourController@update_real_9');
+
+Route::put('/months_hours/{months_hour}/real_10-update', 'MonthsHourController@update_real_10');
+
+Route::put('/months_hours/{months_hour}/real_11-update', 'MonthsHourController@update_real_11');
+
+Route::put('/months_hours/{months_hour}/real_12-update', 'MonthsHourController@update_real_12');
+
+Route::get('/months_hours/{months_hour}/update-rez', 'MonthsHourController@show_update_rez');
+
+Route::get('/users/months-hours-list', 'MonthsHourController@show_hours')->name('hours_list');
+
+Route::get('/months_hour/true1/{months_hour}', 'MonthsHourController@approve_1');
+
+Route::get('/months_hour/true2/{months_hour}', 'MonthsHourController@approve_2');
+
+Route::get('/months_hour/true3/{months_hour}', 'MonthsHourController@approve_3');
+
+Route::get('/months_hour/true4/{months_hour}', 'MonthsHourController@approve_4');
+
+Route::get('/months_hour/true5/{months_hour}', 'MonthsHourController@approve_5');
+
+Route::get('/months_hour/true6/{months_hour}', 'MonthsHourController@approve_6');
+
+Route::get('/months_hour/true7/{months_hour}', 'MonthsHourController@approve_7');
+
+Route::get('/months_hour/true8/{months_hour}', 'MonthsHourController@approve_8');
+
+Route::get('/months_hour/true9/{months_hour}', 'MonthsHourController@approve_9');
+
+Route::get('/months_hour/true10/{months_hour}', 'MonthsHourController@approve_10');
+
+Route::get('/months_hour/true11/{months_hour}', 'MonthsHourController@approve_11');
+
+Route::get('/months_hour/true12/{months_hour}', 'MonthsHourController@approve_12');
+
+Route::get('/months_hour/not1/{months_hour}', 'MonthsHourController@not_1');
+
+Route::get('/months_hour/not2/{months_hour}', 'MonthsHourController@not_2');
+
+Route::get('/months_hour/not3/{months_hour}', 'MonthsHourController@not_3');
+
+Route::get('/months_hour/not4/{months_hour}', 'MonthsHourController@not_4');
+
+Route::get('/months_hour/not5/{months_hour}', 'MonthsHourController@not_5');
+
+Route::get('/months_hour/not6/{months_hour}', 'MonthsHourController@not_6');
+
+Route::get('/months_hour/not7/{months_hour}', 'MonthsHourController@not_7');
+
+Route::get('/months_hour/not8/{months_hour}', 'MonthsHourController@not_8');
+
+Route::get('/months_hour/not9/{months_hour}', 'MonthsHourController@not_9');
+
+Route::get('/months_hour/not10/{months_hour}', 'MonthsHourController@not_10');
+
+Route::get('/months_hour/not11/{months_hour}', 'MonthsHourController@not_11');
+
+Route::get('/months_hour/not12/{months_hour}', 'MonthsHourController@not_12');
+

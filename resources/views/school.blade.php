@@ -165,6 +165,13 @@
                                                            Расписание
                                                         </a><br></p>
 
+                                                        @if($bid->programs()->sortByDesc('status')->first()->schedule->months_hour)
+                                                            <a href="/months_hours/{{ $bid->programs()->sortByDesc('status')->first()->schedule->months_hour->id }}/update-rez"
+                                                                class="btn btn-outline-info btn">
+                                                                    Кол-во часов по месяцам
+                                                            </a>
+                                                        @endif
+
                                                         @if ($bid->programs()->sortByDesc('status')->first()->schedule->status !== 1)
                                                             <p><a href="schedule/add/{{ $bid->programs()->sortByDesc('status')->first()->schedule->id }}"
                                                                class="btn btn-outline-info">
@@ -483,6 +490,8 @@
 
                                                                     @if ($bid->programs()->sortByDesc('status')->first()->schedule)
                                                                         <td>
+                                                                            <ul class="list-group">
+                                                                                <li class="list-group-item">
                                                                             {{-- @if ($bid->program->schedule) --}}
                                                                                 @if($bid->programs()->sortByDesc('status')->first()->schedule->status !== 2)
                                                                                     <p>
@@ -493,6 +502,23 @@
                                                                                         Расписание
                                                                                     </a>
                                                                                 @endif
+                                                                                </li>
+                                                                                @if($bid->programs()->sortByDesc('status')->first()->schedule->status === 1)
+                                                                                <li class="list-group-item">
+                                                                                    @if($bid->programs()->sortByDesc('status')->first()->schedule->months_hour)
+                                                                                    <a href="/months_hours/{{ $bid->programs()->sortByDesc('status')->first()->schedule->months_hour->id }}/update"
+                                                                                        class="btn btn-outline-info btn">
+                                                                                        Кол-во часов по месяцам
+                                                                                    </a>
+                                                                                    @else
+                                                                                    <a href="/months_hours/{{ $bid->programs()->sortByDesc('status')->first()->schedule->id }}"
+                                                                                        class="btn btn-outline-info btn">
+                                                                                        Добавить кол-во часов по месяцам
+                                                                                    </a>
+                                                                                    @endif
+                                                                                </li>
+                                                                                @endif
+                                                                            </ul>
                                                                         </td>
                                                                         @if($bid->programs()->sortByDesc('status')->first()->schedule->status === 1)
                                                                             <td>

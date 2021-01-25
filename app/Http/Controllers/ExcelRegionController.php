@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Export;
-use App\Bid;
+use App\MonthsHoursExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelRegionController extends Controller
@@ -14,16 +14,11 @@ class ExcelRegionController extends Controller
     */
     public function export()
     {
-
         return Excel::download(new Export, 'bids.xlsx');
-
-        // return Excel::store('Customer Data', function($excel) use ($bid_array){
-        //     $excel->setTitle('Customer Data');
-        //     $excel->sheet('Customer Data', function($sheet) use ($bid_array){
-        //     $sheet->fromArray($bid_array, null, 'A1', false, false);
-        //     });
-        // })->download('xlsx');
     }
 
-
+    public function months_hours_export()
+    {
+        return Excel::download(new MonthsHoursExport, 'months_hours.xlsx');
+    }
 }

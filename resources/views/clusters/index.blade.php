@@ -19,6 +19,10 @@
                                 Список организаций Воронежской области:
                                 <a class="btn btn-outline-dark" href="{{ route('org_list') }}">Организации</a>
                             </li>
+                            <li class="list-group-item">
+                                Кол-во часов по месяцам:
+                                <a class="btn btn-outline-dark" href="{{ route('export_hours') }}">Export</a>
+                            </li>
                         </ul>
 
                     </div>

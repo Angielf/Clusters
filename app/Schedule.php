@@ -30,4 +30,10 @@ class Schedule extends Model
             case 2: return '<div class="alert alert-danger" role="alert">Отклонено</div>';
         }
     }
+
+    public function months_hour()
+    {
+        return $this->hasOne(MonthsHour::class);
+
+    }
 }

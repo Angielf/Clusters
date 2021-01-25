@@ -188,7 +188,7 @@
                          </a><br></p>
                     </td>
                     <td>
-                        @if (($bid->programs()->sortByDesc('status')->first()->schedule->student === NULL) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1))
+                        @if (($bid->programs()->sortByDesc('status')->first()->schedule->student === NULL) and ($bid->programs()->sortByDesc('status')->first()->schedule->months_hour === NULL) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1))
                             <p><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteSchedule">
                                 <i class="far fa-trash-alt"></i> Удалить расписание
                             </button></p>
@@ -228,6 +228,59 @@
                     </td>
                   </tr>
                   @endif
+
+
+                  @if(($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1) and ($bid->programs()->sortByDesc('status')->first()->schedule->months_hour))
+                  <tr>
+                    <th scope="row">Кол-во часов по месяцам</th>
+                    <td>
+                        <p><a href="/months_hours/{{ $bid->programs()->sortByDesc('status')->first()->schedule->months_hour->id }}/update-rez"
+                            class="btn btn-outline-info btn">
+                                Кол-во часов по месяцам
+                        </a><br></p>
+                    </td>
+                    <td>
+                        @if (($bid->programs()->sortByDesc('status')->first()->schedule->status === 1))
+                            <p><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteMonthsHour">
+                                <i class="far fa-trash-alt"></i> Удалить кол-во часов по месяцам
+                            </button></p>
+
+                            <!-- Удалить кол-во часов по месяцам -->
+                            <div class="modal fade" id="deleteMonthsHour" tabindex="-1" aria-labelledby="deleteMonthsHourLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteMonthsHourLabel">
+                                                {{ $bid->getClasses() }}; {{ $bid->subject }}; {{ $bid->modul }}
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Вы уверены, что хотите удалить кол-во часов по месяцам?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
+                                                <form action="{{ action('MonthsHourController@delete',$bid->programs()->sortByDesc('status')->first()->schedule->months_hour->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-outline-success btn">
+                                                        Да
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </td>
+                  </tr>
+                  @endif
+
 
                   @if(($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1) and ($bid->programs()->sortByDesc('status')->first()->schedule->student))
                   <tr>
