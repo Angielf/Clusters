@@ -16,7 +16,7 @@ class CreateMonthsHoursTable extends Migration
         Schema::create('months_hours', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('schedule_id');
-            $table->unsignedBigInteger('school_schedule_id');
+            $table->unsignedSmallInteger('school_schedule_id');
 
             $table->string('month_1');
             $table->string('estimated_1')->nullable();
