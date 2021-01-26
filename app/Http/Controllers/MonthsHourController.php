@@ -382,4 +382,9 @@ class MonthsHourController extends Controller
         return view('m_h_update_rez', compact('months_hour'));
     }
 
+    public function show_inf(MonthsHour $months_hour)
+    {
+        return view('m_h_inf', compact('months_hour'));
+    }
+
 }

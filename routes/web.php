@@ -129,6 +129,8 @@ Route::get('export_mun', 'ExcelMunController@export')->name('export_mun');
 
 Route::get('export_hours', 'ExcelRegionController@months_hours_export')->name('export_hours');
 
+Route::get('export_hours_mun', 'ExcelMunController@months_hours_export')->name('export_hours_mun');
+
 
 Route::post('/region-clusters', 'RegionClusterController@store');
 
@@ -247,4 +249,6 @@ Route::get('/months_hour/not10/{months_hour}', 'MonthsHourController@not_10');
 Route::get('/months_hour/not11/{months_hour}', 'MonthsHourController@not_11');
 
 Route::get('/months_hour/not12/{months_hour}', 'MonthsHourController@not_12');
+
+Route::get('/months_hours/{months_hour}/inf', 'MonthsHourController@show_inf');
 

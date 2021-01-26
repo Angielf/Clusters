@@ -331,6 +331,14 @@
                                                 </a>
                                             @endif
                                         </li>
+                                        <li class="list-group-item">
+                                            @if(($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1) and ($bid->programs()->sortByDesc('status')->first()->schedule->months_hour))
+                                                <a href="/months_hours/{{ $bid->programs()->sortByDesc('status')->first()->schedule->months_hour->id }}/inf"
+                                                    class="btn btn-outline-success">
+                                                        Кол-во часов по месяцам
+                                                </a>
+                                            @endif
+                                        </li>
 
                                     </td>
 
@@ -475,6 +483,14 @@
                                                 <a href="/files/schedules/{{ $program->schedule->filename }}"
                                                     class="btn btn-outline-success">
                                                     Расписание
+                                                </a>
+                                            @endif
+                                        </li>
+                                        <li class="list-group-item">
+                                            @if(($program->schedule) and ($program->schedule->status === 1) and ($program->schedule->months_hour))
+                                                <a href="/months_hours/{{ $program->schedule->months_hour->id }}/inf"
+                                                    class="btn btn-outline-success">
+                                                        Кол-во часов по месяцам
                                                 </a>
                                             @endif
                                         </li>

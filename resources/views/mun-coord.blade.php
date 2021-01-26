@@ -24,6 +24,10 @@
                             Список организаций муниципалитета:
                             <a class="btn btn-outline-dark" href="/users/{{ Auth::user()->getDistrict->id }}/org-list-mun">Организации</a>
                         </li>
+                        <li class="list-group-item">
+                            Кол-во часов по месяцам:
+                            <a class="btn btn-outline-dark" href="{{ route('export_hours_mun') }}">Export</a>
+                        </li>
                     </ul>
 
                     <ul class="nav nav-tabs">
@@ -203,7 +207,7 @@
 
                                     <th scope="col">Программа/ Расписание</th>
                                     <th scope="col">Кол-во учеников/Список</th>
-                                    <th scope="col" onclick="sort_dog();">Договор <i class="fas fa-arrows-alt-v"></th>
+                                    <th scope="col">Договор</th>
                                 </tr>
                                 </thead>
 
@@ -257,6 +261,14 @@
                                                             <a href="/files/schedules/{{ $bid->programs()->sortByDesc('status')->first()->schedule->filename }}"
                                                                 class="btn btn-outline-success">
                                                                 Расписание
+                                                            </a>
+                                                        @endif
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        @if(($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1) and ($bid->programs()->sortByDesc('status')->first()->schedule->months_hour))
+                                                            <a href="/months_hours/{{ $bid->programs()->sortByDesc('status')->first()->schedule->months_hour->id }}/inf"
+                                                                class="btn btn-outline-success">
+                                                                    Кол-во часов по месяцам
                                                             </a>
                                                         @endif
                                                     </li>
