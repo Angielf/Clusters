@@ -21,7 +21,7 @@
                           </span>
                         </div>
                         <input type="text" class="form-control"
-                        id="org" onkeyup="org()">
+                        id="mun" onkeyup="mun()">
                     </div>
                 </li>
 
@@ -33,7 +33,7 @@
                           </span>
                         </div>
                         <input type="text" class="form-control"
-                        id="inn" onkeyup="inn()">
+                        id="org" onkeyup="org()">
                     </div>
                 </li>
 
