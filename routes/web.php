@@ -131,6 +131,8 @@ Route::get('export_hours', 'ExcelRegionController@months_hours_export')->name('e
 
 Route::get('export_hours_mun', 'ExcelMunController@months_hours_export')->name('export_hours_mun');
 
+Route::get('export_h', 'ExcelRegionController@m_h_export')->name('export_h');
+
 
 Route::post('/region-clusters', 'RegionClusterController@store');
 
