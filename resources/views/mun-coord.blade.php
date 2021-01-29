@@ -28,6 +28,10 @@
                             Кол-во часов по месяцам:
                             <a class="btn btn-outline-dark" href="{{ route('export_hours_mun') }}">Export</a>
                         </li>
+                        <li class="list-group-item">
+                            Кол-во часов по месяцам у базовых организаций (январь-май):
+                            <a class="btn btn-outline-dark" href="{{ route('export_h_mun') }}">Export</a>
+                        </li>
                     </ul>
 
                     <ul class="nav nav-tabs">
