@@ -27,7 +27,7 @@ class ExcelMunController extends Controller
 
     public function m_h_export()
     {
-        return Excel::download(new MHExport_mun, 'hours_per_months.xlsx');
+        return Excel::download(new MHExport_mun, 'hours_per_months_mun.xlsx');
     }
 
 
