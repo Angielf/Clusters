@@ -383,5 +383,19 @@ class User extends Authenticatable
         return $i;
     }
 
+    public function proposed_programs()
+    {
+        if ($proposed_programs = Proposed::where('user_id', $this->id)->get()) {
+            return $proposed_programs;
+        } else return false;
 
+    }
+
+    public function selected_programs()
+    {
+        if ($selected_programs = SelectedProgram::where('school_id', $this->id)->get()) {
+            return $selected_programs;
+        } else return false;
+
+    }
 }

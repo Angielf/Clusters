@@ -14,7 +14,24 @@
 
                     </div>
 
+                    <ul class="nav nav-tabs">
+                        <!-- Первая вкладка (активная) -->
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#nav-bids">
+                                Заявки
+                            </a>
+                        </li>
+                        <!-- Вторая вкладка -->
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#nav-proposed">
+                                Образовательные программы
+                            </a>
+                        </li>
+                    </ul>
 
+
+                    <div class="tab-content">
+                    <div class="tab-pane fade show active" id="nav-bids">
                     <ul class="card-body">
 
                         <a href="bids/create" class="btn btn-outline-primary btn-block">
@@ -254,8 +271,6 @@
                     <div class="card-footer">
                         <div class="accordion" id="accordionExample">
 
-
-
                             <div class="card">
                                 <div class="card-header" id="headingTwo">
                                   <h5 class="mb-0">
@@ -269,125 +284,6 @@
                                 <div id="collapseDeficits" class="collapse"
                                       aria-labelledby="collapseDeficits" data-parent="#accordionExample">
                                   <div class="card-body">
-
-                                    {{-- Поиск --}}
-                                    {{-- <ul class="list-group">
-                                        <li class="list-group-item">
-
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                  <span class="input-group-text">
-                                                      Организация
-                                                  </span>
-                                                </div>
-                                                <input type="text" aria-label="First name" class="form-control"
-                                                id="rez" onkeyup="rez()" placeholder="Поиск по названию организации">
-                                            </div>
-                                        </li>
-
-                                        <li class="list-group-item">
-
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                  <span class="input-group-text">
-                                                    Класс
-                                                  </span>
-                                                </div>
-                                                <input type="text" aria-label="First name" class="form-control"
-                                                id="classs" onkeyup="classs()">
-
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                      Предмет(курс)
-                                                    </span>
-                                                </div>
-                                                <input type="text" aria-label="First name" class="form-control"
-                                                id="subject" onkeyup="subject()">
-                                            </div>
-
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                  <span class="input-group-text">
-                                                    Раздел(модуль)
-                                                  </span>
-                                                </div>
-                                                <input type="text" aria-label="First name" class="form-control"
-                                                id="modul" onkeyup="modul()">
-
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                        Кол-во часов
-                                                    </span>
-                                                </div>
-                                                <input type="text" aria-label="First name" class="form-control"
-                                                id="hour" onkeyup="hour()">
-                                            </div>
-
-                                        </li>
-
-                                        <li class="list-group-item">
-
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                  <span class="input-group-text">
-                                                    Форма обучения
-                                                  </span>
-                                                </div>
-                                                <input type="text" class="form-control"
-                                                id="forma" onkeyup="forma()" list="Forma">
-                                                <datalist id="Forma">
-                                                    <option value="очная">очная</option>
-                                                    <option value="очно-заочная">очно-заочная</option>
-                                                    <option value="заочная">заочная</option>
-                                                </datalist>
-
-
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                        Условия реализации обучения
-                                                    </span>
-                                                </div>
-                                                <input type="text" class="form-control"
-                                                id="imp" onkeyup="imp()" list="Imp">
-                                                <datalist id="Imp">
-                                                    <option value="с использование дистанционных образовательных технологий, электронного обучения">
-                                                        с использование дистанционных образовательных технологий, электронного обучения
-                                                    </option>
-                                                    <option value="трансфер детей до организации">трансфер детей до организации</option>
-                                                </datalist>
-                                            </div>
-
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                  <span class="input-group-text">
-                                                    Образовательная программа
-                                                  </span>
-                                                </div>
-                                                <input type="text" class="form-control"
-                                                id="pro" onkeyup="pro()" list="Pro">
-                                                <datalist id="Pro">
-                                                    <option value="основная">основная</option>
-                                                    <option value="дополнительная">дополнительная</option>
-                                                </datalist>
-
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">
-                                                        Образовательная деятельность
-                                                    </span>
-                                                </div>
-                                                <input type="text" class="form-control"
-                                                id="act" onkeyup="act()" list="Act">
-                                                <datalist id="Act">
-                                                    <option value="урочная">урочная</option>
-                                                    <option value="внеурочная">внеурочная</option>
-                                                </datalist>
-
-                                            </div>
-
-                                        </li>
-                                    </ul> --}}
-                                    {{-- Конец поиска --}}
-
 
                                     <table class="table table-stripe" id="collapseExample3">
                                         <input type="hidden" id="rez_order" value="asc">
@@ -407,18 +303,10 @@
 
                                             <th scope="col">Даты</th>
 
-                                            <th scope="col" onclick="sort_pr();">Предложить программу
-                                                {{-- <i class="fas fa-arrows-alt-v"> --}}
-                                            </th>
-                                            <th scope="col" onclick="sort_ra();">Предложить расписание
-                                                {{-- <i class="fas fa-arrows-alt-v"> --}}
-                                            </th>
-                                            <th scope="col" onclick="sort_st();">Кол-во учеников/Список
-                                                {{-- <i class="fas fa-arrows-alt-v"> --}}
-                                            </th>
-                                            <th scope="col" onclick="sort_dog();">Договор
-                                                {{-- <i class="fas fa-arrows-alt-v"> --}}
-                                            </th>
+                                            <th scope="col">Предложить программу</th>
+                                            <th scope="col">Предложить расписание</th>
+                                            <th scope="col">Кол-во учеников/Список</th>
+                                            <th scope="col">Договор</th>
 
                                         </tr>
                                         </thead>
@@ -574,12 +462,6 @@
                                                                     </p>
                                                                 @endif
 
-
-                                                            {{-- @else
-                                                                <p class="alert alert-dark" role="alert">
-                                                                    Программа выполняется другой школой
-                                                                </p> --}}
-
                                                             @endif
                                                         @endforeach
 
@@ -597,6 +479,413 @@
                             </div>
 
                         </div>
+                    </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-proposed">
+                        <ul class="card-body">
+
+                            <a href="proposed/add" class="btn btn-outline-primary btn-block">
+                                Предложить свою образовательную программу
+                            </a>
+                            <br>
+
+                            <div class="accordion" id="accordionExample3">
+                                <div class="card">
+                                    <div class="card-header" id="headingOwn">
+                                        <h5 class="mb-0">
+                                            <a data-toggle="collapse" href="#collapseOwnProposed" aria-expanded="false"
+                                                aria-controls="collapseOwnProposed">
+                                                Ваши образовательные программы
+                                            </a>
+                                        </h5>
+                                    </div>
+
+                                    <div id="collapseOwnProposed" class="collapse"
+                                        aria-labelledby="collapseOwnProposed" data-parent="#accordionExample3">
+                                        <div class="card-body">
+                                            <table class="table table-stripe">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
+                                                        <th scope="col">
+                                                            Форма/условия реализации обучения/ Образовательная программа/деятельность / Комментарий
+                                                        </th>
+                                                        <th scope="col">Даты</th>
+                                                        <th scope="col">Программа</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody id="own_proposed">
+                                                    <tr>
+                                                        @if ($user->proposed_programs())
+                                                            @foreach( $user->proposed_programs() as $proposed_program)
+                                                            <tr>
+                                                                <td>
+                                                                    <ul class="list-group">
+                                                                        <li class="list-group-item">{{ $proposed_program->getClasses() }}</li>
+                                                                        <li class="list-group-item">{{ $proposed_program->subject }} </li>
+                                                                        <li class="list-group-item">{{ $proposed_program->modul }}</li>
+                                                                        <li class="list-group-item">{{ $proposed_program->hours }}</li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td>
+                                                                    <ul class="list-group">
+                                                                        <li class="list-group-item">{{ $proposed_program->form_of_education }}</li>
+                                                                        <li class="list-group-item">{{ $proposed_program->form_education_implementation }}</li>
+                                                                        <li class="list-group-item">{{ $proposed_program->educational_program }}</li>
+                                                                        <li class="list-group-item">{{ $proposed_program->educational_activity }}</li>
+                                                                        <li class="list-group-item">{{ $proposed_program->content }}</li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td>
+                                                                    <ul class="list-group">
+                                                                        <li class="list-group-item">{{ $proposed_program->getDataBegin() }}</li>
+                                                                        <li class="list-group-item">{{ $proposed_program->getDataEnd() }}</li>
+                                                                    </ul>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="/files/proposed_programs/{{ $proposed_program->filename }}"
+                                                                        class="btn btn-outline-success">
+                                                                        Программа
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                        @endif
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </br>
+                            </br>
+                            <h5 align="center">Организации, которые взяли ваши программы</h5>
+
+                            <table class="table table-stripe border-bottom">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Организация реципиент</th>
+                                        <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
+
+                                        <th scope="col">
+                                            Форма/условия реализации обучения/ Образовательная программа/деятельность / Комментарий
+                                        </th>
+
+                                        <th scope="col">Даты</th>
+
+                                        <th scope="col">Программа</th>
+                                        <th scope="col">Расписание</th>
+                                        <th scope="col">Ученики</th>
+                                        <th scope="col">Договор</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="own_proposed">
+                                    <tr>
+                                        @if ($user->proposed_programs())
+                                            @foreach( $user->proposed_programs() as $proposed_program)
+                                            @if ($proposed_program->selected_programs())
+                                            @foreach($proposed_program->selected_programs() as $selected_program)
+                                            <td>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">{{ $selected_program->user->fullname }}</li>
+                                                    <li class="list-group-item">
+                                                        <a class="btn btn-outline-dark" href="/users/{{ $selected_program->user->id }}/about-org">Сведения</a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->getClasses() }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->subject }} </li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->modul }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->hours }}</li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->form_of_education }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->form_education_implementation }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->educational_program }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->educational_activity }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->content }}</li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->getDataBegin() }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->getDataEnd() }}</li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <a href="/files/proposed_programs/{{ $selected_program->proposed_program->filename }}"
+                                                    class="btn btn-outline-success">
+                                                    Программа
+                                                </a>
+                                            </td>
+                                            @if ($selected_program->selected_schedule)
+                                                <td>
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            @if($selected_program->selected_schedule->status !== 2)
+                                                                <p>
+                                                                    {!! $selected_program->selected_schedule->getStatus() !!}
+                                                                </p>
+                                                                <a href="/files/selected_schedules/{{ $selected_program->selected_schedule->filename }}"
+                                                                    class="btn btn-outline-success">
+                                                                        Расписание
+                                                                </a>
+                                                            @endif
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            @else
+                                                <td>
+                                                    <a href="/selected_schedule/{{ $selected_program->id }}"
+                                                        class="btn btn-outline-primary">
+                                                        <i class="fas fa-file-upload"></i> Добавить расписание
+                                                    </a>
+                                                </td>
+                                            @endif
+
+                                            @endforeach
+                                            @endif
+                                            @endforeach
+                                        @endif
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+
+
+                            </br>
+                            </br>
+                            <h5 align="center">Взятые вами образовательные программы</h5>
+
+                            <table class="table table-stripe">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Базовая организация</th>
+
+                                        <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
+
+                                        <th scope="col">
+                                            Форма/условия реализации обучения/ Образовательная программа/деятельность / Комментарий
+                                        </th>
+
+                                        <th scope="col">Даты</th>
+
+                                        <th scope="col">Программа</th>
+
+                                        <th scope="col">Расписание</th>
+                                        <th scope="col">Ученики</th>
+                                        <th scope="col">Договор</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="taken_programs">
+                                    <tr>
+                                        @if ($user->selected_programs())
+                                            @foreach( $user->selected_programs() as $selected_program)
+                                            <td>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->user->fullname }}</li>
+                                                    <li class="list-group-item">
+                                                        <a class="btn btn-outline-dark" href="/users/{{ $selected_program->proposed_program->user->id }}/about-org">Сведения</a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->getClasses() }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->subject }} </li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->modul }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->hours }}</li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->form_of_education }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->form_education_implementation }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->educational_program }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->educational_activity }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->content }}</li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->getDataBegin() }}</li>
+                                                    <li class="list-group-item">{{ $selected_program->proposed_program->getDataEnd() }}</li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <a href="/files/proposed_programs/{{ $selected_program->proposed_program->filename }}"
+                                                    class="btn btn-outline-success">
+                                                    Программа
+                                                </a>
+                                            </td>
+                                            @if ($selected_program->selected_schedule)
+                                                <td>
+                                                    <p><a href="/files/selected_schedules/{{ $selected_program->selected_schedule->filename }}"
+                                                        class="btn btn-outline-success">
+                                                        Расписание
+                                                    </a><br></p>
+
+                                                    @if ($selected_program->selected_schedule->status !== 1)
+                                                        <p><a href="selected_schedule/add/{{ $selected_program->selected_schedule->id }}"
+                                                            class="btn btn-outline-info">
+                                                            <i class="far fa-check-square"></i> Согласовать
+                                                        </a></p>
+                                                        <form action="{{ action('SelectedScheduleController@delete',$selected_program->selected_schedule->id) }}"
+                                                                method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                    class="btn btn-outline-danger">
+                                                                    <i class="far fa-trash-alt"></i> Отклонить
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                </td>
+                                            @endif
+
+                                            @endforeach
+                                        @endif
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </ul>
+
+                        <div class="card-footer">
+                            <div class="accordion" id="accordionExample2">
+
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                      <h5 class="mb-0">
+                                          <a data-toggle="collapse" href="#collapseProposed" aria-expanded="false"
+                                          aria-controls="collapseProposed">
+                                              Образовательные программы других организаций вашего муниципалитета
+                                          </a>
+                                      </h5>
+                                    </div>
+
+                                    <div id="collapseProposed" class="collapse"
+                                          aria-labelledby="collapseProposed" data-parent="#accordionExample2">
+                                        <div class="card-body">
+                                            <table class="table table-stripe" id="collapseExample4">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Организация</th>
+
+                                                        <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
+
+                                                        <th scope="col">
+                                                            Форма/условия реализации обучения/ Образовательная программа/деятельность / Комментарий
+                                                        </th>
+
+                                                        <th scope="col">Даты</th>
+
+                                                        <th scope="col">Программа</th>
+
+                                                        <th scope="col">Взять программу</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody id="other_proposed">
+                                                    @foreach($proposed_programs_all as $proposed_program)
+                                                        @if(($proposed_program->user_id != $user->id) and ($proposed_program->user->district == $user->getDistrict->id))
+                                                        <tr>
+                                                            <td>
+                                                                <ul class="list-group">
+                                                                    <li class="list-group-item">
+                                                                        {{ $proposed_program->user->fullname }}
+                                                                    </li>
+                                                                    <li class="list-group-item">
+                                                                        <a class="btn btn-outline-dark" href="/users/{{ $proposed_program->user->id }}/about-org">Сведения</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                            <td>
+                                                                <ul class="list-group">
+                                                                    <li class="list-group-item">{{ $proposed_program->getClasses() }}</li>
+                                                                    <li class="list-group-item">{{ $proposed_program->subject }} </li>
+                                                                    <li class="list-group-item">{{ $proposed_program->modul }}</li>
+                                                                    <li class="list-group-item">{{ $proposed_program->hours }}</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td>
+                                                                <ul class="list-group">
+                                                                    <li class="list-group-item">{{ $proposed_program->form_of_education }}</li>
+                                                                    <li class="list-group-item">{{ $proposed_program->form_education_implementation }}</li>
+                                                                    <li class="list-group-item">{{ $proposed_program->educational_program }}</li>
+                                                                    <li class="list-group-item">{{ $proposed_program->educational_activity }}</li>
+                                                                    <li class="list-group-item">{{ $proposed_program->content }}</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td>
+                                                                <ul class="list-group">
+                                                                    <li class="list-group-item">{{ $proposed_program->getDataBegin() }}</li>
+                                                                    <li class="list-group-item">{{ $proposed_program->getDataEnd() }}</li>
+                                                                </ul>
+                                                            </td>
+                                                            <td>
+                                                                <a href="/files/proposed_programs/{{ $proposed_program->filename }}"
+                                                                    class="btn btn-outline-success">
+                                                                    Программа
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#mySelectedProgram">
+                                                                    Взять программу
+                                                                </button>
+
+                                                                <!-- Модальное окно Взять программу-->
+                                                                <div class="modal fade" id="mySelectedProgram" tabindex="-1" role="dialog" aria-labelledby="mySelectedProgram" aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="myModalLabelSelectedProgram">
+                                                                                    Вы уверены, что хотите взять эту программу?
+                                                                                </h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <form action="{{ action('SelectedProgramController@take', $proposed_program->id) }}" method="POST">
+                                                                                        @csrf
+                                                                                        <div class="form-group">
+                                                                                            <button type="submit" class="btn btn-success">Да</button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{-- Конец окна Взять программу --}}
+                                                            </td>
+                                                        </tr>
+                                                        @endif
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
                     </div>
 
                 </div>

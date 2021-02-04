@@ -7,6 +7,7 @@ use App\Bid;
 use App\Cluster;
 use App\District;
 use App\Program;
+use App\Proposed;
 use App\RegionCluster;
 use App\User;
 use App\Student;
@@ -92,10 +93,13 @@ class HomeController extends Controller
 
             $students = Student::all();
 
+            $proposed_programs_all = Proposed::all();
+
             return view('school', ['user' => $user,
                                     // 'programs' => $programs,
                                     'bids_all' => $bids_all,
-                                    'students' => $students]);
+                                    'students' => $students,
+                                    'proposed_programs_all' => $proposed_programs_all]);
 
             // 'regional_cluster' => $regional_cluster,
         }

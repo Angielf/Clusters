@@ -256,3 +256,20 @@ Route::get('/months_hour/not12/{months_hour}', 'MonthsHourController@not_12');
 
 Route::get('/months_hours/{months_hour}/inf', 'MonthsHourController@show_inf');
 
+
+Route::get('/proposed/add', 'ProposedController@add')->name('proposed.add');
+
+Route::post('/proposed/adding', 'ProposedController@adding')->name('proposed.adding');
+
+Route::post('/selected_programs/{id}', 'SelectedProgramController@take');
+
+
+Route::get('/selected_schedule/{id}', 'SelectedScheduleController@index');
+
+Route::get('/selected_schedule/add/{selected_schedule}', 'SelectedScheduleController@approve');
+
+Route::post('/selected_schedule/{id}', 'SelectedScheduleController@add');
+
+Route::delete('/selected_schedule/{selected_schedule}', 'SelectedScheduleController@delete');
+
+
