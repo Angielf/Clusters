@@ -643,6 +643,35 @@
                                                         </li>
                                                     </ul>
                                                 </td>
+                                                @if($selected_program->selected_schedule->status === 1)
+                                                    <td>
+                                                        @if ($selected_program->selected_schedule->selected_student)
+                                                            <ul class="list-group">
+                                                                <li class="list-group-item">
+                                                                    {{ $selected_program->selected_schedule->selected_student->students_amount }}
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                    <a href="/files/students/{{ $selected_program->selected_schedule->selected_student->filename }}"
+                                                                        class="btn btn-outline-success">
+                                                                        Список учеников
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+
+                                                            <td>
+                                                                @if ($selected_program->selected_schedule->selected_student->selected_agreement)
+                                                                    <a href="/files/selected_agreements/{{ $selected_program->selected_schedule->selected_student->selected_agreement->filename }}"
+                                                                        class="btn btn-outline-success">
+                                                                        Договор
+                                                                    </a>
+
+                                                                @endif
+                                                            </td>
+
+
+                                                        @endif
+                                                    </td>
+                                                @endif
                                             @else
                                                 <td>
                                                     <a href="/selected_schedule/{{ $selected_program->id }}"
@@ -752,6 +781,51 @@
                                                         </form>
                                                     @endif
                                                 </td>
+
+                                                @if($selected_program->selected_schedule->status === 1)
+                                                    <td>
+                                                        @if ($selected_program->selected_schedule->selected_student)
+                                                            <ul class="list-group">
+                                                                <li class="list-group-item">
+                                                                    <a href="/files/selected_students/{{ $selected_program->selected_schedule->selected_student->filename }}"
+                                                                    class="btn btn-outline-success">
+                                                                        Список учеников
+                                                                    </a>
+                                                                </li>
+
+
+                                                                <li class="list-group-item">
+                                                                    {{ $selected_program->selected_schedule->selected_student->students_amount }}
+                                                                </li>
+                                                            </ul>
+
+
+                                                            <td>
+                                                                @if ($selected_program->selected_schedule->selected_student->selected_agreement)
+                                                                    <a href="/files/selected_agreements/{{ $selected_program->selected_schedule->selected_student->selected_agreement->filename }}"
+                                                                        class="btn btn-outline-success">
+                                                                        Договор
+                                                                    </a>
+
+                                                                @else
+                                                                    <a href="/selected_agreement/{{ $selected_program->selected_schedule->selected_student->id }}"
+                                                                        class="btn btn-outline-primary">
+                                                                        <i class="fas fa-file-upload"></i> Добавить договор
+                                                                    </a>
+                                                                @endif
+
+
+                                                            </td>
+
+                                                        @else
+                                                            <a href="/selected_student/{{ $selected_program->selected_schedule->id }}"
+                                                                class="btn btn-outline-primary">
+                                                                <i class="fas fa-file-upload"></i> Добавить список учеников
+                                                            </a>
+                                                        @endif
+                                                    </td>
+                                                @endif
+
                                             @endif
 
                                             @endforeach

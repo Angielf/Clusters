@@ -17,10 +17,10 @@ class SelectedSchedule extends Model
 
 
 
-    // public function student()
-    // {
-    //     return $this->hasOne(Student::class);
-    // }
+    public function selected_student()
+    {
+        return $this->hasOne(SelectedStudent::class);
+    }
 
     public function getStatus()
     {

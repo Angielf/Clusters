@@ -273,3 +273,17 @@ Route::post('/selected_schedule/{id}', 'SelectedScheduleController@add');
 Route::delete('/selected_schedule/{selected_schedule}', 'SelectedScheduleController@delete');
 
 
+Route::get('/selected_student/{id}', 'SelectedStudentController@index');
+
+Route::post('/selected_student/{id}', 'SelectedStudentController@add');
+
+Route::delete('/selected_student/{selected_student}', 'SelectedStudentController@delete');
+
+
+Route::get('/selected_agreement/{id}', 'SelectedAgreementController@index');
+
+Route::post('/selected_agreement/{id}', 'SelectedAgreementController@add');
+
+Route::delete('/selected_agreement/{selected_agreement}', 'SelectedAgreementController@delete');
+
+
