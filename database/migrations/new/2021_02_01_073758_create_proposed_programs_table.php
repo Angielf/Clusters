@@ -17,6 +17,8 @@ class CreateProposedProgramsTable extends Migration
             $table->id();
 
             $table->unsignedSmallInteger('user_id');
+            // $table->unsignedBigInteger('user_id');
+
             $table->string('class')->nullable();
             $table->string('subject')->nullable();
             $table->string('modul')->nullable();
