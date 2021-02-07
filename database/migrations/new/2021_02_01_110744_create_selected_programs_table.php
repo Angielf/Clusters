@@ -16,7 +16,8 @@ class CreateSelectedProgramsTable extends Migration
         Schema::create('selected_programs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('proposed_program_id');
-            $table->unsignedBigInteger('school_id');
+            // $table->unsignedBigInteger('school_id');
+            $table->unsignedSmallInteger('school_id');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
