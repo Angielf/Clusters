@@ -19,7 +19,7 @@
 
                     <div class="form-group">
                         <label for="class">Класс/группа:</label>
-                        <select class="form-control" name="class[]">
+                        <select class="form-control" name="class[]" id='selectid'>
                             <option value=""></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
