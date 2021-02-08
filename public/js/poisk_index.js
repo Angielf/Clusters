@@ -328,7 +328,7 @@ function mun() {
     var input, filter, table, tr, td, i;
     input = document.getElementById("forma2");
     filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
+    table = document.getElementById("myTable2");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("li")[4];
@@ -399,3 +399,407 @@ function mun() {
     }
 
   }
+
+
+
+  // Предложенные программы --------------------------------------------------------------------------------------------
+
+  function mun3() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("mun3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+
+  function rez3() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("rez3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  function classs3() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("classs3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[0];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+
+  function subject3() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("subject3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[1];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function modul3() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("modul3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[2];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function hour3() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("hour3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[3];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function forma3() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("forma3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[4];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function imp3() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("imp3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[5];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function pro3() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("pro3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[6];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function act3() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("act3");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable3");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[7];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  //Взятые предложенные программы----------------------------------------------------------------------------------------------------------
+  function mun4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("mun4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+
+  function rez4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("rez4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+
+  function bas4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("bas4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[2];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  function classs4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("classs4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[0];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function subject4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("subject4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[1];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function modul4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("modul4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[2];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function hour4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("hour4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[3];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function forma4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("forma4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[4];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function imp4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("imp4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[5];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function pro4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("pro4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[6];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+
+  function act4() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("act4");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable4");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("li")[7];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+  }
+

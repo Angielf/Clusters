@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Export;
 use App\MonthsHoursExport;
 use App\MHExport;
+use App\ProposedExport;
+use App\SelectedProgramsExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelRegionController extends Controller
@@ -26,5 +28,15 @@ class ExcelRegionController extends Controller
     public function m_h_export()
     {
         return Excel::download(new MHExport, 'hours_per_months.xlsx');
+    }
+
+    public function proposed_programs_export()
+    {
+        return Excel::download(new ProposedExport, 'proposed_programs_export.xlsx');
+    }
+
+    public function selected_programs_export()
+    {
+        return Excel::download(new SelectedProgramsExport, 'selected_programs_export.xlsx');
     }
 }

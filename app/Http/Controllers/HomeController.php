@@ -9,6 +9,7 @@ use App\District;
 use App\Program;
 use App\Proposed;
 use App\RegionCluster;
+use App\SelectedProgram;
 use App\User;
 use App\Student;
 use Illuminate\Http\Request;
@@ -54,7 +55,14 @@ class HomeController extends Controller
                 // ->where('status', '1')
                 ->get();
 
-            return view('clusters.index', ['bids' => $bids,]);
+            $proposed_programs_all = Proposed::all();
+
+            $selected_programs = SelectedProgram::all();
+
+            return view('clusters.index', ['bids' => $bids,
+                                            'proposed_programs_all' => $proposed_programs_all,
+                                            'selected_programs' => $selected_programs,
+                                            ]);
 
         // } elseif ($user->status === self::BASE_SCHOOL) {
         //     $district = District::where('id', $user->district)->first();
