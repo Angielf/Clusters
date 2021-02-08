@@ -129,3 +129,69 @@ function sort_rez2() {
         document.getElementById("rez2_order").value="asc";
     }
 }
+
+
+//Выбранные программы----------------------------------------------------------------------------------------------------------------
+function sel_sort_mun() {
+    var table=$('#myTable4');
+    var tbody =$('#table4');
+
+    tbody.find('tr').sort(function(a, b) {
+        if($('#sel_mun_order').val()=='asc') {
+            return $('td:first', a).text().localeCompare($('td:first', b).text());
+        } else {
+            return $('td:first', b).text().localeCompare($('td:first', a).text());
+        }
+    }).appendTo(tbody);
+
+    var sort_order=$('#sel_mun_order').val();
+    if(sort_order=="asc") {
+        document.getElementById("sel_mun_order").value="desc";
+    }
+    if(sort_order=="desc") {
+        document.getElementById("sel_mun_order").value="asc";
+    }
+}
+
+
+function sel_sort_rez() {
+    var table=$('#myTable4');
+    var tbody =$('#table4');
+
+    tbody.find('tr').sort(function(a, b) {
+        if($('#sel_rez_order').val()=='asc') {
+            return $('td:first', a).text().localeCompare($('td:first', b).text());
+        } else {
+            return $('td:first', b).text().localeCompare($('td:first', a).text());
+        }
+    }).appendTo(tbody);
+
+    var sort_order=$('#sel_rez_order').val();
+    if(sort_order=="asc") {
+        document.getElementById("sel_rez_order").value="desc";
+    }
+    if(sort_order=="desc") {
+        document.getElementById("sel_rez_order").value="asc";
+    }
+}
+
+function sel_sort_bas() {
+    var table=$('#myTable4');
+    var tbody =$('#table4');
+
+    tbody.find('tr').sort(function(a, b) {
+        if($('#sel_bas_order').val()=='asc') {
+            return $('td:first', a).text().localeCompare($('td:first', b).text());
+        } else {
+            return $('td:first', b).text().localeCompare($('td:first', a).text());
+        }
+    }).appendTo(tbody);
+
+    var sort_order=$('#sel_bas_order').val();
+    if(sort_order=="asc") {
+        document.getElementById("sel_bas_order").value="desc";
+    }
+    if(sort_order=="desc") {
+        document.getElementById("sel_bas_order").value="asc";
+    }
+}

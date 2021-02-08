@@ -296,10 +296,24 @@
                                         @if(($bid->status === 1))
                                             <tr>
                                                 <td>{{ $bid->user->getDistrict->fullname }}</td>
-                                                <td>{{ $bid->user->fullname }}</td>
+                                                <td>
+                                                    {{-- {{ $bid->user->fullname }} --}}
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">{{ $bid->user->fullname }}</li>
+                                                        <li class="list-group-item">
+                                                            <a class="btn btn-outline-dark" href="/users/{{ $bid->user->id }}/show-org">Информация</a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
 
                                                 <td>
-                                                    {{ $bid->programs()->sortByDesc('status')->first()->sender()->first()->fullname}}
+                                                    {{-- {{ $bid->programs()->sortByDesc('status')->first()->sender()->first()->fullname}} --}}
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">{{ $bid->programs()->sortByDesc('status')->first()->sender()->first()->fullname}}</li>
+                                                        <li class="list-group-item">
+                                                            <a class="btn btn-outline-dark" href="/users/{{ $bid->programs()->sortByDesc('status')->first()->sender()->first()->id}}/show-org">Информация</a>
+                                                        </li>
+                                                    </ul>
                                                 </td>
 
                                                 <td>
@@ -593,7 +607,15 @@
                                             @if(($bid->status === 0) or ($bid->status === 9))
                                             <tr>
                                                 <td>{{ $bid->user->getDistrict->fullname }}</td>
-                                                <td>{{ $bid->user->fullname }}</td>
+                                                <td>
+                                                    {{-- {{ $bid->user->fullname }} --}}
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">{{ $bid->user->fullname }}</li>
+                                                        <li class="list-group-item">
+                                                            <a class="btn btn-outline-dark" href="/users/{{ $bid->user->id }}/show-org">Информация</a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
 
                                                 <td>
                                                     <ul class="list-group" id="ul3">
@@ -817,7 +839,15 @@
                                         @foreach($proposed_programs_all as $proposed)
                                             <tr>
                                                 <td>{{ $proposed->user->getDistrict->fullname }}</td>
-                                                <td>{{ $proposed->user->fullname }}</td>
+                                                <td>
+                                                    {{-- {{ $proposed->user->fullname }} --}}
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">{{ $proposed->user->fullname }}</li>
+                                                        <li class="list-group-item">
+                                                            <a class="btn btn-outline-dark" href="/users/{{ $proposed->user->id }}/show-org">Информация</a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
 
                                                 <td>
                                                     <ul class="list-group" id="ul1">
@@ -1048,11 +1078,14 @@
                             </ul>
 
                             <table class="table table-striped" id="myTable4">
+                                <input type="hidden" id="sel_mun_order" value="asc">
+                                <input type="hidden" id="sel_rez_order" value="asc">
+                                <input type="hidden" id="sel_bas_order" value="asc">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Муниципалитет <i class="fas fa-arrows-alt-v"></i></th>
-                                        <th scope="col">Организация реципиент <i class="fas fa-arrows-alt-v"></th>
-                                        <th scope="col"">Базовая организация <i class="fas fa-arrows-alt-v"></th>
+                                        <th scope="col" onclick="sel_sort_mun();">Муниципалитет <i class="fas fa-arrows-alt-v"></i></th>
+                                        <th scope="col" onclick="sel_sort_rez();">Организация реципиент <i class="fas fa-arrows-alt-v"></th>
+                                        <th scope="col" onclick="sel_sort_bas();">Базовая организация <i class="fas fa-arrows-alt-v"></th>
 
                                         <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
 
@@ -1072,10 +1105,24 @@
                                         @foreach($selected_programs as $selected_program)
                                             <tr>
                                                 <td>{{ $selected_program->user->getDistrict->fullname }}</td>
-                                                <td>{{ $selected_program->user->fullname }}</td>
+                                                <td>
+                                                    {{-- {{ $selected_program->user->fullname }} --}}
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">{{ $selected_program->user->fullname }}</li>
+                                                        <li class="list-group-item">
+                                                            <a class="btn btn-outline-dark" href="/users/{{ $selected_program->user->id }}/show-org">Информация</a>
+                                                        </li>
+                                                    </ul>
+                                                </td>
 
                                                 <td>
-                                                    {{ $selected_program->proposed_program->user->fullname}}
+                                                    {{-- {{ $selected_program->proposed_program->user->fullname}} --}}
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">{{ $selected_program->proposed_program->user->fullname}}</li>
+                                                        <li class="list-group-item">
+                                                            <a class="btn btn-outline-dark" href="/users/{{ $selected_program->proposed_program->user->id}}/show-org">Информация</a>
+                                                        </li>
+                                                    </ul>
                                                 </td>
 
                                                 <td>
