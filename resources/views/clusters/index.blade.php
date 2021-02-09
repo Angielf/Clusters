@@ -881,7 +881,7 @@
                                                         Программа
                                                     </a>
                                                 </td>
-
+                                            </tr>
                                         @endforeach
 
                                     </tbody>

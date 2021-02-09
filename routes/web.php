@@ -139,6 +139,10 @@ Route::get('proposed_programs_export', 'ExcelRegionController@proposed_programs_
 
 Route::get('selected_programs_export', 'ExcelRegionController@selected_programs_export')->name('selected_programs_export');
 
+Route::get('proposed_programs_export_mun', 'ExcelMunController@proposed_programs_export')->name('proposed_programs_export_mun');
+
+Route::get('selected_programs_export_mun', 'ExcelMunController@selected_programs_export')->name('selected_programs_export_mun');
+
 
 Route::post('/region-clusters', 'RegionClusterController@store');
 

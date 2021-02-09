@@ -84,7 +84,13 @@ class HomeController extends Controller
                 ->WhereNull('rc_cluster_id')
                 ->get();
 
-            return view('mun-coord', ['user' => $user, 'bids' => $bids,]);
+            $proposed_programs_all = Proposed::all();
+
+            $selected_programs = SelectedProgram::all();
+
+            return view('mun-coord', ['user' => $user, 'bids' => $bids,
+                                        'proposed_programs_all' => $proposed_programs_all,
+                                        'selected_programs' => $selected_programs,]);
 
         } elseif($user->status === self::ADMIN_2) {
 
