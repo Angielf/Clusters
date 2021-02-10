@@ -269,6 +269,33 @@ Route::get('/proposed/add', 'ProposedController@add')->name('proposed.add');
 
 Route::post('/proposed/adding', 'ProposedController@adding')->name('proposed.adding');
 
+Route::get('/proposed_programs/{proposed_program}/update', 'ProposedController@show_update');
+
+Route::delete('/proposed_programs/{proposed_program}/delete', 'ProposedController@delete_proposed');
+
+Route::put('/proposed_programs/{proposed_program}/subject-update', 'ProposedController@update_subject');
+
+Route::put('/proposed_programs/{proposed_program}/modul-update', 'ProposedController@update_modul');
+
+Route::put('/proposed_programs/{proposed_program}/hours-update', 'ProposedController@update_hours');
+
+Route::put('/proposed_programs/{proposed_program}/class-update', 'ProposedController@update_class');
+
+Route::put('/proposed_programs/{proposed_program}/form_of_education-update', 'ProposedController@update_form_of_education');
+
+Route::put('/proposed_programs/{proposed_program}/form_education_implementation-update', 'ProposedController@update_form_education_implementation');
+
+Route::put('/proposed_programs/{proposed_program}/educational_program-update', 'ProposedController@update_educational_program');
+
+Route::put('/proposed_programs/{proposed_program}/educational_activity-update', 'ProposedController@update_educational_activity');
+
+Route::put('/proposed_programs/{proposed_program}/date_begin-update', 'ProposedController@update_date_begin');
+
+Route::put('/proposed_programs/{proposed_program}/date_end-update', 'ProposedController@update_date_end');
+
+Route::put('/proposed_programs/{proposed_program}/content-update', 'ProposedController@update_content');
+
+
 Route::post('/selected_programs/{id}', 'SelectedProgramController@take');
 
 

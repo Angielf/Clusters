@@ -517,7 +517,7 @@
                                                 </thead>
 
                                                 <tbody id="own_proposed">
-                                                    <tr>
+                                                    {{-- <tr> --}}
                                                         @if ($user->proposed_programs())
                                                             @foreach( $user->proposed_programs() as $proposed_program)
                                                             <tr>
@@ -527,6 +527,12 @@
                                                                         <li class="list-group-item">{{ $proposed_program->subject }} </li>
                                                                         <li class="list-group-item">{{ $proposed_program->modul }}</li>
                                                                         <li class="list-group-item">{{ $proposed_program->hours }}</li>
+                                                                        <li class="list-group-item">
+                                                                            <a href="/proposed_programs/{{ $proposed_program->id }}/update"
+                                                                                class="btn btn-outline-info btn">
+                                                                                <i class="far fa-eye"></i> Редактирование и удаление
+                                                                            </a>
+                                                                        </li>
                                                                     </ul>
                                                                 </td>
                                                                 <td>
@@ -553,7 +559,7 @@
                                                             </tr>
                                                             @endforeach
                                                         @endif
-                                                    </tr>
+                                                    {{-- </tr> --}}
                                                 </tbody>
                                             </table>
                                         </div>
@@ -585,11 +591,12 @@
                                 </thead>
 
                                 <tbody id="own_proposed">
-                                    <tr>
+                                    {{-- <tr> --}}
                                         @if ($user->proposed_programs())
                                             @foreach( $user->proposed_programs() as $proposed_program)
                                             @if ($proposed_program->selected_programs())
                                             @foreach($proposed_program->selected_programs() as $selected_program)
+                                            <tr>
                                             <td>
                                                 <ul class="list-group">
                                                     <li class="list-group-item">{{ $selected_program->user->fullname }}</li>
@@ -681,11 +688,12 @@
                                                 </td>
                                             @endif
 
+                                            </tr>
                                             @endforeach
                                             @endif
                                             @endforeach
                                         @endif
-                                    </tr>
+                                    {{-- </tr> --}}
                                 </tbody>
 
                             </table>
@@ -718,9 +726,10 @@
                                 </thead>
 
                                 <tbody id="taken_programs">
-                                    <tr>
+                                    {{-- <tr> --}}
                                         @if ($user->selected_programs())
                                             @foreach( $user->selected_programs() as $selected_program)
+                                            <tr>
                                             <td>
                                                 <ul class="list-group">
                                                     <li class="list-group-item">{{ $selected_program->proposed_program->user->fullname }}</li>
@@ -828,9 +837,10 @@
 
                                             @endif
 
+                                            </tr>
                                             @endforeach
                                         @endif
-                                    </tr>
+                                    {{-- </tr> --}}
                                 </tbody>
                             </table>
                         </ul>
@@ -914,37 +924,12 @@
                                                                 </a>
                                                             </td>
                                                             <td>
-                                                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#mySelectedProgram">
-                                                                    Взять программу
-                                                                </button>
-
-                                                                <!-- Модальное окно Взять программу-->
-                                                                <div class="modal fade" id="mySelectedProgram" tabindex="-1" role="dialog" aria-labelledby="mySelectedProgram" aria-hidden="true">
-                                                                    <div class="modal-dialog" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title" id="myModalLabelSelectedProgram">
-                                                                                    Вы уверены, что хотите взять эту программу?
-                                                                                </h5>
-                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                        <span aria-hidden="true">&times;</span>
-                                                                                    </button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <form action="{{ action('SelectedProgramController@take', $proposed_program->id) }}" method="POST">
-                                                                                        @csrf
-                                                                                        <div class="form-group">
-                                                                                            <button type="submit" class="btn btn-success">Да</button>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                <form action="{{ action('SelectedProgramController@take', $proposed_program->id) }}" method="POST">
+                                                                    @csrf
+                                                                    <div class="form-group">
+                                                                        <button type="submit" class="btn btn-success">Взять программу</button>
                                                                     </div>
-                                                                    {{-- Конец окна Взять программу --}}
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                         @endif
