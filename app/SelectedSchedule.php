@@ -10,7 +10,7 @@ class SelectedSchedule extends Model
 
     protected $fillable = ['selected_program_id', 'filename'];
 
-    public function program()
+    public function selected_program()
     {
         return $this->belongsTo(SelectedProgram::class);
     }
@@ -31,9 +31,9 @@ class SelectedSchedule extends Model
         }
     }
 
-    // public function months_hour()
-    // {
-    //     return $this->hasOne(MonthsHour::class);
+    public function selected_months_hour()
+    {
+        return $this->hasOne(SelectedMonthsHour::class);
 
-    // }
+    }
 }

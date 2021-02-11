@@ -298,6 +298,10 @@ Route::put('/proposed_programs/{proposed_program}/content-update', 'ProposedCont
 
 Route::post('/selected_programs/{id}', 'SelectedProgramController@take');
 
+Route::get('/selected_programs/{selected_program}/show', 'SelectedProgramController@show');
+
+Route::delete('/selected_programs/{selected_program}/delete', 'SelectedProgramController@delete');
+
 
 Route::get('/selected_schedule/{id}', 'SelectedScheduleController@index');
 
@@ -320,5 +324,92 @@ Route::get('/selected_agreement/{id}', 'SelectedAgreementController@index');
 Route::post('/selected_agreement/{id}', 'SelectedAgreementController@add');
 
 Route::delete('/selected_agreement/{selected_agreement}', 'SelectedAgreementController@delete');
+
+
+Route::get('/selected_months_hours/{id}', 'SelectedMonthsHourController@index');
+
+Route::post('/selected_months_hours/{id}', 'SelectedMonthsHourController@add');
+
+Route::delete('/selected_months_hours/{selected_months_hour}', 'SelectedMonthsHourController@delete');
+
+Route::get('/selected_months_hours/{selected_months_hour}/update', 'SelectedMonthsHourController@show_update');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_1-update', 'SelectedMonthsHourController@update_real_1');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_2-update', 'SelectedMonthsHourController@update_real_2');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_3-update', 'SelectedMonthsHourController@update_real_3');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_4-update', 'SelectedMonthsHourController@update_real_4');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_5-update', 'SelectedMonthsHourController@update_real_5');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_6-update', 'SelectedMonthsHourController@update_real_6');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_7-update', 'SelectedMonthsHourController@update_real_7');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_8-update', 'SelectedMonthsHourController@update_real_8');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_9-update', 'SelectedMonthsHourController@update_real_9');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_10-update', 'SelectedMonthsHourController@update_real_10');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_11-update', 'SelectedMonthsHourController@update_real_11');
+
+Route::put('/selected_months_hours/{selected_months_hour}/real_12-update', 'SelectedMonthsHourController@update_real_12');
+
+Route::get('/selected_months_hours/{selected_months_hour}/update-rez', 'SelectedMonthsHourController@show_update_rez');
+
+Route::get('/users/selected-months-hours-list', 'MonthsHourController@show_hours')->name('selected_hours_list');
+
+Route::get('/selected_months_hour/true1/{selected_months_hour}', 'SelectedMonthsHourController@approve_1');
+
+Route::get('/selected_months_hour/true2/{selected_months_hour}', 'SelectedMonthsHourController@approve_2');
+
+Route::get('/selected_months_hour/true3/{selected_months_hour}', 'SelectedMonthsHourController@approve_3');
+
+Route::get('/selected_months_hour/true4/{selected_months_hour}', 'SelectedMonthsHourController@approve_4');
+
+Route::get('/selected_months_hour/true5/{selected_months_hour}', 'SelectedMonthsHourController@approve_5');
+
+Route::get('/selected_months_hour/true6/{selected_months_hour}', 'SelectedMonthsHourController@approve_6');
+
+Route::get('/selected_months_hour/true7/{selected_months_hour}', 'SelectedMonthsHourController@approve_7');
+
+Route::get('/selected_months_hour/true8/{selected_months_hour}', 'SelectedMonthsHourController@approve_8');
+
+Route::get('/selected_months_hour/true9/{selected_months_hour}', 'SelectedMonthsHourController@approve_9');
+
+Route::get('/selected_months_hour/true10/{selected_months_hour}', 'SelectedMonthsHourController@approve_10');
+
+Route::get('/selected_months_hour/true11/{selected_months_hour}', 'SelectedMonthsHourController@approve_11');
+
+Route::get('/selected_months_hour/true12/{selected_months_hour}', 'SelectedMonthsHourController@approve_12');
+
+Route::get('/selected_months_hour/not1/{selected_months_hour}', 'SelectedMonthsHourController@not_1');
+
+Route::get('/selected_months_hour/not2/{selected_months_hour}', 'SelectedMonthsHourController@not_2');
+
+Route::get('/selected_months_hour/not3/{selected_months_hour}', 'SelectedMonthsHourController@not_3');
+
+Route::get('/selected_months_hour/not4/{selected_months_hour}', 'SelectedMonthsHourController@not_4');
+
+Route::get('/selected_months_hour/not5/{selected_months_hour}', 'SelectedMonthsHourController@not_5');
+
+Route::get('/selected_months_hour/not6/{selected_months_hour}', 'SelectedMonthsHourController@not_6');
+
+Route::get('/selected_months_hour/not7/{selected_months_hour}', 'SelectedMonthsHourController@not_7');
+
+Route::get('/selected_months_hour/not8/{selected_months_hour}', 'SelectedMonthsHourController@not_8');
+
+Route::get('/selected_months_hour/not9/{selected_months_hour}', 'SelectedMonthsHourController@not_9');
+
+Route::get('/selected_months_hour/not10/{selected_months_hour}', 'SelectedMonthsHourController@not_10');
+
+Route::get('/selected_months_hour/not11/{selected_months_hour}', 'SelectedMonthsHourController@not_11');
+
+Route::get('/selected_months_hour/not12/{selected_months_hour}', 'SelectedMonthsHourController@not_12');
+
+Route::get('/selected_months_hours/{selected_months_hour}/inf', 'SelectedMonthsHourController@show_inf');
 
 

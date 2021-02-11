@@ -648,6 +648,21 @@
                                                                 </a>
                                                             @endif
                                                         </li>
+                                                        @if($selected_program->selected_schedule->status === 1)
+                                                            <li class="list-group-item">
+                                                                @if($selected_program->selected_schedule->selected_months_hour)
+                                                                    <a href="/selected_months_hours/{{ $selected_program->selected_schedule->selected_months_hour->id }}/update"
+                                                                        class="btn btn-outline-info btn">
+                                                                        Кол-во часов по месяцам
+                                                                    </a>
+                                                                @else
+                                                                    <a href="/selected_months_hours/{{ $selected_program->selected_schedule->id }}"
+                                                                        class="btn btn-outline-info btn">
+                                                                        Добавить кол-во часов по месяцам
+                                                                    </a>
+                                                                @endif
+                                                            </li>
+                                                        @endif
                                                     </ul>
                                                 </td>
                                                 @if($selected_program->selected_schedule->status === 1)
@@ -736,6 +751,12 @@
                                                     <li class="list-group-item">
                                                         <a class="btn btn-outline-dark" href="/users/{{ $selected_program->proposed_program->user->id }}/about-org">Сведения</a>
                                                     </li>
+                                                    <li class="list-group-item">
+                                                        <a href="/selected_programs/{{ $selected_program->id }}/show"
+                                                            class="btn btn-outline-info btn">
+                                                            <i class="far fa-eye"></i> Удаление
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </td>
                                             <td>
@@ -788,6 +809,13 @@
                                                                     <i class="far fa-trash-alt"></i> Отклонить
                                                             </button>
                                                         </form>
+                                                    @endif
+
+                                                    @if($selected_program->selected_schedule->selected_months_hour)
+                                                        <a href="/selected_months_hours/{{ $selected_program->selected_schedule->selected_months_hour->id }}/update-rez"
+                                                            class="btn btn-outline-info btn">
+                                                                Кол-во часов по месяцам
+                                                        </a>
                                                     @endif
                                                 </td>
 

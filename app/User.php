@@ -106,6 +106,14 @@ class User extends Authenticatable
 
     }
 
+    public function selected_months_hours_send()
+    {
+        if ($selected_months_hours = SelectedMonthsHour::where('school_selected_schedule_id', $this->id)->get()) {
+            return $selected_months_hours;
+        } else return false;
+
+    }
+
     public function amount_of_bids()
     {
         $i = 0;
@@ -397,5 +405,266 @@ class User extends Authenticatable
             return $selected_programs;
         } else return false;
 
+    }
+
+
+
+    public function amount_of_selected_months_hours()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            $i = $this->selected_months_hours_send()->count();
+        }
+        return $i;
+    }
+
+    public function amount_selected_estimated_per_1()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            foreach($this->selected_months_hours_send() as $mh){
+                if($mh->month_1 == '2021-01'){
+                    $i += intval($mh->estimated_1);
+                }
+                elseif($mh->month_2 == '2021-01'){
+                    $i += intval($mh->estimated_2);
+                }
+                elseif($mh->month_3 == '2021-01'){
+                    $i += intval($mh->estimated_3);
+                }
+                elseif($mh->month_4 == '2021-01'){
+                    $i += intval($mh->estimated_4);
+                }
+                elseif($mh->month_5 == '2021-01'){
+                    $i += intval($mh->estimated_5);
+                }
+            }
+        }
+        return $i;
+    }
+
+    public function amount_selected_estimated_per_2()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            foreach($this->selected_months_hours_send() as $mh){
+                if($mh->month_1 == '2021-02'){
+                    $i += intval($mh->estimated_1);
+                }
+                elseif($mh->month_2 == '2021-02'){
+                    $i += intval($mh->estimated_2);
+                }
+                elseif($mh->month_3 == '2021-02'){
+                    $i += intval($mh->estimated_3);
+                }
+                elseif($mh->month_4 == '2021-02'){
+                    $i += intval($mh->estimated_4);
+                }
+                elseif($mh->month_5 == '2021-02'){
+                    $i += intval($mh->estimated_5);
+                }
+            }
+        }
+        return $i;
+    }
+
+    public function amount_selected_estimated_per_3()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            foreach($this->selected_months_hours_send() as $mh){
+                if($mh->month_1 == '2021-03'){
+                    $i += intval($mh->estimated_1);
+                }
+                elseif($mh->month_2 == '2021-03'){
+                    $i += intval($mh->estimated_2);
+                }
+                elseif($mh->month_3 == '2021-03'){
+                    $i += intval($mh->estimated_3);
+                }
+                elseif($mh->month_4 == '2021-03'){
+                    $i += intval($mh->estimated_4);
+                }
+                elseif($mh->month_5 == '2021-03'){
+                    $i += intval($mh->estimated_5);
+                }
+            }
+        }
+        return $i;
+    }
+
+    public function amount_selected_estimated_per_4()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            foreach($this->selected_months_hours_send() as $mh){
+                if($mh->month_1 == '2021-04'){
+                    $i += intval($mh->estimated_1);
+                }
+                elseif($mh->month_2 == '2021-04'){
+                    $i += intval($mh->estimated_2);
+                }
+                elseif($mh->month_3 == '2021-04'){
+                    $i += intval($mh->estimated_3);
+                }
+                elseif($mh->month_4 == '2021-04'){
+                    $i += intval($mh->estimated_4);
+                }
+                elseif($mh->month_5 == '2021-04'){
+                    $i += intval($mh->estimated_5);
+                }
+            }
+        }
+        return $i;
+    }
+
+    public function amount_selected_estimated_per_5()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            foreach($this->selected_months_hours_send() as $mh){
+                if($mh->month_1 == '2021-05'){
+                    $i += intval($mh->estimated_1);
+                }
+                elseif($mh->month_2 == '2021-05'){
+                    $i += intval($mh->estimated_2);
+                }
+                elseif($mh->month_3 == '2021-05'){
+                    $i += intval($mh->estimated_3);
+                }
+                elseif($mh->month_4 == '2021-05'){
+                    $i += intval($mh->estimated_4);
+                }
+                elseif($mh->month_5 == '2021-05'){
+                    $i += intval($mh->estimated_5);
+                }
+            }
+        }
+        return $i;
+    }
+
+    public function amount_selected_real_per_1()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            foreach($this->selected_months_hours_send() as $mh){
+                if(($mh->month_1 == '2021-01') and ($mh->status_1 == 1)){
+                    $i += intval($mh->real_1);
+                }
+                elseif(($mh->month_2 == '2021-01') and ($mh->status_2 == 1)){
+                    $i += intval($mh->real_2);
+                }
+                elseif(($mh->month_3 == '2021-01') and ($mh->status_3 == 1)){
+                    $i += intval($mh->real_3);
+                }
+                elseif(($mh->month_4 == '2021-01') and ($mh->status_4 == 1)){
+                    $i += intval($mh->real_4);
+                }
+                elseif(($mh->month_5 == '2021-01') and ($mh->status_5 == 1)){
+                    $i += intval($mh->real_5);
+                }
+            }
+        }
+        return $i;
+    }
+
+    public function amount_selected_real_per_2()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            foreach($this->selected_months_hours_send() as $mh){
+                if(($mh->month_1 == '2021-02') and ($mh->status_1 == 1)){
+                    $i += intval($mh->real_1);
+                }
+                elseif(($mh->month_2 == '2021-02') and ($mh->status_2 == 1)){
+                    $i += intval($mh->real_2);
+                }
+                elseif(($mh->month_3 == '2021-02') and ($mh->status_3 == 1)){
+                    $i += intval($mh->real_3);
+                }
+                elseif(($mh->month_4 == '2021-02') and ($mh->status_4 == 1)){
+                    $i += intval($mh->real_4);
+                }
+                elseif(($mh->month_5 == '2021-02') and ($mh->status_5 == 1)){
+                    $i += intval($mh->real_5);
+                }
+            }
+        }
+        return $i;
+    }
+
+    public function amount_selected_real_per_3()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            foreach($this->selected_months_hours_send() as $mh){
+                if(($mh->month_1 == '2021-03') and ($mh->status_1 == 1)){
+                    $i += intval($mh->real_1);
+                }
+                elseif(($mh->month_2 == '2021-03') and ($mh->status_2 == 1)){
+                    $i += intval($mh->real_2);
+                }
+                elseif(($mh->month_3 == '2021-03') and ($mh->status_3 == 1)){
+                    $i += intval($mh->real_3);
+                }
+                elseif(($mh->month_4 == '2021-03') and ($mh->status_4 == 1)){
+                    $i += intval($mh->real_4);
+                }
+                elseif(($mh->month_5 == '2021-03') and ($mh->status_5 == 1)){
+                    $i += intval($mh->real_5);
+                }
+            }
+        }
+        return $i;
+    }
+
+    public function amount_selected_real_per_4()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            foreach($this->selected_months_hours_send() as $mh){
+                if(($mh->month_1 == '2021-04') and ($mh->status_1 == 1)){
+                    $i += intval($mh->real_1);
+                }
+                elseif(($mh->month_2 == '2021-04') and ($mh->status_2 == 1)){
+                    $i += intval($mh->real_2);
+                }
+                elseif(($mh->month_3 == '2021-04') and ($mh->status_3 == 1)){
+                    $i += intval($mh->real_3);
+                }
+                elseif(($mh->month_4 == '2021-04') and ($mh->status_4 == 1)){
+                    $i += intval($mh->real_4);
+                }
+                elseif(($mh->month_5 == '2021-04') and ($mh->status_5 == 1)){
+                    $i += intval($mh->real_5);
+                }
+            }
+        }
+        return $i;
+    }
+
+    public function amount_selected_real_per_5()
+    {
+        $i = 0;
+        if($this->selected_months_hours_send() !== false){
+            foreach($this->selected_months_hours_send() as $mh){
+                if(($mh->month_1 == '2021-05') and ($mh->status_1 == 1)){
+                    $i += intval($mh->real_1);
+                }
+                elseif(($mh->month_2 == '2021-05') and ($mh->status_2 == 1)){
+                    $i += intval($mh->real_2);
+                }
+                elseif(($mh->month_3 == '2021-05') and ($mh->status_3 == 1)){
+                    $i += intval($mh->real_3);
+                }
+                elseif(($mh->month_4 == '2021-05') and ($mh->status_4 == 1)){
+                    $i += intval($mh->real_4);
+                }
+                elseif(($mh->month_5 == '2021-05') and ($mh->status_5 == 1)){
+                    $i += intval($mh->real_5);
+                }
+            }
+        }
+        return $i;
     }
 }

@@ -122,7 +122,7 @@
                         </a>
                     </td>
                     <td>
-                        @if ($proposed_program->selected_schedule === NULL)
+                        @if ($proposed_program->selected_program === NULL)
                             <p><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteProgram">
                                 <i class="far fa-trash-alt"></i> Удалить программу
                             </button></p>

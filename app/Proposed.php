@@ -76,4 +76,9 @@ class Proposed extends Model
 
     }
 
+    public function selected_program()
+    {
+        return $this->hasOne(SelectedProgram::class, 'proposed_program_id');
+    }
+
 }

@@ -24,4 +24,18 @@ class SelectedProgramController extends Controller
 
         return redirect('/')->with('success', 'Программа взята!');
     }
+
+
+    public function show(SelectedProgram $selected_program)
+    {
+        return view('proposed.selected_show', compact('selected_program'));
+    }
+
+    public function delete(SelectedProgram $selected_program)
+    {
+        $selected_program->delete();
+
+        return redirect('/');
+    }
+
 }
