@@ -382,7 +382,7 @@ class SelectedMonthsHourController extends Controller
         return view('proposed.selected_m_h_update_rez', compact('selected_months_hour'));
     }
 
-    public function show_inf(SelectedMonthsHour $months_hour)
+    public function show_inf(SelectedMonthsHour $selected_months_hour)
     {
         return view('proposed.selected_m_h_inf', compact('selected_months_hour'));
     }

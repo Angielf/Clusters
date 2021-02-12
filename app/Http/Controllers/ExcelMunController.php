@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Export_mun;
 use App\MonthsHoursExport_mun;
 use App\MHExport_mun;
+use App\SelectedMonthsHoursExport_mun;
+use App\SelectedMHExport_mun;
 use App\ProposedExport_mun;
 use App\SelectedProgramsExport_mun;
 use Maatwebsite\Excel\Facades\Excel;
@@ -40,6 +42,16 @@ class ExcelMunController extends Controller
     public function selected_programs_export()
     {
         return Excel::download(new SelectedProgramsExport_mun, 'selected_programs_export_mun.xlsx');
+    }
+
+    public function selected_months_hours_export()
+    {
+        return Excel::download(new SelectedMonthsHoursExport_mun, 'selected_months_hours_mun.xlsx');
+    }
+
+    public function selected_m_h_export()
+    {
+        return Excel::download(new SelectedMHExport_mun, 'selected_hours_per_months_mun.xlsx');
     }
 
 

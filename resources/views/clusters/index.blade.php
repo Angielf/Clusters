@@ -36,14 +36,20 @@
                                     Кол-во часов по месяцам:
                                     <a class="btn btn-outline-dark" href="{{ route('export_hours') }}">Export</a>
                                 </li>
-                                <li class="list-group-item flex-fill"></li>
+                                <li class="list-group-item flex-fill">
+                                    Кол-во часов по месяцам (по предложенным программам):
+                                    <a class="btn btn-outline-dark" href="{{ route('selected_export_hours') }}">Export</a>
+                                </li>
                             </ul>
                             <ul class="list-group list-group-horizontal">
                                 <li class="list-group-item flex-fill">
                                     Кол-во часов по месяцам у базовых организаций (январь-май):
                                     <a class="btn btn-outline-dark" href="{{ route('export_h') }}">Export</a>
                                 </li>
-                                <li class="list-group-item flex-fill"></li>
+                                <li class="list-group-item flex-fill">
+                                    Кол-во часов по месяцам у базовых организаций (январь-май) (по предложенным программам):
+                                    <a class="btn btn-outline-dark" href="{{ route('selected_export_h') }}">Export</a>
+                                </li>
                             </ul>
 
                         </ul>
@@ -1167,14 +1173,14 @@
                                                             </a>
                                                         @endif
                                                     </li>
-                                                    {{-- <li class="list-group-item">
-                                                        @if(($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1) and ($bid->programs()->sortByDesc('status')->first()->schedule->months_hour))
-                                                            <a href="/months_hours/{{ $bid->programs()->sortByDesc('status')->first()->schedule->months_hour->id }}/inf"
+                                                    <li class="list-group-item">
+                                                        @if(($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1) and ($selected_program->selected_schedule->selected_months_hour))
+                                                            <a href="/selected_months_hours/{{ $selected_program->selected_schedule->selected_months_hour->id }}/inf"
                                                                 class="btn btn-outline-success">
                                                                     Кол-во часов по месяцам
                                                             </a>
                                                         @endif
-                                                    </li> --}}
+                                                    </li>
                                                 </td>
 
                                                 <td>

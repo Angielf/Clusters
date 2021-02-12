@@ -123,7 +123,7 @@
                     </td>
                     <td>
                         @if (($selected_program->selected_schedule->selected_student === NULL)
-                        // and ($bid->programs()->sortByDesc('status')->first()->schedule->months_hour === NULL)
+                        and ($selected_program->selected_schedule->selected_months_hour === NULL)
                         and ($selected_program->selected_schedule->status === 1))
                             <p><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteSchedule">
                                 <i class="far fa-trash-alt"></i> Удалить расписание
@@ -163,29 +163,26 @@
                   @endif
 
 
-                  {{-- @if(($bid->programs()->sortByDesc('status')->first()->schedule) and ($bid->programs()->sortByDesc('status')->first()->schedule->status === 1) and ($bid->programs()->sortByDesc('status')->first()->schedule->months_hour))
+                  @if(($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1) and ($selected_program->selected_schedule->selected_months_hour))
                   <tr>
                     <th scope="row">Кол-во часов по месяцам</th>
                     <td>
-                        <p><a href="/months_hours/{{ $bid->programs()->sortByDesc('status')->first()->schedule->months_hour->id }}/update-rez"
+                        <p><a href="/selected_months_hours/{{ $selected_program->selected_schedule->selected_months_hour->id }}/update-rez"
                             class="btn btn-outline-info btn">
                                 Кол-во часов по месяцам
                         </a><br></p>
                     </td>
                     <td>
-                        @if (($bid->programs()->sortByDesc('status')->first()->schedule->status === 1))
+                        @if (($selected_program->selected_schedule->status === 1))
                             <p><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteMonthsHour">
                                 <i class="far fa-trash-alt"></i> Удалить кол-во часов по месяцам
-                            </button></p> --}}
+                            </button></p>
 
                             <!-- Удалить кол-во часов по месяцам -->
-                            {{-- <div class="modal fade" id="deleteMonthsHour" tabindex="-1" aria-labelledby="deleteMonthsHourLabel" aria-hidden="true">
+                            <div class="modal fade" id="deleteMonthsHour" tabindex="-1" aria-labelledby="deleteMonthsHourLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteMonthsHourLabel">
-                                                {{ $bid->getClasses() }}; {{ $bid->subject }}; {{ $bid->modul }}
-                                            </h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -195,7 +192,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Закрыть</button>
-                                                <form action="{{ action('MonthsHourController@delete',$bid->programs()->sortByDesc('status')->first()->schedule->months_hour->id) }}"
+                                                <form action="{{ action('SelectedMonthsHourController@delete',$selected_program->selected_schedule->selected_months_hour->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -212,7 +209,7 @@
                         @endif
                     </td>
                   </tr>
-                  @endif --}}
+                  @endif
 
 
                   @if(($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1) and ($selected_program->selected_schedule->selected_student))

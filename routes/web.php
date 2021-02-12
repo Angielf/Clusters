@@ -143,6 +143,14 @@ Route::get('proposed_programs_export_mun', 'ExcelMunController@proposed_programs
 
 Route::get('selected_programs_export_mun', 'ExcelMunController@selected_programs_export')->name('selected_programs_export_mun');
 
+Route::get('selected_export_hours', 'ExcelRegionController@selected_months_hours_export')->name('selected_export_hours');
+
+Route::get('selected_export_hours_mun', 'ExcelMunController@selected_months_hours_export')->name('selected_export_hours_mun');
+
+Route::get('selected_export_h', 'ExcelRegionController@selected_m_h_export')->name('selected_export_h');
+
+Route::get('selected_export_h_mun', 'ExcelMunController@selected_m_h_export')->name('selected_export_h_mun');
+
 
 Route::post('/region-clusters', 'RegionClusterController@store');
 
