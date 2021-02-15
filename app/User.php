@@ -408,6 +408,25 @@ class User extends Authenticatable
     }
 
 
+    public function amount_of_selected_programs()
+    {
+        $i = 0;
+        if($this->selected_programs() !== false){
+            $i = $this->selected_programs()->count();
+        }
+        return $i;
+    }
+
+    public function amount_of_proposed_programs()
+    {
+        $i = 0;
+        if($this->proposed_programs() !== false){
+            $i = $this->proposed_programs()->count();
+        }
+        return $i;
+    }
+
+
 
     public function amount_of_selected_months_hours()
     {

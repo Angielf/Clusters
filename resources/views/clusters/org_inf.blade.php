@@ -98,6 +98,11 @@
                     <td>{{ $user_org->amount_of_programs_1() }}</td>
                     <td></td>
                   </tr>
+                  <tr>
+                    <th scope="row">Кол-во предложенных программ</th>
+                    <td>{{ $user_org->amount_of_proposed_programs() }}</td>
+                    <td></td>
+                  </tr>
                 </tbody>
             </table>
             <br/>
@@ -405,12 +410,13 @@
                     </tbody>
             </table>
             <br/>
+            <br/>
 
 
 
 
             <h5 align="center">Одобренные программы</h5>
-            <table class="table table-striped" id="myTable">
+            <table class="table table-striped" id="myTable2">
                 <thead>
                     <tr>
                         <th scope="col">Организация реципиент</th>
@@ -431,7 +437,7 @@
                     </tr>
                     </thead>
 
-                    <tbody id="table1">
+                    <tbody id="table2">
                         @foreach($user_org->programs_send() as $program)
                             @if(($program->status === 1))
                                 <tr>
@@ -529,6 +535,315 @@
 
                     </tbody>
               </table>
+            </br>
+            <br/>
+
+
+            <h5 align="center">Ваши образовательные программы</h5>
+            <table class="table table-striped" id="myTable3">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
+
+                        <th scope="col">
+                            Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
+                        </th>
+
+                        <th scope="col">
+                            Даты
+                        </th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody id="table3">
+                        @foreach($user_org->proposed_programs() as $proposed_program)
+                                <tr>
+                                    <td>
+                                        <ul class="list-group" id="ul3">
+                                            <li class="list-group-item">{{ $proposed_program->getClasses() }}</li>
+                                            <li class="list-group-item">{{ $proposed_program->subject }}</li>
+                                            <li class="list-group-item">{{ $proposed_program->modul }}</li>
+                                            <li class="list-group-item">{{ $proposed_program->hours }}</li>
+                                        </ul>
+                                    </td>
+
+                                    <td>
+                                        <ul class="list-group" id="ul4">
+                                            <li class="list-group-item">{{ $proposed_program->form_of_education }}</li>
+                                            <li class="list-group-item">{{ $proposed_program->form_education_implementation }}</li>
+                                            <li class="list-group-item">{{ $proposed_program->educational_program }}</li>
+                                            <li class="list-group-item">{{ $proposed_program->educational_activity }}</li>
+                                            <li class="list-group-item">{{ $proposed_program->content }}</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">{{ $proposed_program->getDataBegin() }} </li>
+                                            <li class="list-group-item">{{ $proposed_program->getDataEnd() }}</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                        @endforeach
+
+                    </tbody>
+            </table>
+            <br/>
+            <br/>
+
+
+            <h5 align="center">Организации, которые взяли выши программы</h5>
+            <table class="table table-striped" id="myTable4">
+                <thead>
+                    <tr>
+                        <th scope="col">Организация реципиент</th>
+
+                        <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
+
+                        <th scope="col">
+                            Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
+                        </th>
+
+                        <th scope="col">
+                            Даты
+                        </th>
+
+                        <th scope="col">Программа/ Расписание</th>
+                        <th scope="col">Кол-во учеников/Список</th>
+                        <th scope="col">Договор</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="table4">
+                        @if ($user_org->proposed_programs())
+                        @foreach( $user_org->proposed_programs() as $proposed_program)
+                            @if ($proposed_program->selected_programs())
+                                @foreach($proposed_program->selected_programs() as $selected_program)
+                                <tr>
+                                    <td>
+                                        {{$selected_program->user->fullname }}
+                                        @if (Auth::user()->status == 1 || Auth::user()->status == 10)
+                                        <p><a class="btn btn-outline-dark" href="/users/{{ $selected_program->user->id }}/show-org">Информация</a></p>
+                                        @elseif(Auth::user()->id == $user_org->id)
+                                        <p><a class="btn btn-outline-dark" href="/users/{{ $selected_program->user->id }}/about-org">Сведения</a></p>
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        <ul class="list-group" id="ul1">
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->getClasses() }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->subject }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->modul }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->hours }}</li>
+                                        </ul>
+                                    </td>
+
+                                    <td>
+                                        <ul class="list-group" id="ul2">
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->form_of_education }} </li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->form_education_implementation }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->educational_program }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->educational_activitiy }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->content }}</li>
+                                        </ul>
+                                    </td>
+
+                                    <td>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->getDataBegin() }} </li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->getDataEnd() }}</li>
+                                        </ul>
+                                    </td>
+
+
+                                    <td>
+                                        <li class="list-group-item">
+                                            <a href="/files/proposed_programs/{{ $selected_program->proposed_program->filename }}"
+                                                class="btn btn-outline-success">
+                                                Программа
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            @if(($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1))
+                                                <a href="/files/selected_schedules/{{ $selected_program->selected_schedule->filename }}"
+                                                class="btn btn-outline-success">
+                                                    Расписание
+                                                </a>
+                                            @endif
+                                        </li>
+                                        <li class="list-group-item">
+                                            @if(($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1) and ($selected_program->selected_schedule->selected_months_hour))
+                                                <a href="/selected_months_hours/{{ $selected_program->selected_schedule->selected_months_hour->id }}/update"
+                                                    class="btn btn-outline-info btn">
+                                                    Кол-во часов по месяцам
+                                                </a>
+                                            @endif
+                                        </li>
+
+                                    </td>
+
+                                    <td>
+                                        @if (($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1)
+                                        and ($selected_program->selected_schedule->selected_student))
+                                            <li class="list-group-item">
+                                                {{$selected_program->selected_schedule->selected_student->students_amount}}
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="/files/students/{{ $selected_program->selected_schedule->selected_student->filename }}"
+                                                    class="btn btn-outline-success">
+                                                    Список учеников
+                                                </a>
+                                            </li>
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        @if (($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1)
+                                        and ($selected_program->selected_schedule->selected_student) and ($selected_program->selected_schedule->selected_student->selected_agreement))
+                                            <li class="list-group-item">
+                                                <a href="/files/selected_agreements/{{ $selected_program->selected_schedule->selected_student->selected_agreement->filename }}"
+                                                    class="btn btn-outline-success">
+                                                    Договор
+                                                </a>
+                                            </li>
+                                        @endif
+                                    </td>
+                                <tr>
+                            @endforeach
+                            @endif
+                        @endforeach
+                        @endif
+
+                    </tbody>
+              </table>
+            </br>
+            <br/>
+
+
+            <h5 align="center">Взятые вами образовательные программы</h5>
+            <table class="table table-striped" id="myTable5">
+                <thead>
+                    <tr>
+                        <th scope="col">Базовая организация</th>
+
+                        <th scope="col">Класс/ Предмет(курс)/ Раздел(модуль)/ Кол-во часов</th>
+
+                        <th scope="col">
+                            Форма/условия реализации обучения/ Образовательная программа/деятельность/ Комментарий
+                        </th>
+
+                        <th scope="col">
+                            Даты
+                        </th>
+
+                        <th scope="col">Программа/ Расписание</th>
+                        <th scope="col">Кол-во учеников/Список</th>
+                        <th scope="col">Договор</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="table5">
+                        @if ($user_org->selected_programs())
+                            @foreach( $user_org->selected_programs() as $selected_program)
+                                <tr>
+                                    <td>
+                                        {{$selected_program->proposed_program->user->fullname }}
+                                        @if (Auth::user()->status == 1 || Auth::user()->status == 10)
+                                        <p><a class="btn btn-outline-dark" href="/users/{{ $selected_program->proposed_program->user->id }}/show-org">Информация</a></p>
+                                        @elseif(Auth::user()->id == $user_org->id)
+                                        <p><a class="btn btn-outline-dark" href="/users/{{ $selected_program->proposed_program->user->id }}/about-org">Сведения</a></p>
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        <ul class="list-group" id="ul1">
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->getClasses() }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->subject }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->modul }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->hours }}</li>
+                                        </ul>
+                                    </td>
+
+                                    <td>
+                                        <ul class="list-group" id="ul2">
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->form_of_education }} </li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->form_education_implementation }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->educational_program }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->educational_activitiy }}</li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->content }}</li>
+                                        </ul>
+                                    </td>
+
+                                    <td>
+                                        <ul class="list-group">
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->getDataBegin() }} </li>
+                                            <li class="list-group-item">{{ $selected_program->proposed_program->getDataEnd() }}</li>
+                                        </ul>
+                                    </td>
+
+
+                                    <td>
+                                        <li class="list-group-item">
+                                            <a href="/files/proposed_programs/{{ $selected_program->proposed_program->filename }}"
+                                                class="btn btn-outline-success">
+                                                Программа
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            @if(($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1))
+                                                <a href="/files/selected_schedules/{{ $selected_program->selected_schedule->filename }}"
+                                                class="btn btn-outline-success">
+                                                    Расписание
+                                                </a>
+                                            @endif
+                                        </li>
+                                        <li class="list-group-item">
+                                            @if(($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1) and ($selected_program->selected_schedule->selected_months_hour))
+                                                <a href="/selected_months_hours/{{ $selected_program->selected_schedule->selected_months_hour->id }}/update"
+                                                    class="btn btn-outline-info btn">
+                                                    Кол-во часов по месяцам
+                                                </a>
+                                            @endif
+                                        </li>
+
+                                    </td>
+
+                                    <td>
+                                        @if (($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1)
+                                        and ($selected_program->selected_schedule->selected_student))
+                                            <li class="list-group-item">
+                                                {{$selected_program->selected_schedule->selected_student->students_amount}}
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="/files/students/{{ $selected_program->selected_schedule->selected_student->filename }}"
+                                                    class="btn btn-outline-success">
+                                                    Список учеников
+                                                </a>
+                                            </li>
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        @if (($selected_program->selected_schedule) and ($selected_program->selected_schedule->status === 1)
+                                        and ($selected_program->selected_schedule->selected_student) and ($selected_program->selected_schedule->selected_student->selected_agreement))
+                                            <li class="list-group-item">
+                                                <a href="/files/selected_agreements/{{ $selected_program->selected_schedule->selected_student->selected_agreement->filename }}"
+                                                    class="btn btn-outline-success">
+                                                    Договор
+                                                </a>
+                                            </li>
+                                        @endif
+                                    </td>
+                                <tr>
+                        @endforeach
+                        @endif
+
+                    </tbody>
+              </table>
+            </br>
+            <br/>
+
 
               @if(Auth::user()->status == 1)
                 <p><a href="{{ route('org_list')}}"

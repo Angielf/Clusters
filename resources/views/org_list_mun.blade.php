@@ -47,6 +47,7 @@
                         <th scope="col">ИНН <i class="fas fa-arrows-alt-v"></i></th>
                         <th scope="col">Кол-во заявок <i class="fas fa-arrows-alt-v"></i></th>
                         <th scope="col">Кол-во одобренных программ <i class="fas fa-arrows-alt-v"></i></th>
+                        <th scope="col">Кол-во предложенных программ <i class="fas fa-arrows-alt-v"></i></th>
                         <th scope="col">Информация</th>
                     </tr>
                 </thead>
@@ -59,6 +60,7 @@
                         <td>{{ $user_org->inn }}</td>
                         <td>{{ $user_org->amount_of_bids() }}</td>
                         <td>{{ $user_org->amount_of_programs_1() }}</td>
+                        <td>{{ $user_org->amount_of_proposed_programs() }}</td>
                         <td>
                             <a class="btn btn-outline-dark" href="/users/{{ $user_org->id }}/show-org">Информация</a>
                         </td>
