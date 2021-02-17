@@ -910,7 +910,7 @@
 
                                                 <tbody id="other_proposed">
                                                     @foreach($proposed_programs_all as $proposed_program)
-                                                        @if(($proposed_program->user_id != $user->id) and ($proposed_program->user->district == $user->getDistrict->id))
+                                                        @if(($proposed_program->user_id != $user->id) and (($proposed_program->user->district == $user->getDistrict->id) or ($proposed_program->user->status == 100)))
                                                         <tr>
                                                             <td>
                                                                 <ul class="list-group">

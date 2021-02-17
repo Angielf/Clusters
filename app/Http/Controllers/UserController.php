@@ -35,8 +35,8 @@ class UserController extends Controller
         $users = User::all()
         ->where('name', '!=', 'admin')
         ->where('name', '!=', 'admin2')
-        ->where('fullname', '!=', 'Муниципальный координатор')
-        ->where('district', '!=', '100');
+        ->where('fullname', '!=', 'Муниципальный координатор');
+        // ->where('district', '!=', '100');
         return view('clusters.organizations_list_reg', compact('users'));
     }
 

@@ -88,11 +88,13 @@
                         </button>
                     </td>
                   </tr>
+                  @if($user_org->status !== 100)
                   <tr>
                     <th scope="row">Кол-во заявок</th>
                     <td>{{ $user_org->amount_of_bids() }}</td>
                     <td></td>
                   </tr>
+                  @endif
                   <tr>
                     <th scope="row">Кол-во одобренных программ</th>
                     <td>{{ $user_org->amount_of_programs_1() }}</td>
@@ -259,6 +261,7 @@
             {{-- Конец окна Web --}}
 
 
+            @if($user_org->status !== 100)
             <h5 align="center">Заявки на дефицит</h5>
             <table class="table table-striped" id="myTable">
                 <thead>
@@ -411,6 +414,7 @@
             </table>
             <br/>
             <br/>
+            @endif
 
 
 
@@ -721,6 +725,7 @@
             <br/>
 
 
+            @if($user_org->status !== 100)
             <h5 align="center">Взятые вами образовательные программы</h5>
             <table class="table table-striped" id="myTable5">
                 <thead>
@@ -843,6 +848,7 @@
               </table>
             </br>
             <br/>
+            @endif
 
 
               @if(Auth::user()->status == 1)
