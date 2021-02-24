@@ -3936,10 +3936,16 @@ class GardenSeeder extends Seeder
                 "passOrg" => "bpmvyc7hn",
                 "district" => 29,
             ),
+            // array(
+            //     "loginOrg" => "prs29_032",
+            //     "nameOrg" => "МКДОУ ЦРР Детский сад №17 г. Россоши структурное подразделение МКДОУ Детский сад п. Молодежный",
+            //     "passOrg" => "5ygp4g2db",
+            //     "district" => 29,
+            // ),
             array(
-                "loginOrg" => "prs29_032",
-                "nameOrg" => "МКДОУ ЦРР Детский сад №17 г. Россоши структурное подразделение МКДОУ Детский сад п. Молодежный",
-                "passOrg" => "5ygp4g2db",
+                "loginOrg" => "prs29_012",
+                "nameOrg" => "МКДОУ ЦРР Детский сад №17 г. Россоши",
+                "passOrg" => "e56mnbmz6",
                 "district" => 29,
             ),
             array(
